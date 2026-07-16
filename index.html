@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Desafio Lógico Forte Cultural | Você é um Mestre da Lógica?</title>
+
+<!-- ===================== SEO ===================== -->
+<meta name="description" content="Teste sua lógica com o Desafio Forte Cultural: 15 charadas para descobrir se você é um Mestre da Lógica. Jogue grátis, receba seu certificado e concorra a estampas exclusivas.">
+<meta name="keywords" content="quiz de lógica, desafio lógico, charadas, teste de inteligência, forte cultural, quiz cultura geral">
+<meta name="author" content="Forte Cultural">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://umapenca.com/fortecultural/desafio-logico/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Desafio Lógico Forte Cultural">
+<meta property="og:description" content="Apenas 5% das pessoas acertam as 15 charadas. Será que você consegue?">
+<meta property="og:image" content="img/logo.png">
+<meta property="og:url" content="https://umapenca.com/fortecultural/desafio-logico/">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Desafio Lógico Forte Cultural">
+<meta name="twitter:description" content="15 charadas. Um só vencedor de verdade: você consegue?">
+<meta name="twitter:image" content="img/logo.png">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16213E">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="img/logo.png">
+
+<!-- Preconnect / Preload -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="img/camiseta-cafe.png">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- CSS modular -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/dark.css">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": "Desafio Lógico Forte Cultural",
+  "description": "Quiz interativo com 15 charadas de lógica.",
+  "educationalLevel": "Todos os níveis",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Forte Cultural"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- Skip link (acessibilidade) -->
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <div class="brand">
+      <img src="img/logo.png" alt="Forte Cultural" width="36" height="36" loading="eager">
+      <span>Forte Cultural</span>
+    </div>
+    <button id="darkToggle" class="icon-btn" aria-label="Alternar modo escuro" title="Modo escuro">
+      <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero" aria-label="Introdução do desafio">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow"><i class="fa-solid fa-brain" aria-hidden="true"></i> Desafio de raciocínio</p>
+      <h1 class="hero-title">🧠 DESAFIO LÓGICO</h1>
+      <p class="hero-subtitle">Você consegue acertar todas as 15 charadas?</p>
+      <p class="hero-text">Mais de <strong>95% das pessoas</strong> erram pelo menos 3 perguntas.<br>
+      Será que você consegue ser um <strong>Mestre da Lógica</strong>?</p>
+      <button id="startBtn" class="btn btn-primary btn-xl ripple">
+        <i class="fa-solid fa-play" aria-hidden="true"></i> COMEÇAR AGORA
+      </button>
+
+      <div class="rules-grid" role="list">
+        <div class="rule-card" role="listitem"><i class="fa-solid fa-list-ol"></i><span>15 perguntas</span></div>
+        <div class="rule-card" role="listitem"><i class="fa-solid fa-check-circle"></i><span>Apenas uma resposta</span></div>
+        <div class="rule-card" role="listitem"><i class="fa-solid fa-bolt"></i><span>Resultado imediato</span></div>
+        <div class="rule-card" role="listitem"><i class="fa-solid fa-share-nodes"></i><span>Compartilhe com amigos</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== QUIZ ===================== -->
+  <section class="quiz-section" id="quizSection" aria-live="polite" hidden>
+    <div class="container quiz-container">
+
+      <div class="quiz-topbar">
+        <div class="progress-info">
+          <span id="progressLabel">Questão 1 de 15</span>
+          <span id="timerDisplay" class="timer"><i class="fa-regular fa-clock"></i> 00:00</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="question-stage" id="questionStage">
+        <!-- Perguntas injetadas via JS -->
+      </div>
+
+      <div class="promo-slot" id="promoSlot" hidden></div>
+
+    </div>
+  </section>
+
+  <!-- ===================== RESULTADO ===================== -->
+  <section class="result-section" id="resultSection" hidden>
+    <div class="container result-container">
+      <div class="result-card" id="resultCard">
+        <!-- Preenchido via JS -->
+      </div>
+
+      <div class="review-wrap">
+        <h2 class="section-title">Confira sua correção</h2>
+        <div id="reviewList" class="review-list"></div>
+      </div>
+
+      <div class="certificate-wrap card-surface">
+        <h2 class="section-title"><i class="fa-solid fa-award"></i> Gere seu certificado</h2>
+        <p>Digite seu nome para gerar um certificado personalizado do Desafio Lógico Forte Cultural.</p>
+        <div class="cert-form">
+          <input type="text" id="certName" placeholder="Digite seu nome" aria-label="Digite seu nome para o certificado" maxlength="40">
+          <button id="certBtn" class="btn btn-secondary ripple"><i class="fa-solid fa-file-arrow-down"></i> GERAR CERTIFICADO</button>
+        </div>
+        <canvas id="certCanvas" width="1200" height="850" hidden></canvas>
+      </div>
+
+      <div class="share-wrap card-surface">
+        <h2 class="section-title"><i class="fa-solid fa-share-nodes"></i> Compartilhe seu resultado</h2>
+        <div class="share-buttons">
+          <button class="share-btn wa ripple" data-share="whatsapp" aria-label="Compartilhar no WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
+          <button class="share-btn fb ripple" data-share="facebook" aria-label="Compartilhar no Facebook"><i class="fa-brands fa-facebook-f"></i></button>
+          <button class="share-btn tg ripple" data-share="telegram" aria-label="Compartilhar no Telegram"><i class="fa-brands fa-telegram"></i></button>
+          <button class="share-btn x ripple" data-share="x" aria-label="Compartilhar no X"><i class="fa-brands fa-x-twitter"></i></button>
+          <button class="share-btn copy ripple" data-share="copy" aria-label="Copiar link"><i class="fa-solid fa-link"></i></button>
+          <button class="share-btn native ripple" data-share="native" aria-label="Compartilhar" hidden><i class="fa-solid fa-share-nodes"></i></button>
+        </div>
+        <p id="shareFeedback" class="share-feedback" role="status" aria-live="polite"></p>
+      </div>
+
+      <button id="restartBtn" class="btn btn-ghost ripple"><i class="fa-solid fa-rotate-right"></i> Refazer o desafio</button>
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL / LOJA ===================== -->
+  <section class="cta-final" id="ctaFinal">
+    <div class="container cta-inner">
+      <div class="stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+      <h2>Mais de 300 estampas exclusivas para quem pensa fora da caixa</h2>
+      <ul class="cta-list">
+        <li><i class="fa-solid fa-check"></i> Algodão Premium</li>
+        <li><i class="fa-solid fa-check"></i> Diversos tamanhos</li>
+        <li><i class="fa-solid fa-check"></i> Envio para todo o Brasil</li>
+      </ul>
+      <a href="https://umapenca.com/fortecultural/" target="_blank" rel="noopener" class="btn btn-cta btn-xl ripple">
+        🛍 VISITAR A LOJA
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> Forte Cultural — Desafio Lógico. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Confetti canvas -->
+<canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+<!-- jsPDF para certificado em PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+<!-- JS modular -->
+<script src="js/quiz.js" defer></script>
+<script src="js/progress.js" defer></script>
+<script src="js/timer.js" defer></script>
+<script src="js/confetti.js" defer></script>
+<script src="js/certificate.js" defer></script>
+<script src="js/share.js" defer></script>
+<script src="js/ui.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>

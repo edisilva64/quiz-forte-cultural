@@ -1,0 +1,20 @@
+{
+  "name": "Desafio Lógico Forte Cultural",
+  "short_name": "Forte Cultural",
+  "description": "Teste sua lógica com 15 charadas e descubra se você é um Mestre da Lógica.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#16213E",
+  "theme_color": "#16213E",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
