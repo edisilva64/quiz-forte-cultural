@@ -1,0 +1,39 @@
+/* ===================================================================
+   dark.css — Modo escuro automático (prefers-color-scheme) + toggle manual
+   =================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #1B2340;
+    --surface-alt: #141B33;
+    --surface-glass: rgba(20, 27, 51, 0.65);
+    --border-soft: rgba(255, 255, 255, 0.08);
+    --text-primary: #F2F4FA;
+    --text-secondary: #A9B1CC;
+  }
+  body { background: var(--surface-alt); }
+  .quiz-section, .result-section { background: var(--surface-alt); }
+  .review-explain { background: #10182E; }
+}
+
+/* Toggle manual — sobrepõe a preferência do sistema */
+body.dark-mode {
+  --surface: #1B2340;
+  --surface-alt: #141B33;
+  --surface-glass: rgba(20, 27, 51, 0.65);
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --text-primary: #F2F4FA;
+  --text-secondary: #A9B1CC;
+}
+body.dark-mode .quiz-section,
+body.dark-mode .result-section { background: var(--surface-alt); }
+body.dark-mode .review-explain { background: #10182E; }
+
+body.light-mode {
+  --surface: #FFFFFF;
+  --surface-alt: #F6F7FB;
+  --surface-glass: rgba(255, 255, 255, 0.65);
+  --border-soft: rgba(22, 33, 62, 0.08);
+  --text-primary: #16213E;
+  --text-secondary: #5B6478;
+}
