@@ -1,0 +1,95 @@
+/* ===================================================================
+   animations.css — Microanimações, transições e keyframes
+   =================================================================== */
+
+@keyframes driftGlow {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(-3%, 2%) scale(1.06); }
+}
+
+@keyframes rippleAnim {
+  to { transform: scale(3.5); opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.85); }
+  60%  { opacity: 1; transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 14px 34px rgba(255,107,0,0.38); }
+  50%      { box-shadow: 0 18px 50px rgba(255,107,0,0.55); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Entrada do Hero */
+.hero-inner > * { animation: fadeInUp .7s ease both; }
+.hero-inner .eyebrow      { animation-delay: .05s; }
+.hero-inner .hero-title   { animation-delay: .12s; }
+.hero-inner .hero-subtitle{ animation-delay: .2s; }
+.hero-inner .hero-text    { animation-delay: .28s; }
+.hero-inner #startBtn     { animation-delay: .36s; }
+.hero-inner .rules-grid   { animation-delay: .44s; }
+
+/* Botão pulsante para chamar atenção */
+#startBtn { animation: fadeInUp .7s ease .36s both, pulseSoft 2.6s ease-in-out 2s infinite; }
+#startBtn:hover { animation-play-state: paused; }
+
+/* Transição de perguntas */
+.question-card {
+  animation: popIn .45s cubic-bezier(.34,1.56,.64,1) both;
+}
+.question-card.leaving {
+  animation: fadeOutLeft .3s ease both;
+}
+@keyframes fadeOutLeft {
+  to { opacity: 0; transform: translateX(-24px) scale(0.97); }
+}
+
+.option-btn { animation: slideInRight .35s ease both; }
+.option-btn:nth-child(1){ animation-delay: .05s; }
+.option-btn:nth-child(2){ animation-delay: .1s; }
+.option-btn:nth-child(3){ animation-delay: .15s; }
+.option-btn:nth-child(4){ animation-delay: .2s; }
+
+.promo-banner { animation: fadeInUp .5s ease both; }
+
+.result-card { animation: popIn .5s cubic-bezier(.34,1.56,.64,1) both; }
+.review-item { animation: fadeInUp .4s ease both; }
+.review-item:nth-child(n) { animation-delay: calc(var(--i, 0) * 0.03s); }
+
+/* Ripple effect helper (posicionado via JS) */
+.ripple { position: relative; }
+
+/* Hover em cartões de mockup */
+.promo-mockup { transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
+
+/* Respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
