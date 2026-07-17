@@ -9,9 +9,16 @@
   /**
    * Cada pergunta tem:
    *  id, question, options[4], correctIndex, explanation
-   * As alternativas já estão embaralhadas manualmente para variedade.
+   *
+   * Este array funciona como FALLBACK local: é usado somente quando o
+   * banco de dados (Supabase) não está configurado ou está indisponível,
+   * para o quiz nunca ficar quebrado. Quando o banco está configurado,
+   * as perguntas vêm da tabela `questions` (ver js/db.js e supabase/schema.sql).
+   *
+   * A cada partida, 15 perguntas são sorteadas aleatoriamente deste pool
+   * de 30 (ver QuizData.pickRandom).
    */
-  const QUESTIONS = [
+  const FALLBACK_QUESTIONS = [
     {
       id: 1,
       question: "Complete a sequência lógica: 2, 6, 12, 20, 30, ?",
@@ -121,8 +128,136 @@
       options: ["18h", "19h", "20h", "17h"],
       correctIndex: 1,
       explanation: "Às 15h o primeiro já percorreu 80 km. A diferença de velocidade é 20 km/h, então leva 4h para alcançar: 15h + 4h = 19h."
+    },
+    {
+      id: 16,
+      question: "Complete a sequência: 1, 4, 9, 16, 25, ?",
+      options: ["30", "36", "32", "49"],
+      correctIndex: 1,
+      explanation: "São os quadrados perfeitos (1², 2², 3², 4², 5²...). O próximo é 6² = 36."
+    },
+    {
+      id: 17,
+      question: "Charada: não tenho vida, mas posso morrer. O que sou?",
+      options: ["Uma pilha", "Uma planta", "Um robô", "Uma estrela"],
+      correctIndex: 0,
+      explanation: "Uma pilha nunca esteve viva, mas dizemos que ela 'morre' quando descarrega."
+    },
+    {
+      id: 18,
+      question: "Se 5 máquinas fazem 5 produtos em 5 minutos, quanto tempo levam 100 máquinas para fazer 100 produtos?",
+      options: ["100 minutos", "20 minutos", "5 minutos", "50 minutos"],
+      correctIndex: 2,
+      explanation: "Cada máquina faz 1 produto em 5 minutos. Com 100 máquinas trabalhando em paralelo, ainda leva 5 minutos para produzir 100 produtos."
+    },
+    {
+      id: 19,
+      question: "Complete a sequência: 3, 9, 27, 81, ?",
+      options: ["162", "243", "324", "729"],
+      correctIndex: 1,
+      explanation: "Cada termo é o anterior multiplicado por 3 (potências de 3). 81 × 3 = 243."
+    },
+    {
+      id: 20,
+      question: "Charada: quanto mais eu cresço, menos você vê. O que sou?",
+      options: ["A escuridão", "A neblina", "A fumaça", "A distância"],
+      correctIndex: 0,
+      explanation: "Quanto mais a escuridão aumenta, menos enxergamos ao redor."
+    },
+    {
+      id: 21,
+      question: "Qual é o maior oceano do mundo?",
+      options: ["Atlântico", "Índico", "Ártico", "Pacífico"],
+      correctIndex: 3,
+      explanation: "O Oceano Pacífico é o maior e mais profundo oceano da Terra, cobrindo cerca de um terço da superfície do planeta."
+    },
+    {
+      id: 22,
+      question: "Um pai tem 5 filhas. Cada filha tem exatamente 1 irmão. Quantos filhos o pai tem ao todo?",
+      options: ["5", "6", "10", "11"],
+      correctIndex: 1,
+      explanation: "As 5 filhas compartilham o mesmo único irmão. Logo, são 5 filhas + 1 filho = 6 filhos no total."
+    },
+    {
+      id: 23,
+      question: "Complete a sequência de letras: Z, X, V, T, ?",
+      options: ["S", "R", "Q", "U"],
+      correctIndex: 1,
+      explanation: "A sequência anda de trás para frente pulando uma letra a cada passo (Z, X, V, T, R)."
+    },
+    {
+      id: 24,
+      question: "Charada: tenho um rosto, mas não tenho olhos; tenho mãos, mas não tenho dedos. O que sou?",
+      options: ["Uma boneca", "Um relógio", "Uma estátua", "Um espelho"],
+      correctIndex: 1,
+      explanation: "Um relógio tem 'rosto' (mostrador) e 'mãos' (ponteiros), mas não possui olhos nem dedos de verdade."
+    },
+    {
+      id: 25,
+      question: "Quantos lados tem um hexágono?",
+      options: ["5", "6", "7", "8"],
+      correctIndex: 1,
+      explanation: "O prefixo 'hexa' significa seis — um hexágono é um polígono de 6 lados."
+    },
+    {
+      id: 26,
+      question: "Você está correndo uma corrida e ultrapassa quem está em segundo lugar. Em que posição você fica?",
+      options: ["Primeiro lugar", "Segundo lugar", "Terceiro lugar", "Depende da distância que falta"],
+      correctIndex: 1,
+      explanation: "Se você ultrapassa o segundo colocado, você assume a posição dele: o segundo lugar (e não o primeiro)."
+    },
+    {
+      id: 27,
+      question: "Complete a sequência: 2, 5, 11, 23, 47, ?",
+      options: ["94", "95", "96", "93"],
+      correctIndex: 1,
+      explanation: "Cada termo é o dobro do anterior mais 1 (2×2+1=5, 5×2+1=11...). 47×2+1 = 95."
+    },
+    {
+      id: 28,
+      question: "Charada: quanto mais você tira de mim, mais eu deixo para trás. O que sou?",
+      options: ["Pegadas", "Lembranças", "Um rastro de tinta", "Um caminho"],
+      correctIndex: 0,
+      explanation: "A cada passo que você dá (tira de si mesmo), mais pegadas ficam para trás."
+    },
+    {
+      id: 29,
+      question: "Qual é o único metal que é líquido à temperatura ambiente?",
+      options: ["Chumbo", "Mercúrio", "Estanho", "Zinco"],
+      correctIndex: 1,
+      explanation: "O mercúrio é o único metal que se mantém em estado líquido em temperatura ambiente."
+    },
+    {
+      id: 30,
+      question: "Se A=1, B=2, C=3, D=4... qual é a soma dos valores das letras da palavra 'CAB'?",
+      options: ["5", "6", "7", "8"],
+      correctIndex: 1,
+      explanation: "C=3, A=1, B=2. Somando: 3 + 1 + 2 = 6."
     }
   ];
+
+  const QUESTIONS_PER_GAME = 15;
+
+  /** Embaralha uma cópia do array (Fisher-Yates) sem alterar o original */
+  function shuffleArray(arr) {
+    const copy = arr.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = copy[i];
+      copy[i] = copy[j];
+      copy[j] = tmp;
+    }
+    return copy;
+  }
+
+  /**
+   * Sorteia `count` perguntas aleatórias e em ordem aleatória a partir de um pool.
+   * Se o pool tiver menos perguntas que `count`, retorna o pool inteiro embaralhado.
+   */
+  function pickRandom(pool, count) {
+    const shuffled = shuffleArray(pool || []);
+    return shuffled.slice(0, Math.min(count, shuffled.length));
+  }
 
   /**
    * Níveis de classificação final, do maior para o menor.
@@ -148,9 +283,10 @@
   }
 
   window.QuizData = {
-    QUESTIONS: QUESTIONS,
+    FALLBACK_QUESTIONS: FALLBACK_QUESTIONS,
+    QUESTIONS_PER_GAME: QUESTIONS_PER_GAME,
     LEVELS: LEVELS,
     getLevel: getLevel,
-    TOTAL: QUESTIONS.length
+    pickRandom: pickRandom
   };
 })();

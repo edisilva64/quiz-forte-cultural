@@ -6,9 +6,10 @@
   "use strict";
 
   const state = {
+    questions: [],       // as 15 perguntas sorteadas para esta partida
     currentIndex: 0,
-    answers: [],        // índice escolhido por pergunta (mesma ordem de QUESTIONS)
-    questionTimes: [],  // tempo (ms) gasto em cada pergunta
+    answers: [],          // índice escolhido por pergunta (mesma ordem de state.questions)
+    questionTimes: [],    // tempo (ms) gasto em cada pergunta
     answered: false
   };
 
@@ -61,11 +62,25 @@
 
   /* ---------------- FLUXO PRINCIPAL ---------------- */
 
-  function startQuiz() {
+  async function startQuiz() {
+    // Estado visual de carregamento (busca de perguntas pode levar um instante)
+    dom.startBtn.disabled = true;
+    const originalBtnHtml = dom.startBtn.innerHTML;
+    dom.startBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> PREPARANDO SEU DESAFIO...';
+
+    let pool = await QuizDB.fetchQuestionPool();
+    if (!pool || !pool.length) {
+      pool = QuizData.FALLBACK_QUESTIONS; // banco indisponível/não configurado: usa o pool local
+    }
+
+    state.questions = QuizData.pickRandom(pool, QuizData.QUESTIONS_PER_GAME);
     state.currentIndex = 0;
     state.answers = [];
     state.questionTimes = [];
     state.answered = false;
+
+    dom.startBtn.disabled = false;
+    dom.startBtn.innerHTML = originalBtnHtml;
 
     dom.heroSection.hidden = true;
     dom.resultSection.hidden = true;
@@ -79,8 +94,8 @@
   }
 
   function renderCurrentQuestion() {
-    const total = QuizData.TOTAL;
-    const q = QuizData.QUESTIONS[state.currentIndex];
+    const total = state.questions.length;
+    const q = state.questions[state.currentIndex];
     state.answered = false;
 
     QuizProgress.update(state.currentIndex + 1, total);
@@ -94,7 +109,7 @@
     if (state.answered) return;
     state.answered = true;
 
-    const q = QuizData.QUESTIONS[state.currentIndex];
+    const q = state.questions[state.currentIndex];
     state.answers[state.currentIndex] = selectedIndex;
     state.questionTimes[state.currentIndex] = stopQuestionTimer();
 
@@ -105,7 +120,7 @@
   }
 
   function advance() {
-    const total = QuizData.TOTAL;
+    const total = state.questions.length;
     state.currentIndex++;
 
     if (state.currentIndex >= total) {
@@ -116,12 +131,13 @@
     renderCurrentQuestion();
   }
 
-  function finishQuiz() {
+  async function finishQuiz() {
     const totalTimeMs = QuizTimer.stop();
     const timeFormatted = QuizTimer.formatMs(totalTimeMs);
+    const total = state.questions.length;
 
     const score = state.answers.reduce(function (acc, ans, i) {
-      return acc + (ans === QuizData.QUESTIONS[i].correctIndex ? 1 : 0);
+      return acc + (ans === state.questions[i].correctIndex ? 1 : 0);
     }, 0);
 
     const level = QuizData.getLevel(score);
@@ -129,8 +145,8 @@
     dom.quizSection.hidden = true;
     dom.resultSection.hidden = false;
 
-    QuizUI.renderResultCard(dom.resultCard, level, score, QuizData.TOTAL, timeFormatted);
-    QuizUI.renderReview(dom.reviewList, state.answers, QuizData.QUESTIONS);
+    QuizUI.renderResultCard(dom.resultCard, level, score, total, timeFormatted);
+    QuizUI.renderReview(dom.reviewList, state.answers, state.questions);
 
     dom.resultSection.scrollIntoView({ behavior: "smooth" });
 
@@ -141,14 +157,22 @@
     // Guarda contexto para certificado e compartilhamento
     state.resultContext = {
       score: score,
-      total: QuizData.TOTAL,
+      total: total,
       levelTitle: level.title,
       levelEmoji: level.emoji,
       time: timeFormatted,
-      accuracy: Math.round((score / QuizData.TOTAL) * 100)
+      accuracy: Math.round((score / total) * 100)
     };
 
     QuizShare.checkNativeSupport();
+
+    // Estatísticas da comunidade: busca a média geral (até agora) e, em
+    // seguida, registra o resultado desta partida para as próximas médias.
+    // Ambas as chamadas são tolerantes a falha (banco não configurado etc.)
+    const communityStatsBlock = document.getElementById("communityStatsBlock");
+    const statsBefore = await QuizDB.getStats();
+    QuizUI.renderCommunityStats(communityStatsBlock, statsBefore, score, total, totalTimeMs);
+    QuizDB.recordResult(score, total, totalTimeMs);
   }
 
   function restartQuiz() {
@@ -210,6 +234,9 @@
     document.querySelector(".share-buttons").addEventListener("click", onShareClick);
 
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Contador de acessos (só para o administrador, ver admin.html)
+    QuizDB.logPageView();
 
     // Registra Service Worker (PWA)
     if ("serviceWorker" in navigator) {

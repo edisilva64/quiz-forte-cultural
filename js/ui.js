@@ -176,7 +176,67 @@
         '<div class="stat-box"><div class="stat-value">' + score + '</div><div class="stat-label">ACERTOS</div></div>' +
         '<div class="stat-box"><div class="stat-value">' + (total - score) + '</div><div class="stat-label">ERROS</div></div>' +
         '<div class="stat-box"><div class="stat-value">' + Math.round((score / total) * 100) + '%</div><div class="stat-label">PRECISÃO</div></div>' +
-      '</div>';
+      '</div>' +
+      '<div class="community-stats loading" id="communityStatsBlock"></div>';
+  }
+
+  /**
+   * Preenche o bloco de estatísticas da comunidade com mensagens sempre
+   * positivas/incentivadoras — nunca como um placar crítico de "perdeu".
+   * @param {HTMLElement} el - o container #communityStatsBlock
+   * @param {object|null} stats - { players, avgScore, avgTimeMs } ou null
+   * @param {number} score, total, timeMs - dados do jogador atual
+   */
+  function renderCommunityStats(el, stats, score, total, timeMs) {
+    if (!el) return;
+    el.classList.remove("loading");
+
+    // Sem dados suficientes ainda (banco não configurado ou poucas partidas registradas)
+    if (!stats || !stats.players || stats.players < 1) {
+      el.innerHTML =
+        '<div class="community-card">' +
+          '<span class="community-card-icon"><i class="fa-solid fa-rocket"></i></span>' +
+          '<span class="community-card-text">Você é um dos primeiros a encarar esse desafio! Em breve, mais jogadores vão aparecer aqui para você comparar sua evolução. 🚀</span>' +
+        '</div>';
+      return;
+    }
+
+    const avgScoreText = stats.avgScore !== null ? stats.avgScore.toFixed(1).replace(".", ",") : null;
+    const avgTimeText = stats.avgTimeMs !== null ? window.QuizTimer.formatMs(stats.avgTimeMs) : null;
+
+    let scoreMsg;
+    if (avgScoreText === null) {
+      scoreMsg = null;
+    } else if (score - stats.avgScore >= 1) {
+      scoreMsg = 'Você acertou mais que a média geral dos jogadores — <strong>mandou muito bem!</strong> 🎉 (média: ' + avgScoreText + '/' + total + ')';
+    } else if (score - stats.avgScore > -1) {
+      scoreMsg = 'Você ficou bem próximo da média geral dos jogadores — <strong>ótimo equilíbrio!</strong> 👏 (média: ' + avgScoreText + '/' + total + ')';
+    } else {
+      scoreMsg = 'A média geral dos jogadores é ' + avgScoreText + '/' + total + '. <strong>Jogue de novo e mostre do que você é capaz!</strong> 💪';
+    }
+
+    let timeMsg;
+    if (avgTimeText === null) {
+      timeMsg = null;
+    } else if (timeMs <= stats.avgTimeMs) {
+      timeMsg = 'Você foi mais rápido que a média geral (' + avgTimeText + ') — <strong>ótimos reflexos!</strong> ⚡';
+    } else {
+      timeMsg = 'Você levou seu tempo para pensar com calma — <strong>capricho vale mais que pressa!</strong> 🧠 (média geral: ' + avgTimeText + ')';
+    }
+
+    let html = '<div class="community-card">' +
+      '<span class="community-card-icon"><i class="fa-solid fa-users"></i></span>' +
+      '<span class="community-card-text">Já são <strong>' + stats.players + ' desafiantes</strong> que encararam o Desafio Lógico Forte Cultural!</span>' +
+    '</div>';
+
+    if (scoreMsg) {
+      html += '<div class="community-card"><span class="community-card-icon"><i class="fa-solid fa-star"></i></span><span class="community-card-text">' + scoreMsg + '</span></div>';
+    }
+    if (timeMsg) {
+      html += '<div class="community-card"><span class="community-card-icon"><i class="fa-solid fa-stopwatch"></i></span><span class="community-card-text">' + timeMsg + '</span></div>';
+    }
+
+    el.innerHTML = html;
   }
 
   function renderReview(el, answers, questions) {
@@ -206,6 +266,7 @@
     markAnswer: markAnswer,
     updatePromoRail: updatePromoRail,
     renderResultCard: renderResultCard,
+    renderCommunityStats: renderCommunityStats,
     renderReview: renderReview
   };
 })();
