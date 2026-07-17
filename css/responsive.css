@@ -5,17 +5,19 @@
 /* ===== Telas grandes / TV ===== */
 @media (min-width: 1440px) {
   .container { max-width: 1200px; }
-  .hero { padding: 120px 0 100px; }
+  .hero { padding: 64px 0 90px; }
 }
 
 /* ===== Faixa lateral fixa (somente em telas largas o suficiente
-   para não sobrepor o quiz, que é centralizado em 780px) ===== */
+   para não sobrepor o quiz, que é centralizado em 780px).
+   Posicionada na altura aproximada de onde fica o título "DESAFIO LÓGICO"
+   no hero (cabeçalho fixo + respiro do hero), em vez de centralizada
+   verticalmente na tela. ===== */
 @media (min-width: 1240px) {
   .promo-rail {
     position: fixed;
-    top: 50%;
+    top: 150px;
     right: 26px;
-    transform: translateY(-50%);
     width: 200px;
     margin-bottom: 0;
     z-index: 40;
@@ -27,14 +29,13 @@
 @media (max-width: 900px) {
   .rules-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .promo-banner { grid-template-columns: 120px 1fr; padding: 24px; }
 }
 
 /* ===== Celular ===== */
 @media (max-width: 640px) {
   .container { padding: 0 18px; }
-  .hero { padding: 64px 0 50px; }
-  .hero-title { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .hero { padding: 32px 0 40px; }
+  .hero-title { font-size: clamp(1.6rem, 7.2vw, 2.08rem); }
   .rules-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .rule-card { padding: 14px 8px; font-size: 0.78rem; }
 
@@ -43,6 +44,7 @@
   .option-btn { padding: 14px 16px; font-size: 0.92rem; }
 
   .question-timer-badge { top: 14px; right: 14px; font-size: 0.7rem; padding: 5px 10px; }
+  .timer { font-size: 1.1rem; padding: 7px 16px; }
 
   .promo-rail-mockup { max-width: 140px; }
 
@@ -58,6 +60,6 @@
 }
 
 @media (max-width: 400px) {
-  .hero-title { font-size: 1.9rem; }
+  .hero-title { font-size: 1.52rem; }
   .btn-xl { padding: 15px 26px; font-size: 0.95rem; }
 }

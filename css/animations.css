@@ -72,7 +72,7 @@
 .option-btn:nth-child(3){ animation-delay: .15s; }
 .option-btn:nth-child(4){ animation-delay: .2s; }
 
-.promo-banner { animation: fadeInUp .5s ease both; }
+.promo-rail { animation: fadeInUp .5s ease both; }
 
 .result-card { animation: popIn .5s cubic-bezier(.34,1.56,.64,1) both; }
 .review-item { animation: fadeInUp .4s ease both; }
@@ -82,7 +82,7 @@
 .ripple { position: relative; }
 
 /* Hover em cartões de mockup */
-.promo-mockup { transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
+.promo-rail-mockup { transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
 
 /* Respeita usuários que preferem menos movimento */
 @media (prefers-reduced-motion: reduce) {

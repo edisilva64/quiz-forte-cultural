@@ -116,7 +116,11 @@ input:focus-visible,
   gap: 10px;
   font-weight: 700;
   font-size: 1.05rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: opacity .2s ease;
 }
+.brand:hover { opacity: 0.78; }
 .brand img { border-radius: 8px; }
 
 .icon-btn {
@@ -138,7 +142,7 @@ input:focus-visible,
   position: relative;
   background: var(--grad-hero);
   color: var(--text-invert);
-  padding: 88px 0 70px;
+  padding: 40px 0 60px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -164,30 +168,30 @@ input:focus-visible,
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.03em;
-  margin-bottom: 22px;
+  margin-bottom: 14px;
 }
 .eyebrow i { color: var(--color-orange-light); }
 
 .hero-title {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-size: clamp(1.92rem, 4.8vw, 3.36rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   text-shadow: 0 10px 40px rgba(0,0,0,0.25);
 }
 .hero-subtitle {
   font-size: clamp(1.15rem, 2.4vw, 1.5rem);
   font-weight: 600;
   color: #FFD9B8;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 .hero-text {
   font-size: 1.05rem;
   color: rgba(255,255,255,0.82);
   line-height: 1.6;
-  margin-bottom: 34px;
+  margin-bottom: 28px;
 }
 
 /* ===================== BOTÕES ===================== */
@@ -295,12 +299,13 @@ input:focus-visible,
 .timer {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: var(--color-navy);
   color: #fff;
-  padding: 6px 14px;
+  padding: 9px 20px;
   border-radius: var(--radius-pill);
-  font-size: 0.9rem;
+  font-size: 1.35rem;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 .progress-track {
@@ -484,6 +489,46 @@ input:focus-visible,
   gap: 10px;
 }
 .section-title i { color: var(--color-orange); }
+
+/* ===================== ESTATÍSTICAS DA COMUNIDADE =====================
+   Mostradas de forma sempre positiva/incentivadora, nunca como um
+   placar de "ganhou/perdeu" contra outros jogadores. */
+.community-stats {
+  margin-top: 26px;
+  display: grid;
+  gap: 12px;
+}
+.community-stats.loading .community-card {
+  opacity: 0.5;
+}
+.community-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  text-align: left;
+  transition: opacity .3s ease;
+}
+.community-card-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  background: rgba(255,107,0,0.18);
+  color: var(--color-orange-light);
+}
+.community-card-text {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.5;
+}
+.community-card-text strong { color: #fff; }
 
 .review-list { display: flex; flex-direction: column; gap: 12px; }
 .review-item {
