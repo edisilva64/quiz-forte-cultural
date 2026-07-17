@@ -9,25 +9,30 @@ Quiz interativo de raciocínio lógico, construído em **HTML5, CSS3 e JavaScrip
 ```
 Quiz-Forte-Cultural/
 ├── index.html
+├── admin.html               → painel privado (contador de acessos, login)
 ├── css/
 │   ├── style.css          → design system, layout e componentes
 │   ├── animations.css     → keyframes e microanimações
 │   ├── responsive.css     → breakpoints (tablet, celular, TV)
 │   └── dark.css           → modo escuro (automático + manual)
 ├── js/
-│   ├── quiz.js            → banco de perguntas e níveis de resultado
-│   ├── progress.js        → barra de progresso
-│   ├── timer.js           → cronômetro
-│   ├── confetti.js        → efeito de confetes
-│   ├── certificate.js     → geração do certificado (canvas + PDF)
-│   ├── share.js           → compartilhamento social
-│   ├── ui.js               → renderização de telas
-│   └── app.js              → orquestrador principal
+│   ├── config.js           → credenciais do Supabase (preencher)
+│   ├── db.js                → integração com o banco de dados
+│   ├── quiz.js              → banco de perguntas local (fallback) e níveis
+│   ├── progress.js          → barra de progresso
+│   ├── timer.js             → cronômetro (total + por pergunta)
+│   ├── confetti.js          → efeito de confetes
+│   ├── certificate.js       → geração do certificado (canvas + PDF)
+│   ├── share.js             → compartilhamento social
+│   ├── ui.js                → renderização de telas
+│   └── app.js               → orquestrador principal
 ├── img/
 │   ├── camiseta-cafe.png
 │   ├── camiseta-gato.png
 │   ├── camiseta-fada.png
 │   └── logo.png
+├── supabase/
+│   └── schema.sql            → script único de configuração do banco
 ├── manifest.json           → configuração do PWA
 ├── sw.js                    → service worker (offline)
 ├── favicon.ico
@@ -72,7 +77,9 @@ Recomendação: use imagens com no máximo ~700px de largura e comprimidas (JPG 
 
 ## ❓ Como trocar as perguntas
 
-Todas as perguntas estão em `js/quiz.js`, dentro do array `QUESTIONS`. Cada pergunta segue este formato:
+**Se o banco de dados (Supabase) estiver configurado:** gerencie as perguntas direto pelo painel do Supabase — veja a seção "Como adicionar/editar perguntas pelo banco de dados" mais abaixo. É o método recomendado, não exige subir código novo.
+
+**Banco de reserva local (fallback):** o arquivo `js/quiz.js` mantém uma cópia local de 30 perguntas, usada automaticamente caso o banco de dados não esteja configurado ou fique indisponível. Para editar esse fallback, vá em `js/quiz.js`, array `FALLBACK_QUESTIONS`. Cada pergunta segue este formato:
 
 ```js
 {
@@ -84,13 +91,14 @@ Todas as perguntas estão em `js/quiz.js`, dentro do array `QUESTIONS`. Cada per
 }
 ```
 
-## ➕ Como adicionar novas perguntas
+A cada partida, **15 perguntas são sorteadas aleatoriamente** (e em ordem aleatória) do total disponível — seja do banco de dados ou do fallback local (`QuizData.pickRandom`, em `js/quiz.js`).
 
-1. Copie o bloco de uma pergunta existente em `QUESTIONS`.
+## ➕ Como adicionar novas perguntas ao fallback local
+
+1. Copie o bloco de uma pergunta existente em `FALLBACK_QUESTIONS`.
 2. Cole no final do array (antes do `]`).
-3. Atualize o campo `id`.
+3. Atualize o campo `id` (use um número que ainda não exista).
 4. Ajuste `question`, `options`, `correctIndex` e `explanation`.
-5. Se aumentar o total de perguntas além de 15, revise os pontos de exibição dos banners promocionais em `js/app.js` (`finishedQuestionNumber === 5` e `=== 10`).
 
 ---
 
@@ -111,9 +119,17 @@ Basta alterar os valores hexadecimais — todo o site se atualiza automaticament
 
 ---
 
+## 🖼️ Logo e link do cabeçalho
+
+A logo atual (`img/logo.png`) é um emblema circular com um ícone de lâmpada (representando ideia/lógica), em gradiente laranja → verde. Para trocá-la, basta substituir o arquivo `img/logo.png` mantendo o mesmo nome (recomendado: imagem quadrada, PNG com fundo transparente, pelo menos 256×256px).
+
+Tanto a logo quanto o nome "Forte Cultural" no topo do site são, juntos, um link clicável que abre `https://umapenca.com/fortecultural/` em uma nova aba. Para trocar esse link, edite o `href` da tag `<a class="brand">` no início do `index.html`.
+
+---
+
 ## 📢 Como alterar os anúncios (faixa lateral)
 
-**Atualização:** o banner promocional não interrompe mais o quiz. Agora existe uma **faixa lateral fixa** (`promo-rail`), visível ao lado direito da tela em telas largas (a partir de 1240px) e como um cartão acima da pergunta em telas menores. A imagem, título, texto e botão trocam automaticamente a cada 5 perguntas:
+**Atualização:** o banner promocional não interrompe mais o quiz. Agora existe uma **faixa lateral fixa** (`promo-rail`), visível ao lado direito da tela em telas largas (a partir de 1240px) — posicionada na altura aproximada de onde ficava o título "DESAFIO LÓGICO" no hero, e não mais centralizada verticalmente. Em telas menores, vira um cartão estático acima da pergunta. A imagem, título, texto e botão trocam automaticamente a cada 5 perguntas:
 
 - Perguntas 1 a 5 → `camiseta-cafe.png`
 - Perguntas 6 a 10 → `camiseta-gato.png`
@@ -135,6 +151,8 @@ const PROMO_CONTENT = {
 ```
 
 Altere `title`, `text`, `emoji` e `cta` (texto do botão) livremente. Para mudar em quais perguntas cada imagem aparece, edite a função `getPromoKeyForIndex` no mesmo arquivo.
+
+Para ajustar a posição vertical exata da faixa lateral fixa (desktop), edite `top: 150px;` em `css/responsive.css`, dentro do bloco `@media (min-width: 1240px) { .promo-rail { ... } }`.
 
 ---
 
@@ -227,9 +245,67 @@ As tags de SEO ficam no `<head>` do `index.html`:
 
 ---
 
-## 🔜 Pendente: comparação com a média de outros jogadores
+## 🗄️ Configurando o banco de dados (Supabase — gratuito)
 
-Está planejada uma funcionalidade para mostrar "sua pontuação vs. a média de outros jogadores" e "seu tempo vs. o tempo médio". Como o site é **estático** (sem backend/banco de dados), essa comparação real entre todos os visitantes exige um servidor simples para agregar os dados (ex: um banco de dados leve tipo Supabase/Firebase, ou uma API própria). Essa etapa ainda não foi implementada — quando for, este README será atualizado com as instruções de configuração.
+O quiz agora usa um banco de dados real e gratuito ([Supabase](https://supabase.com)) para três coisas:
+1. **Banco de perguntas** — 30 perguntas cadastradas; a cada partida, 15 são sorteadas aleatoriamente.
+2. **Estatísticas gerais** — média de acertos e média de tempo de todos os jogadores, mostradas de forma incentivadora junto com o resultado de cada pessoa.
+3. **Contador de acessos** — visível só para você, no painel administrativo (`admin.html`).
+
+> **Enquanto você não configurar isso, o site continua funcionando normalmente** — ele usa um banco de 30 perguntas local (`js/quiz.js`) como reserva e simplesmente não mostra a comparação com outros jogadores nem o contador de acessos. Nada quebra.
+
+### Passo a passo
+
+**1. Criar o projeto**
+1. Acesse [supabase.com](https://supabase.com) e crie uma conta gratuita.
+2. Clique em **New Project**, dê um nome (ex: `forte-cultural-quiz`) e uma senha de banco (guarde-a).
+3. Aguarde alguns minutos até o projeto ficar pronto.
+
+**2. Rodar o script de configuração**
+1. No menu lateral, clique em **SQL Editor** → **New query**.
+2. Abra o arquivo `supabase/schema.sql` (está dentro desta pasta do projeto), copie **todo o conteúdo** e cole no editor.
+3. Clique em **Run**. Isso cria as tabelas, as permissões de segurança e já cadastra as 30 perguntas.
+
+**3. Pegar as chaves de acesso**
+1. No menu lateral, vá em **Project Settings** (ícone de engrenagem) → **API**.
+2. Copie o valor de **Project URL** e o valor de **anon public** (a chave pública).
+3. Abra o arquivo `js/config.js` do projeto e cole assim:
+   ```js
+   window.QUIZ_CONFIG = {
+     SUPABASE_URL: "https://SEU-PROJETO.supabase.co",
+     SUPABASE_ANON_KEY: "sua-chave-anon-aqui"
+   };
+   ```
+4. Salve, suba o arquivo atualizado para o GitHub (substituindo o antigo) e pronto — o site já passa a usar o banco de dados.
+
+**4. Criar seu login de administrador** (necessário para ver o contador de acessos)
+1. No painel do Supabase, vá em **Authentication** → **Users** → **Add user**.
+2. Escolha **Create new user**, preencha com seu e-mail e uma senha forte.
+3. Marque a opção para já confirmar o e-mail automaticamente (ou confirme pelo link recebido).
+4. Pronto — esse e-mail/senha é o que você vai usar para entrar em `admin.html`.
+
+### Painel administrativo (contador de acessos)
+
+Acesse `seusite.com/admin.html` (essa página **não aparece em nenhum menu do site** — só quem sabe o endereço consegue chegar nela, e mesmo assim precisa fazer login). Nela você vê:
+- Total de acessos ao site
+- Total de desafios concluídos
+- Média geral de acertos
+- Tempo médio geral
+
+> **Sobre segurança:** o login usa autenticação real do Supabase — mesmo que alguém descubra a URL `admin.html`, não consegue ver nenhum número sem o seu e-mail e senha. Os dados brutos (tabela `results` e `page_views`) também ficam bloqueados para leitura pública no banco — só os números agregados (médias, totais) ficam disponíveis, e só depois do login.
+
+### Como funciona a comparação com outros jogadores
+
+No resultado, o jogador vê mensagens como "você acertou mais que a média geral" ou "a média geral é X — jogue de novo e supere todo mundo!" — **sempre em tom positivo e de incentivo**, nunca como uma comparação crítica ou negativa, independentemente do desempenho da pessoa. Se ainda não houver dados suficientes (ex: acabou de configurar o banco), aparece uma mensagem de boas-vindas ao invés de qualquer número.
+
+### Como adicionar/editar perguntas pelo banco de dados
+
+Depois de configurado, você pode gerenciar as perguntas direto pelo painel do Supabase, sem precisar mexer em código:
+1. Vá em **Table Editor** → tabela `questions`.
+2. Para adicionar: clique em **Insert row** e preencha `question`, `options` (formato `["Alternativa A","Alternativa B","Alternativa C","Alternativa D"]`), `correct_index` (0 a 3) e `explanation`.
+3. Para editar/excluir: clique na linha desejada.
+
+O quiz sempre sorteia 15 perguntas aleatórias do total cadastrado — quanto mais perguntas você adicionar, maior a variedade entre as partidas.
 
 ---
 

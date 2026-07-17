@@ -72,10 +72,10 @@
 <!-- ===================== HEADER ===================== -->
 <header class="site-header" role="banner">
   <div class="container header-inner">
-    <div class="brand">
+    <a class="brand" href="https://umapenca.com/fortecultural/" target="_blank" rel="noopener" aria-label="Forte Cultural — ir para a loja">
       <img src="img/logo.png" alt="Forte Cultural" width="36" height="36" loading="eager">
       <span>Forte Cultural</span>
-    </div>
+    </a>
     <button id="darkToggle" class="icon-btn" aria-label="Alternar modo escuro" title="Modo escuro">
       <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
     </button>
@@ -210,7 +210,12 @@
 <!-- jsPDF para certificado em PDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 
+<!-- Supabase (banco de dados gratuito: perguntas, resultados, estatísticas e contador de acessos) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
 <!-- JS modular -->
+<script src="js/config.js" defer></script>
+<script src="js/db.js" defer></script>
 <script src="js/quiz.js" defer></script>
 <script src="js/progress.js" defer></script>
 <script src="js/timer.js" defer></script>

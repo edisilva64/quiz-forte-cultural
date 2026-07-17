@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Administrativo | Forte Cultural</title>
+
+<!-- Esta página é privada: não é linkada em nenhum lugar do site público
+     e exige login para mostrar qualquer número (ver supabase/schema.sql). -->
+<meta name="robots" content="noindex, nofollow">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root {
+    --navy: #16213E;
+    --orange: #FF6B00;
+    --green: #00A651;
+    --gray: #F6F7FB;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #16213E, #1E2C52);
+    padding: 24px;
+  }
+  .panel {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 24px;
+    padding: 36px 32px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+  }
+  h1 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h1 i { color: var(--orange); }
+  p.sub { color: #5B6478; font-size: 0.88rem; margin: 0 0 26px; }
+
+  label { font-size: 0.85rem; font-weight: 600; color: var(--navy); display: block; margin-bottom: 6px; }
+  input {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 12px;
+    border: 2px solid #EAEBF3;
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  input:focus { outline: none; border-color: var(--orange); }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(120deg, var(--orange), #FF8C3D);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  button:disabled { opacity: 0.6; cursor: default; }
+
+  #errorMsg {
+    color: #FF3C3C;
+    font-size: 0.85rem;
+    margin-top: 12px;
+    min-height: 18px;
+  }
+
+  #dashboard { display: none; }
+  .stat-card {
+    background: var(--gray);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .stat-card i {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    display: grid; place-items: center;
+    color: var(--orange);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--navy); line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: #5B6478; margin-top: 4px; }
+
+  #logoutBtn {
+    background: transparent;
+    color: var(--navy);
+    border: 2px solid #EAEBF3;
+    margin-top: 8px;
+  }
+
+  .loading-text { text-align: center; color: #5B6478; font-size: 0.9rem; padding: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <h1><i class="fa-solid fa-chart-simple"></i> Painel Administrativo</h1>
+  <p class="sub">Acesso restrito — Desafio Lógico Forte Cultural</p>
+
+  <!-- Formulário de login -->
+  <form id="loginForm">
+    <label for="email">E-mail</label>
+    <input type="email" id="email" required autocomplete="username">
+
+    <label for="password">Senha</label>
+    <input type="password" id="password" required autocomplete="current-password">
+
+    <button type="submit" id="loginBtn">ENTRAR</button>
+    <p id="errorMsg"></p>
+  </form>
+
+  <!-- Painel após login -->
+  <div id="dashboard">
+    <div id="statsArea" class="loading-text">Carregando estatísticas...</div>
+    <button id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  const cfg = window.QUIZ_CONFIG;
+  const notConfigured = !cfg || !cfg.SUPABASE_URL || cfg.SUPABASE_URL.indexOf("SUBSTITUA") !== -1;
+
+  const loginForm = document.getElementById("loginForm");
+  const dashboard = document.getElementById("dashboard");
+  const errorMsg = document.getElementById("errorMsg");
+  const statsArea = document.getElementById("statsArea");
+  const loginBtn = document.getElementById("loginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (notConfigured) {
+    errorMsg.textContent = "Banco de dados ainda não configurado (js/config.js). Veja o README.";
+    loginBtn.disabled = true;
+    return;
+  }
+
+  const sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+
+  loginForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    errorMsg.textContent = "";
+    loginBtn.disabled = true;
+    loginBtn.textContent = "ENTRANDO...";
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    const { error } = await sb.auth.signInWithPassword({ email: email, password: password });
+
+    loginBtn.disabled = false;
+    loginBtn.textContent = "ENTRAR";
+
+    if (error) {
+      errorMsg.textContent = "E-mail ou senha inválidos.";
+      return;
+    }
+
+    loginForm.style.display = "none";
+    dashboard.style.display = "block";
+    loadStats();
+  });
+
+  logoutBtn.addEventListener("click", async function () {
+    await sb.auth.signOut();
+    dashboard.style.display = "none";
+    loginForm.style.display = "block";
+    loginForm.reset();
+  });
+
+  async function loadStats() {
+    statsArea.innerHTML = '<p class="loading-text">Carregando estatísticas...</p>';
+
+    try {
+      const [{ count: totalViews }, { count: totalPlayers }, statsRpc] = await Promise.all([
+        sb.from("page_views").select("*", { count: "exact", head: true }),
+        sb.from("results").select("*", { count: "exact", head: true }),
+        sb.rpc("get_stats")
+      ]);
+
+      const row = (statsRpc.data && statsRpc.data[0]) || {};
+      const avgScore = row.avg_score !== undefined && row.avg_score !== null ? Number(row.avg_score).toFixed(1) : "—";
+      const avgTimeMs = row.avg_time_ms !== undefined && row.avg_time_ms !== null ? Number(row.avg_time_ms) : null;
+      const avgTimeText = avgTimeMs !== null ? formatMs(avgTimeMs) : "—";
+
+      statsArea.innerHTML =
+        '<div class="stat-card"><i class="fa-solid fa-eye"></i><div><div class="stat-value">' + (totalViews ?? "—") + '</div><div class="stat-label">ACESSOS TOTAIS AO SITE</div></div></div>' +
+        '<div class="stat-card"><i class="fa-solid fa-flag-checkered"></i><div><div class="stat-value">' + (totalPlayers ?? "—") + '</div><div class="stat-label">DESAFIOS CONCLUÍDOS</div></div></div>' +
+        '<div class="stat-card"><i class="fa-solid fa-star"></i><div><div class="stat-value">' + avgScore + '/15</div><div class="stat-label">MÉDIA GERAL DE ACERTOS</div></div></div>' +
+        '<div class="stat-card"><i class="fa-solid fa-stopwatch"></i><div><div class="stat-value">' + avgTimeText + '</div><div class="stat-label">TEMPO MÉDIO GERAL</div></div></div>';
+    } catch (e) {
+      statsArea.innerHTML = '<p class="loading-text">Não foi possível carregar as estatísticas agora.</p>';
+    }
+  }
+
+  function formatMs(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+  }
+
+  // Se já houver uma sessão válida (login anterior), pula direto pro painel
+  sb.auth.getSession().then(function (res) {
+    if (res.data && res.data.session) {
+      loginForm.style.display = "none";
+      dashboard.style.display = "block";
+      loadStats();
+    }
+  });
+})();
+</script>
+</body>
+</html>
