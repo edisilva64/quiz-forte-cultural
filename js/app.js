@@ -7,11 +7,19 @@
 
   const state = {
     currentIndex: 0,
-    answers: [],       // índice escolhido por pergunta (mesma ordem de QUESTIONS)
+    answers: [],        // índice escolhido por pergunta (mesma ordem de QUESTIONS)
+    questionTimes: [],  // tempo (ms) gasto em cada pergunta
     answered: false
   };
 
   const dom = {};
+
+  // Cronômetro independente que mede o tempo gasto na pergunta atual
+  // (separado do cronômetro total exibido no topo). Usado só para criar
+  // uma sensação de urgência/pressão visual — não penaliza o usuário.
+  let questionTimer = null;
+  let questionTimerInterval = null;
+  const PRESSURE_THRESHOLD_MS = 15000; // após 15s, o badge fica "vermelho"
 
   function cacheDom() {
     dom.startBtn = document.getElementById("startBtn");
@@ -19,7 +27,6 @@
     dom.quizSection = document.getElementById("quizSection");
     dom.resultSection = document.getElementById("resultSection");
     dom.questionStage = document.getElementById("questionStage");
-    dom.promoSlot = document.getElementById("promoSlot");
     dom.resultCard = document.getElementById("resultCard");
     dom.reviewList = document.getElementById("reviewList");
     dom.restartBtn = document.getElementById("restartBtn");
@@ -28,11 +35,36 @@
     dom.darkToggle = document.getElementById("darkToggle");
   }
 
+  /* ---------------- CRONÔMETRO POR PERGUNTA ---------------- */
+
+  function startQuestionTimer() {
+    questionTimer = QuizTimer.createTimer();
+    questionTimer.start();
+    clearInterval(questionTimerInterval);
+    questionTimerInterval = setInterval(updateQuestionTimerDisplay, 250);
+    updateQuestionTimerDisplay();
+  }
+
+  function updateQuestionTimerDisplay() {
+    const badge = document.getElementById("questionTimerBadge");
+    if (!badge || !questionTimer) return;
+    const ms = questionTimer.getElapsedMs();
+    badge.innerHTML = '<i class="fa-solid fa-stopwatch"></i> ' + QuizTimer.formatMs(ms);
+    badge.classList.toggle("pressure", ms >= PRESSURE_THRESHOLD_MS);
+  }
+
+  function stopQuestionTimer() {
+    clearInterval(questionTimerInterval);
+    const ms = questionTimer ? questionTimer.stop() : 0;
+    return ms;
+  }
+
   /* ---------------- FLUXO PRINCIPAL ---------------- */
 
   function startQuiz() {
     state.currentIndex = 0;
     state.answers = [];
+    state.questionTimes = [];
     state.answered = false;
 
     dom.heroSection.hidden = true;
@@ -41,7 +73,6 @@
 
     QuizProgress.reset();
     QuizTimer.start();
-    QuizUI.hidePromo(dom.promoSlot);
 
     renderCurrentQuestion();
     dom.quizSection.scrollIntoView({ behavior: "smooth" });
@@ -53,9 +84,10 @@
     state.answered = false;
 
     QuizProgress.update(state.currentIndex + 1, total);
-    QuizUI.hidePromo(dom.promoSlot);
-
     QuizUI.renderQuestion(dom.questionStage, q, state.currentIndex + 1, total, handleAnswer);
+    QuizUI.updatePromoRail(state.currentIndex); // troca a imagem a cada 5 perguntas
+
+    startQuestionTimer();
   }
 
   function handleAnswer(selectedIndex, btnEl, gridEl) {
@@ -64,6 +96,7 @@
 
     const q = QuizData.QUESTIONS[state.currentIndex];
     state.answers[state.currentIndex] = selectedIndex;
+    state.questionTimes[state.currentIndex] = stopQuestionTimer();
 
     QuizUI.markAnswer(gridEl, q.correctIndex, selectedIndex);
 
@@ -73,41 +106,14 @@
 
   function advance() {
     const total = QuizData.TOTAL;
-    const finishedQuestionNumber = state.currentIndex + 1; // 1-based da pergunta que acabou de ser respondida
-
     state.currentIndex++;
 
-    // Banners promocionais em pontos estratégicos
-    if (finishedQuestionNumber === 5) {
-      showPromoThenContinue("cafe");
-      return;
-    }
-    if (finishedQuestionNumber === 10) {
-      showPromoThenContinue("gato");
-      return;
-    }
-
     if (state.currentIndex >= total) {
-      // Antes do resultado, mostrar banner final (coleção fada) e então resultado
-      showFinalPromoThenResult();
+      finishQuiz();
       return;
     }
 
     renderCurrentQuestion();
-  }
-
-  function showPromoThenContinue(key) {
-    QuizUI.renderPromo(dom.promoSlot, key);
-    dom.promoSlot.scrollIntoView({ behavior: "smooth", block: "center" });
-    setTimeout(function () {
-      renderCurrentQuestion();
-    }, 3200);
-  }
-
-  function showFinalPromoThenResult() {
-    dom.questionStage.innerHTML = "";
-    QuizUI.renderPromo(dom.promoSlot, "fada");
-    setTimeout(finishQuiz, 3200);
   }
 
   function finishQuiz() {
@@ -146,6 +152,7 @@
   }
 
   function restartQuiz() {
+    clearInterval(questionTimerInterval);
     dom.resultSection.hidden = true;
     dom.heroSection.hidden = false;
     dom.heroSection.scrollIntoView({ behavior: "smooth" });

@@ -38,6 +38,14 @@
     number.textContent = "PERGUNTA " + index + "/" + total;
     card.appendChild(number);
 
+    // Badge do cronômetro de pressão (contagem progressiva desta pergunta)
+    const timerBadge = document.createElement("span");
+    timerBadge.className = "question-timer-badge";
+    timerBadge.id = "questionTimerBadge";
+    timerBadge.setAttribute("aria-hidden", "true"); // decorativo, não essencial ao conteúdo
+    timerBadge.innerHTML = '<i class="fa-solid fa-stopwatch"></i> 00:00';
+    card.appendChild(timerBadge);
+
     const text = document.createElement("h2");
     text.className = "question-text";
     text.textContent = q.question;
@@ -97,7 +105,9 @@
     });
   }
 
-  /* ---------- BANNERS PROMOCIONAIS ---------- */
+  /* ---------- FAIXA LATERAL (PROMO RAIL) ----------
+     Não interrompe mais o quiz: fica sempre visível ao lado (ou acima,
+     em telas menores) e a imagem troca a cada 5 perguntas. */
   const PROMO_CONTENT = {
     cafe: {
       img: "img/camiseta-cafe.png",
@@ -122,26 +132,36 @@
     }
   };
 
-  function renderPromo(slotEl, key) {
-    const data = PROMO_CONTENT[key];
-    if (!data) { slotEl.hidden = true; return; }
-
-    slotEl.innerHTML =
-      '<div class="promo-banner">' +
-        '<div class="promo-mockup"><img src="' + data.img + '" alt="' + data.title + '" loading="lazy" width="160" height="200"></div>' +
-        '<div>' +
-          '<span class="promo-emoji">' + data.emoji + '</span>' +
-          '<div class="promo-title">' + data.title + '</div>' +
-          '<p class="promo-text">' + data.text + '</p>' +
-          '<a class="btn btn-primary ripple" href="https://umapenca.com/fortecultural/" target="_blank" rel="noopener">' + data.cta + '</a>' +
-        '</div>' +
-      '</div>';
-    slotEl.hidden = false;
+  /**
+   * Retorna a chave de produto (cafe/gato/fada) de acordo com a pergunta atual.
+   * @param {number} zeroBasedIndex - índice da pergunta (0 a total-1)
+   */
+  function getPromoKeyForIndex(zeroBasedIndex) {
+    if (zeroBasedIndex < 5) return "cafe";
+    if (zeroBasedIndex < 10) return "gato";
+    return "fada";
   }
 
-  function hidePromo(slotEl) {
-    slotEl.hidden = true;
-    slotEl.innerHTML = "";
+  /** Atualiza o conteúdo da faixa lateral (chamado a cada pergunta renderizada) */
+  function updatePromoRail(zeroBasedIndex) {
+    const key = getPromoKeyForIndex(zeroBasedIndex);
+    const data = PROMO_CONTENT[key];
+    if (!data) return;
+
+    const img = document.getElementById("promoRailImg");
+    const emoji = document.getElementById("promoRailEmoji");
+    const title = document.getElementById("promoRailTitle");
+    const text = document.getElementById("promoRailText");
+    const cta = document.getElementById("promoRailCta");
+
+    if (img && img.getAttribute("src") !== data.img) {
+      img.src = data.img;
+      img.alt = data.title;
+    }
+    if (emoji) emoji.textContent = data.emoji;
+    if (title) title.textContent = data.title;
+    if (text) text.textContent = data.text;
+    if (cta) cta.textContent = data.cta;
   }
 
   /* ---------- RESULTADO ---------- */
@@ -184,8 +204,7 @@
     attachRipple: attachRipple,
     renderQuestion: renderQuestion,
     markAnswer: markAnswer,
-    renderPromo: renderPromo,
-    hidePromo: hidePromo,
+    updatePromoRail: updatePromoRail,
     renderResultCard: renderResultCard,
     renderReview: renderReview
   };

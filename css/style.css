@@ -320,11 +320,35 @@ input:focus-visible,
 .question-stage { position: relative; min-height: 380px; }
 
 .question-card {
+  position: relative;
   background: var(--surface);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
   padding: 44px 36px;
   text-align: center;
+}
+
+/* Cronômetro de pressão — conta o tempo gasto na pergunta atual */
+.question-timer-badge {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-alt);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 13px;
+  border-radius: var(--radius-pill);
+  font-variant-numeric: tabular-nums;
+  transition: background .25s ease, color .25s ease;
+}
+.question-timer-badge.pressure {
+  background: rgba(255, 60, 60, 0.14);
+  color: #FF3C3C;
+  animation: pulseSoft 1s ease-in-out infinite;
 }
 .question-number {
   display: inline-block;
@@ -384,37 +408,40 @@ input:focus-visible,
 .option-btn.disabled { pointer-events: none; opacity: 0.75; }
 .option-btn .fa-check, .option-btn .fa-xmark { margin-left: auto; }
 
-/* ===================== PROMO BANNERS ===================== */
-.promo-banner {
-  margin-top: 26px;
+/* ===================== FAIXA LATERAL (PROMO RAIL) =====================
+   Mobile/tablet: cartão estático acima da pergunta.
+   Desktop largo (ver responsive.css): fixa no lado direito da tela. */
+.promo-rail {
+  margin-bottom: 22px;
+}
+.promo-rail-inner {
   background: linear-gradient(135deg, #16213E, #26375F);
   border-radius: var(--radius-lg);
-  padding: 30px;
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 26px;
-  align-items: center;
+  padding: 22px;
+  text-align: center;
   color: #fff;
   box-shadow: var(--shadow-soft);
 }
-.promo-mockup {
-  position: relative;
+.promo-rail-mockup {
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  margin: 0 auto 14px;
+  max-width: 180px;
+  box-shadow: 0 16px 34px rgba(0,0,0,0.35);
   transition: transform .3s ease;
 }
-.promo-mockup:hover { transform: scale(1.05) rotate(-1deg); }
-.promo-mockup img { width: 100%; height: auto; }
-.promo-emoji { font-size: 1.6rem; }
-.promo-title {
+.promo-rail-mockup:hover { transform: scale(1.05) rotate(-1deg); }
+.promo-rail-mockup img { width: 100%; height: auto; display: block; }
+.promo-rail-emoji { font-size: 1.5rem; }
+.promo-rail-title {
   font-weight: 800;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 6px 0 6px;
   color: var(--color-orange-light);
   letter-spacing: 0.02em;
 }
-.promo-text { color: rgba(255,255,255,0.8); margin-bottom: 16px; font-size: 0.95rem; }
+.promo-rail-text { color: rgba(255,255,255,0.8); margin-bottom: 16px; font-size: 0.88rem; }
+.btn-sm { padding: 12px 20px; font-size: 0.85rem; width: 100%; }
 
 /* ===================== RESULTADO ===================== */
 .result-section { padding: 60px 0 100px; background: var(--surface-alt); }

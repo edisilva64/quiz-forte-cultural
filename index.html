@@ -120,11 +120,23 @@
         </div>
       </div>
 
+      <!-- Faixa lateral fixa: imagem do produto + CTA, sempre visível durante o quiz.
+           A imagem troca a cada 5 perguntas (ver js/ui.js -> getPromoKeyForIndex) -->
+      <aside class="promo-rail" id="promoRail" aria-label="Oferta relacionada à camiseta">
+        <div class="promo-rail-inner">
+          <div class="promo-rail-mockup">
+            <img id="promoRailImg" src="img/camiseta-cafe.png" alt="Camiseta em destaque" loading="lazy" width="200" height="256">
+          </div>
+          <span class="promo-rail-emoji" id="promoRailEmoji">☕</span>
+          <div class="promo-rail-title" id="promoRailTitle">ESTILO CIÊNCIA</div>
+          <p class="promo-rail-text" id="promoRailText">Inteligência também se veste.</p>
+          <a class="btn btn-primary btn-sm ripple" id="promoRailCta" href="https://umapenca.com/fortecultural/" target="_blank" rel="noopener">VER CAMISETA</a>
+        </div>
+      </aside>
+
       <div class="question-stage" id="questionStage">
         <!-- Perguntas injetadas via JS -->
       </div>
-
-      <div class="promo-slot" id="promoSlot" hidden></div>
 
     </div>
   </section>

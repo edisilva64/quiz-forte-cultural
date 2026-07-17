@@ -52,11 +52,45 @@
     return formatMs(elapsedMs);
   }
 
+  /**
+   * Cria uma instância de cronômetro independente (ex: para medir o tempo
+   * gasto em cada pergunta, separado do cronômetro total do desafio).
+   * Retorna um objeto com start/stop/reset/getElapsedMs próprios.
+   */
+  function createTimer() {
+    let localStart = null;
+    let localElapsed = 0;
+    let localRunning = false;
+
+    return {
+      start: function () {
+        localStart = Date.now();
+        localRunning = true;
+      },
+      stop: function () {
+        if (localRunning) {
+          localElapsed = Date.now() - localStart;
+          localRunning = false;
+        }
+        return localElapsed;
+      },
+      reset: function () {
+        localStart = null;
+        localElapsed = 0;
+        localRunning = false;
+      },
+      getElapsedMs: function () {
+        return localRunning ? Date.now() - localStart : localElapsed;
+      }
+    };
+  }
+
   window.QuizTimer = {
     start: start,
     stop: stop,
     reset: reset,
     getFormatted: getFormatted,
-    formatMs: formatMs
+    formatMs: formatMs,
+    createTimer: createTimer
   };
 })();

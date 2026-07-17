@@ -111,9 +111,15 @@ Basta alterar os valores hexadecimais — todo o site se atualiza automaticament
 
 ---
 
-## 📢 Como alterar os anúncios (banners promocionais)
+## 📢 Como alterar os anúncios (faixa lateral)
 
-Em `js/ui.js`, edite o objeto `PROMO_CONTENT`:
+**Atualização:** o banner promocional não interrompe mais o quiz. Agora existe uma **faixa lateral fixa** (`promo-rail`), visível ao lado direito da tela em telas largas (a partir de 1240px) e como um cartão acima da pergunta em telas menores. A imagem, título, texto e botão trocam automaticamente a cada 5 perguntas:
+
+- Perguntas 1 a 5 → `camiseta-cafe.png`
+- Perguntas 6 a 10 → `camiseta-gato.png`
+- Perguntas 11 a 15 → `camiseta-fada.png`
+
+Para editar os textos/imagens, vá em `js/ui.js` e edite o objeto `PROMO_CONTENT`:
 
 ```js
 const PROMO_CONTENT = {
@@ -128,7 +134,23 @@ const PROMO_CONTENT = {
 };
 ```
 
-Altere `title`, `text`, `emoji` e `cta` (texto do botão) livremente.
+Altere `title`, `text`, `emoji` e `cta` (texto do botão) livremente. Para mudar em quais perguntas cada imagem aparece, edite a função `getPromoKeyForIndex` no mesmo arquivo.
+
+---
+
+## ⏱️ Cronômetro por pergunta (pressão)
+
+Além do cronômetro total (tempo desde o início do desafio), cada pergunta tem seu **próprio cronômetro progressivo**, exibido no canto superior direito do cartão da pergunta. Ele:
+- Começa em `00:00` a cada nova pergunta
+- Conta o tempo enquanto o usuário pensa
+- Fica vermelho e pulsa após 15 segundos, criando uma leve sensação de urgência
+
+Para ajustar o tempo em que o alerta visual aparece, edite a constante em `js/app.js`:
+```js
+const PRESSURE_THRESHOLD_MS = 15000; // em milissegundos
+```
+
+> **Nota:** este cronômetro é apenas visual — não há penalidade real por demorar, nem limite de tempo que bloqueia a resposta.
 
 ---
 
@@ -202,6 +224,12 @@ As tags de SEO ficam no `<head>` do `index.html`:
 - `preconnect` e `preload` para fontes e imagens críticas.
 - CSS e JS separados e organizados por responsabilidade (facilita cache do navegador).
 - Service Worker com estratégia *cache-first* para acesso instantâneo em visitas futuras.
+
+---
+
+## 🔜 Pendente: comparação com a média de outros jogadores
+
+Está planejada uma funcionalidade para mostrar "sua pontuação vs. a média de outros jogadores" e "seu tempo vs. o tempo médio". Como o site é **estático** (sem backend/banco de dados), essa comparação real entre todos os visitantes exige um servidor simples para agregar os dados (ex: um banco de dados leve tipo Supabase/Firebase, ou uma API própria). Essa etapa ainda não foi implementada — quando for, este README será atualizado com as instruções de configuração.
 
 ---
 
