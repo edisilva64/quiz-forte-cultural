@@ -46,7 +46,11 @@
   .question-timer-badge { top: 14px; right: 14px; font-size: 0.7rem; padding: 5px 10px; }
   .timer { font-size: 1.1rem; padding: 7px 16px; }
 
+  .promo-rail { margin-bottom: 16px; }
   .promo-rail-mockup { max-width: 140px; }
+
+  .quiz-section { padding: 28px 0 24px; }
+  .cta-final { padding: 40px 0 56px; }
 
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .result-card { padding: 36px 22px; }
