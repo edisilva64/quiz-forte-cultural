@@ -7,7 +7,7 @@
 (function () {
   "use strict";
 
-  const PAGE_URL = "https://umapenca.com/fortecultural/desafio-logico/";
+  const PAGE_URL = "https://edisilva64.github.io/quiz-forte-cultural/";
 
   function buildMessage(levelTitle, score, total) {
     return "🧠 Acabei de fazer o Desafio Lógico Forte Cultural e conquistei o título de \"" +
