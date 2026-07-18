@@ -79,7 +79,7 @@ Recomendação: use imagens com no máximo ~700px de largura e comprimidas (JPG 
 
 **Se o banco de dados (Supabase) estiver configurado:** gerencie as perguntas direto pelo painel do Supabase — veja a seção "Como adicionar/editar perguntas pelo banco de dados" mais abaixo. É o método recomendado, não exige subir código novo.
 
-**Banco de reserva local (fallback):** o arquivo `js/quiz.js` mantém uma cópia local de 30 perguntas, usada automaticamente caso o banco de dados não esteja configurado ou fique indisponível. Para editar esse fallback, vá em `js/quiz.js`, array `FALLBACK_QUESTIONS`. Cada pergunta segue este formato:
+**Banco de reserva local (fallback):** o arquivo `js/quiz.js` mantém uma cópia local de 120 perguntas, usada automaticamente caso o banco de dados não esteja configurado ou fique indisponível. Para editar esse fallback, vá em `js/quiz.js`, array `FALLBACK_QUESTIONS`. Cada pergunta segue este formato:
 
 ```js
 {
@@ -91,7 +91,7 @@ Recomendação: use imagens com no máximo ~700px de largura e comprimidas (JPG 
 }
 ```
 
-A cada partida, **15 perguntas são sorteadas aleatoriamente** (e em ordem aleatória) do total disponível — seja do banco de dados ou do fallback local (`QuizData.pickRandom`, em `js/quiz.js`).
+A cada partida, **15 perguntas são sorteadas aleatoriamente** (e em ordem aleatória) do total disponível — seja do banco de dados ou do fallback local (`QuizData.pickRandom`, em `js/quiz.js`). Além disso, a **ordem das 4 alternativas de cada pergunta também é embaralhada** a cada sorteio, para que a resposta certa nunca fique sempre na mesma posição (isso evita que alguém "decore" que a resposta costuma ser a B ou a C, por exemplo).
 
 ## ➕ Como adicionar novas perguntas ao fallback local
 
@@ -248,11 +248,24 @@ As tags de SEO ficam no `<head>` do `index.html`:
 ## 🗄️ Configurando o banco de dados (Supabase — gratuito)
 
 O quiz agora usa um banco de dados real e gratuito ([Supabase](https://supabase.com)) para três coisas:
-1. **Banco de perguntas** — 30 perguntas cadastradas; a cada partida, 15 são sorteadas aleatoriamente.
+1. **Banco de perguntas** — 120 perguntas cadastradas; a cada partida, 15 são sorteadas aleatoriamente.
 2. **Estatísticas gerais** — média de acertos e média de tempo de todos os jogadores, mostradas de forma incentivadora junto com o resultado de cada pessoa.
 3. **Contador de acessos** — visível só para você, no painel administrativo (`admin.html`).
 
-> **Enquanto você não configurar isso, o site continua funcionando normalmente** — ele usa um banco de 30 perguntas local (`js/quiz.js`) como reserva e simplesmente não mostra a comparação com outros jogadores nem o contador de acessos. Nada quebra.
+> **Enquanto você não configurar isso, o site continua funcionando normalmente** — ele usa um banco de 120 perguntas local (`js/quiz.js`) como reserva e simplesmente não mostra a comparação com outros jogadores nem o contador de acessos. Nada quebra.
+
+### Aplicando atualizações no banco já configurado (patches)
+
+Sempre que houver uma correção ou melhoria no banco de dados depois que você já rodou o `schema.sql` a primeira vez, ela vem como um arquivo separado dentro de `supabase/`, com nome começando em `patch_`. Para aplicar:
+1. Abra o arquivo `patch_...sql` mais recente dentro da pasta `supabase/`.
+2. Copie todo o conteúdo e cole no **SQL Editor** do Supabase.
+3. Clique em **Run**.
+
+Patches disponíveis até agora:
+- `patch_2026-07-18_fix_admin_count.sql` — corrige o painel administrativo mostrando "Desafios Concluídos: 0".
+- `patch_2026-07-18_expand_to_120_questions.sql` — atualiza o banco de perguntas de 30 para 120 (todas diferentes).
+
+> Se você está configurando o Supabase pela primeira vez agora, **não precisa rodar os patches** — basta rodar o `schema.sql` completo, que já vem com tudo atualizado.
 
 ### Passo a passo
 
@@ -264,7 +277,7 @@ O quiz agora usa um banco de dados real e gratuito ([Supabase](https://supabase.
 **2. Rodar o script de configuração**
 1. No menu lateral, clique em **SQL Editor** → **New query**.
 2. Abra o arquivo `supabase/schema.sql` (está dentro desta pasta do projeto), copie **todo o conteúdo** e cole no editor.
-3. Clique em **Run**. Isso cria as tabelas, as permissões de segurança e já cadastra as 30 perguntas.
+3. Clique em **Run**. Isso cria as tabelas, as permissões de segurança e já cadastra as 120 perguntas.
 
 **3. Pegar as chaves de acesso**
 1. No menu lateral, vá em **Project Settings** (ícone de engrenagem) → **API**.
