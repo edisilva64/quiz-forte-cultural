@@ -28,7 +28,13 @@
         openPopup("https://api.whatsapp.com/send?text=" + encodedMsg);
         break;
       case "facebook":
-        openPopup("https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl + "&quote=" + encodedMsg);
+        // OBS: o Facebook, por política própria (antispam), frequentemente
+        // ignora o texto customizado (`quote`) e mostra apenas o og:title /
+        // og:description cadastrados no <head> do site — isso não é algo que
+        // dá para controlar 100% via código. Ainda assim, mantemos o `quote`
+        // porque em vários cenários (app do Facebook, alguns navegadores) ele
+        // aparece pré-preenchido no post.
+        openPopup("https://www.facebook.com/sharer.php?u=" + encodedUrl + "&quote=" + encodedMsg);
         break;
       case "telegram":
         openPopup("https://t.me/share/url?url=" + encodedUrl + "&text=" + encodedMsg);
@@ -74,7 +80,19 @@
 
   function nativeShare(text) {
     if (navigator.share) {
-      navigator.share({ title: "Desafio Lógico Forte Cultural", text: text, url: PAGE_URL }).catch(function () {});
+      navigator.share({ title: "Desafio Lógico Forte Cultural", text: text, url: PAGE_URL })
+        .catch(function (err) {
+          // Se o usuário simplesmente cancelou o compartilhamento, não faz nada.
+          // Em qualquer outra falha (ex: computador sem app de compartilhamento
+          // configurado), copia o link como alternativa — assim o botão nunca
+          // fica "sem reação" ao ser clicado.
+          if (!err || err.name !== "AbortError") {
+            copyToClipboard(text);
+          }
+        });
+    } else {
+      // Navegador não suporta a Web Share API: copia como alternativa.
+      copyToClipboard(text);
     }
   }
 
