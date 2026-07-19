@@ -48,6 +48,7 @@
 .hero-inner .hero-title   { animation-delay: .12s; }
 .hero-inner .hero-subtitle{ animation-delay: .2s; }
 .hero-inner .hero-text    { animation-delay: .28s; }
+.hero-inner .hero-note    { animation-delay: .32s; }
 .hero-inner #startBtn     { animation-delay: .36s; }
 .hero-inner .rules-grid   { animation-delay: .44s; }
 
