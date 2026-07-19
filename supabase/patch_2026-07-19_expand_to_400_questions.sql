@@ -1,118 +1,13 @@
 -- ===================================================================
--- FORTE CULTURAL — DESAFIO LÓGICO
--- schema.sql — Script único de configuração do banco de dados (Supabase)
+-- PATCH — expande o banco de perguntas de 120 para 400 (todas diferentes)
 --
--- COMO USAR:
--- 1. Crie um projeto gratuito em https://supabase.com
--- 2. No painel do projeto, vá em "SQL Editor" → "New query"
--- 3. Cole TODO o conteúdo deste arquivo e clique em "Run"
--- 4. Pronto! As tabelas, permissões e as 400 perguntas já ficam criadas.
---
--- Veja o passo a passo completo (com prints) no README.md.
+-- COMO USAR: cole este arquivo inteiro no SQL Editor do Supabase e
+-- clique em "Run". Ele apaga as perguntas antigas e insere as 400 novas
+-- (seguro: a tabela `questions` não guarda resultados de jogadores —
+-- isso fica em `results`, que não é tocada por este patch).
 -- ===================================================================
 
-
--- ===================== TABELA: questions =====================
--- Banco de perguntas do quiz. A cada partida, 15 são sorteadas aleatoriamente.
-create table if not exists questions (
-  id bigint generated always as identity primary key,
-  question text not null,
-  options jsonb not null,        -- array com as 4 alternativas, ex: ["A","B","C","D"]
-  correct_index smallint not null check (correct_index between 0 and 3),
-  explanation text not null,
-  created_at timestamptz not null default now()
-);
-
-alter table questions enable row level security;
-
--- Qualquer visitante do site pode LER as perguntas (necessário para o quiz funcionar)
-drop policy if exists "questions_select_public" on questions;
-create policy "questions_select_public"
-  on questions for select
-  to anon
-  using (true);
-
--- Ninguém além de você (via painel do Supabase) pode inserir/editar/excluir perguntas.
--- Não há política de INSERT/UPDATE/DELETE para o público de propósito.
-
-
--- ===================== TABELA: results =====================
--- Um registro por partida concluída: usado para calcular as médias gerais.
--- Não guarda nome nem qualquer dado pessoal do jogador — é 100% anônimo.
-create table if not exists results (
-  id bigint generated always as identity primary key,
-  score smallint not null,
-  total smallint not null default 15,
-  time_ms integer not null,
-  created_at timestamptz not null default now()
-);
-
-alter table results enable row level security;
-
--- Qualquer visitante pode REGISTRAR o próprio resultado ao terminar o quiz
-drop policy if exists "results_insert_public" on results;
-create policy "results_insert_public"
-  on results for insert
-  to anon
-  with check (true);
-
--- Ninguém pode LER a tabela results diretamente pelo site como visitante anônimo —
--- as médias são expostas ao público só pela função get_stats() abaixo, que
--- retorna apenas números agregados. Já para você (admin logado em admin.html),
--- liberamos a leitura para poder contar quantos desafios foram concluídos.
-drop policy if exists "results_select_admin" on results;
-create policy "results_select_admin"
-  on results for select
-  to authenticated
-  using (true);
-
-
--- ===================== FUNÇÃO: get_stats() =====================
--- Retorna estatísticas agregadas (nunca dados individuais de um jogador).
-create or replace function get_stats()
-returns table (players bigint, avg_score numeric, avg_time_ms numeric)
-language sql
-security definer
-set search_path = public
-as $$
-  select
-    count(*)::bigint as players,
-    avg(score)::numeric as avg_score,
-    avg(time_ms)::numeric as avg_time_ms
-  from results;
-$$;
-
-grant execute on function get_stats() to anon, authenticated;
-
-
--- ===================== TABELA: page_views =====================
--- Contador de acessos — visível SOMENTE para você, via admin.html
--- (exige login, ver seção "Painel administrativo" no README).
-create table if not exists page_views (
-  id bigint generated always as identity primary key,
-  created_at timestamptz not null default now()
-);
-
-alter table page_views enable row level security;
-
--- Qualquer carregamento de página registra 1 acesso
-drop policy if exists "page_views_insert_public" on page_views;
-create policy "page_views_insert_public"
-  on page_views for insert
-  to anon
-  with check (true);
-
--- Só um usuário autenticado (você, logado no admin.html) pode LER o total
-drop policy if exists "page_views_select_admin" on page_views;
-create policy "page_views_select_admin"
-  on page_views for select
-  to authenticated
-  using (true);
-
-
--- ===================== SEED: 400 perguntas do banco =====================
--- (Se rodar este script mais de uma vez, isso vai duplicar as perguntas.
---  Para evitar duplicidade, rode "delete from questions;" antes de repetir.)
+delete from questions;
 
 insert into questions (question, options, correct_index, explanation) values ('Complete a sequência lógica: 2, 6, 12, 20, 30, ?', '["36","40","42","38"]'::jsonb, 2, 'A diferença entre os termos cresce de 2 em 2 (4, 6, 8, 10, 12), então 30 + 12 = 42.');
 insert into questions (question, options, correct_index, explanation) values ('Qual número não pertence ao grupo: 3, 5, 7, 10, 11?', '["3","7","10","11"]'::jsonb, 2, 'Todos os outros números são ímpares; o 10 é o único número par do grupo.');
@@ -514,7 +409,3 @@ insert into questions (question, options, correct_index, explanation) values ('Q
 insert into questions (question, options, correct_index, explanation) values ('Se todos os Xandu são Ypsilon, e nenhum Ypsilon é Zeta, o que podemos concluir?', '["Todo Zeta é Xandu","Nenhum Xandu é Zeta","Algum Xandu é Zeta","Todo Ypsilon é Xandu"]'::jsonb, 1, 'Se Xandu está contido em Ypsilon, e Ypsilon não tem interseção com Zeta, então Xandu também não tem interseção com Zeta.');
 insert into questions (question, options, correct_index, explanation) values ('Numa corrida, Ana termina antes de Bruno, mas depois de Carla. Diego termina antes de Carla. Quem venceu a corrida?', '["Ana","Bruno","Carla","Diego"]'::jsonb, 3, 'A ordem de chegada é: Diego, Carla, Ana, Bruno — portanto Diego venceu.');
 insert into questions (question, options, correct_index, explanation) values ('Um código transforma cada número em seu dobro menos 1 (regra: n → 2n-1). Qual número originou o resultado 15?', '["6","7","8","9"]'::jsonb, 2, '2n - 1 = 15 → 2n = 16 → n = 8.');
--- ===================== FIM DO SCRIPT =====================
--- Se tudo rodou sem erro, seu banco de dados está pronto!
--- Próximo passo: copie a "Project URL" e a chave "anon public" em
--- Project Settings → API, e cole em js/config.js.
