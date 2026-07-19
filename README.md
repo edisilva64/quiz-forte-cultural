@@ -2,6 +2,9 @@
 
 Quiz interativo de raciocínio lógico, construído em **HTML5, CSS3 e JavaScript puro** (sem frameworks), com visual premium (glassmorphism, gradientes, animações), PWA instalável, SEO completo e integração de vendas com banners promocionais.
 
+> ## ⚠️ LEIA ANTES DE ATUALIZAR O SITE
+> Toda vez que você receber uma nova versão deste projeto e for subir os arquivos para o GitHub, **o arquivo `js/config.js` volta com valores de exemplo** (ele não tem suas chaves reais do Supabase, por segurança). Depois de subir os arquivos, **sempre edite `js/config.js` direto no GitHub e cole suas chaves reais de novo** — senão o site perde a conexão com o banco de dados (o painel administrativo mostra "Banco de dados ainda não configurado" quando isso acontece). Veja o passo a passo na seção "Configurando o banco de dados" mais abaixo.
+
 ---
 
 ## 📁 Estrutura do projeto
@@ -79,7 +82,7 @@ Recomendação: use imagens com no máximo ~700px de largura e comprimidas (JPG 
 
 **Se o banco de dados (Supabase) estiver configurado:** gerencie as perguntas direto pelo painel do Supabase — veja a seção "Como adicionar/editar perguntas pelo banco de dados" mais abaixo. É o método recomendado, não exige subir código novo.
 
-**Banco de reserva local (fallback):** o arquivo `js/quiz.js` mantém uma cópia local de 120 perguntas, usada automaticamente caso o banco de dados não esteja configurado ou fique indisponível. Para editar esse fallback, vá em `js/quiz.js`, array `FALLBACK_QUESTIONS`. Cada pergunta segue este formato:
+**Banco de reserva local (fallback):** o arquivo `js/quiz.js` mantém uma cópia local de 400 perguntas, usada automaticamente caso o banco de dados não esteja configurado ou fique indisponível. Para editar esse fallback, vá em `js/quiz.js`, array `FALLBACK_QUESTIONS`. Cada pergunta segue este formato:
 
 ```js
 {
@@ -248,11 +251,11 @@ As tags de SEO ficam no `<head>` do `index.html`:
 ## 🗄️ Configurando o banco de dados (Supabase — gratuito)
 
 O quiz agora usa um banco de dados real e gratuito ([Supabase](https://supabase.com)) para três coisas:
-1. **Banco de perguntas** — 120 perguntas cadastradas; a cada partida, 15 são sorteadas aleatoriamente.
+1. **Banco de perguntas** — 400 perguntas cadastradas; a cada partida, 15 são sorteadas aleatoriamente.
 2. **Estatísticas gerais** — média de acertos e média de tempo de todos os jogadores, mostradas de forma incentivadora junto com o resultado de cada pessoa.
 3. **Contador de acessos** — visível só para você, no painel administrativo (`admin.html`).
 
-> **Enquanto você não configurar isso, o site continua funcionando normalmente** — ele usa um banco de 120 perguntas local (`js/quiz.js`) como reserva e simplesmente não mostra a comparação com outros jogadores nem o contador de acessos. Nada quebra.
+> **Enquanto você não configurar isso, o site continua funcionando normalmente** — ele usa um banco de 400 perguntas local (`js/quiz.js`) como reserva e simplesmente não mostra a comparação com outros jogadores nem o contador de acessos. Nada quebra.
 
 ### Aplicando atualizações no banco já configurado (patches)
 
@@ -264,6 +267,7 @@ Sempre que houver uma correção ou melhoria no banco de dados depois que você 
 Patches disponíveis até agora:
 - `patch_2026-07-18_fix_admin_count.sql` — corrige o painel administrativo mostrando "Desafios Concluídos: 0".
 - `patch_2026-07-18_expand_to_120_questions.sql` — atualiza o banco de perguntas de 30 para 120 (todas diferentes).
+- `patch_2026-07-19_expand_to_400_questions.sql` — atualiza o banco de perguntas de 120 para 400 (todas diferentes). **Se você já rodou o patch de 120, não precisa rodar o de 120 de novo — só este.**
 
 > Se você está configurando o Supabase pela primeira vez agora, **não precisa rodar os patches** — basta rodar o `schema.sql` completo, que já vem com tudo atualizado.
 
@@ -277,7 +281,7 @@ Patches disponíveis até agora:
 **2. Rodar o script de configuração**
 1. No menu lateral, clique em **SQL Editor** → **New query**.
 2. Abra o arquivo `supabase/schema.sql` (está dentro desta pasta do projeto), copie **todo o conteúdo** e cole no editor.
-3. Clique em **Run**. Isso cria as tabelas, as permissões de segurança e já cadastra as 120 perguntas.
+3. Clique em **Run**. Isso cria as tabelas, as permissões de segurança e já cadastra as 400 perguntas.
 
 **3. Pegar as chaves de acesso**
 1. No menu lateral, vá em **Project Settings** (ícone de engrenagem) → **API**.
@@ -306,6 +310,13 @@ Acesse `seusite.com/admin.html` (essa página **não aparece em nenhum menu do s
 - Tempo médio geral
 
 > **Sobre segurança:** o login usa autenticação real do Supabase — mesmo que alguém descubra a URL `admin.html`, não consegue ver nenhum número sem o seu e-mail e senha. Os dados brutos (tabela `results` e `page_views`) também ficam bloqueados para leitura pública no banco — só os números agregados (médias, totais) ficam disponíveis, e só depois do login.
+
+#### Se o painel parar de mostrar os números
+
+A página agora mostra o **erro técnico real** embaixo da mensagem genérica, o que ajuda a identificar a causa. As mais comuns são:
+- **Projeto do Supabase pausado** — o plano gratuito pausa projetos automaticamente após cerca de 1 semana sem nenhum acesso à API. Se a mensagem de erro mencionar isso (ou "paused"/"inactive"), acesse [supabase.com](https://supabase.com), entre no projeto e clique em **Restore project**.
+- **Patch de permissões não aplicado** — se a mensagem mencionar "row-level security" ou "permission denied", rode o `patch_2026-07-18_fix_admin_count.sql` (veja a seção de patches acima).
+- **Sessão de login expirada** — clique em **Sair** e faça login novamente.
 
 ### Como funciona a comparação com outros jogadores
 

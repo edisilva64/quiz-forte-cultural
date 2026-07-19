@@ -179,7 +179,7 @@
     loginBtn.textContent = "ENTRAR";
 
     if (error) {
-      errorMsg.textContent = "E-mail ou senha inválidos.";
+      errorMsg.textContent = "Erro ao entrar: " + error.message;
       return;
     }
 
@@ -199,13 +199,20 @@
     statsArea.innerHTML = '<p class="loading-text">Carregando estatísticas...</p>';
 
     try {
-      const [{ count: totalViews }, { count: totalPlayers }, statsRpc] = await Promise.all([
+      const [viewsRes, playersRes, statsRes] = await Promise.all([
         sb.from("page_views").select("*", { count: "exact", head: true }),
         sb.from("results").select("*", { count: "exact", head: true }),
         sb.rpc("get_stats")
       ]);
 
-      const row = (statsRpc.data && statsRpc.data[0]) || {};
+      const errors = [viewsRes.error, playersRes.error, statsRes.error].filter(Boolean);
+      if (errors.length) {
+        throw new Error(errors.map(function (e) { return e.message; }).join(" | "));
+      }
+
+      const totalViews = viewsRes.count;
+      const totalPlayers = playersRes.count;
+      const row = (statsRes.data && statsRes.data[0]) || {};
       const avgScore = row.avg_score !== undefined && row.avg_score !== null ? Number(row.avg_score).toFixed(1) : "—";
       const avgTimeMs = row.avg_time_ms !== undefined && row.avg_time_ms !== null ? Number(row.avg_time_ms) : null;
       const avgTimeText = avgTimeMs !== null ? formatMs(avgTimeMs) : "—";
@@ -216,7 +223,10 @@
         '<div class="stat-card"><i class="fa-solid fa-star"></i><div><div class="stat-value">' + avgScore + '/15</div><div class="stat-label">MÉDIA GERAL DE ACERTOS</div></div></div>' +
         '<div class="stat-card"><i class="fa-solid fa-stopwatch"></i><div><div class="stat-value">' + avgTimeText + '</div><div class="stat-label">TEMPO MÉDIO GERAL</div></div></div>';
     } catch (e) {
-      statsArea.innerHTML = '<p class="loading-text">Não foi possível carregar as estatísticas agora.</p>';
+      statsArea.innerHTML =
+        '<p class="loading-text">Não foi possível carregar as estatísticas agora.</p>' +
+        '<p style="color:#FF3C3C; font-size:0.78rem; text-align:center; padding:0 10px;">Detalhe técnico: ' + (e && e.message ? e.message : "erro desconhecido") + '</p>' +
+        '<p style="color:#5B6478; font-size:0.78rem; text-align:center; padding:0 10px;">Se a mensagem mencionar o projeto estar "paused"/inativo, acesse o painel do Supabase e clique em "Restore" para reativá-lo — o plano gratuito pausa projetos sem uso por cerca de 1 semana.</p>';
     }
   }
 
