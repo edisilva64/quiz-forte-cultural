@@ -220,11 +220,14 @@ As tags de SEO ficam no `<head>` do `index.html`:
 
 1. **Ícone e nome do app:** edite `manifest.json` (`name`, `short_name`, `icons`).
 2. **Arquivos em cache offline:** edite a lista `ASSETS_TO_CACHE` em `sw.js`.
-3. Sempre que atualizar arquivos do site, **incremente a versão do cache** em `sw.js`:
+3. Sempre que atualizar QUALQUER arquivo do site (HTML, CSS ou JS), **incremente a versão do cache** em `sw.js`:
    ```js
-   const CACHE_NAME = "forte-cultural-v2"; // altere o número da versão
+   const CACHE_NAME = "forte-cultural-v5"; // sempre aumente esse número ao atualizar arquivos
    ```
-   Isso força os usuários a baixarem a versão mais recente.
+   Isso força os navegadores dos usuários (inclusive o seu, ao testar) a descartar a versão antiga em cache e baixar a mais recente. **Esquecer esse passo é a causa mais comum de "eu editei mas não mudou nada"** — o Service Worker continua servindo a versão antiga guardada localmente no navegador.
+4. `js/config.js` e `admin.html` são exceções propositais: eles **nunca** são guardados em cache (ver `NEVER_CACHE` em `sw.js`), justamente para que edições neles (como trocar as chaves do Supabase) apareçam imediatamente, sem depender de trocar a versão do cache.
+
+> **Dica ao testar mudanças:** mesmo em aba anônima, se você recarregar a mesma aba várias vezes durante os testes, o Service Worker registrado nela pode continuar servindo arquivos antigos até a versão do cache mudar. Se algo parecer não ter atualizado, feche a janela anônima por completo e abra uma nova.
 
 ---
 
