@@ -430,6 +430,10 @@ input:focus-visible,
 .promo-rail {
   margin-bottom: 22px;
 }
+.hero-rail {
+  margin-top: 32px;
+  margin-bottom: 0;
+}
 .promo-rail-inner {
   background: linear-gradient(135deg, #16213E, #26375F);
   border-radius: var(--radius-lg);
