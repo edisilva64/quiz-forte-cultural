@@ -3,7 +3,7 @@
    Estratégia: cache-first para assets estáticos (app shell)
    =================================================================== */
 
-const CACHE_NAME = "forte-cultural-v5";
+const CACHE_NAME = "forte-cultural-v6";
 
 const ASSETS_TO_CACHE = [
   "./index.html",
@@ -25,6 +25,7 @@ const ASSETS_TO_CACHE = [
   "./img/camiseta-cafe.png",
   "./img/camiseta-gato.png",
   "./img/camiseta-fada.png",
+  "./img/camiseta-sarcasmo.jpg",
   "./favicon.ico"
 ];
 
