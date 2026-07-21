@@ -25,6 +25,6 @@
    =================================================================== */
 
 window.QUIZ_CONFIG = {
-   SUPABASE_URL: "https://gilesysnjjdaqoaytqbw.supabase.co",
+  SUPABASE_URL: "https://gilesysnjjdaqoaytqbw.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_EJmUOI8XDOhgWn2BWzmdUg_hEHds9-F"
 };
