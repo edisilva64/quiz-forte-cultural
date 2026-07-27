@@ -44,6 +44,13 @@
 
   --container-w: 1080px;
   --focus-ring: 0 0 0 3px rgba(255, 107, 0, 0.45);
+
+  /* Tema pop-art / HQ (usado só na página de abertura) */
+  --comic-yellow: #FFD400;
+  --comic-red: #FF3D3D;
+  --comic-orange: #FF8A00;
+  --comic-ink: #1A1A1A;
+  --font-comic: 'Bangers', 'Poppins', cursive;
 }
 
 /* ===================== RESET ===================== */
@@ -137,11 +144,11 @@ input:focus-visible,
 }
 .icon-btn:hover { transform: rotate(20deg) scale(1.05); background: #fff; }
 
-/* ===================== HERO ===================== */
+/* ===================== HERO — ESTÉTICA POP-ART / HQ ===================== */
 .hero {
   position: relative;
-  background: var(--grad-hero);
-  color: var(--text-invert);
+  background: radial-gradient(120% 130% at 30% 0%, #FFE066 0%, var(--comic-orange) 45%, var(--comic-red) 100%);
+  color: var(--comic-ink);
   padding: 40px 0 60px;
   overflow: hidden;
   isolation: isolate;
@@ -150,62 +157,117 @@ input:focus-visible,
   position: absolute;
   inset: -20%;
   background:
-    radial-gradient(600px 400px at 15% 20%, rgba(255,107,0,0.35), transparent 60%),
-    radial-gradient(700px 500px at 85% 80%, rgba(0,166,81,0.30), transparent 60%);
+    radial-gradient(500px 350px at 85% 15%, rgba(255,255,255,0.35), transparent 60%),
+    radial-gradient(600px 400px at 10% 90%, rgba(255,61,61,0.35), transparent 60%);
   z-index: -1;
   animation: driftGlow 14s ease-in-out infinite alternate;
 }
-.hero-inner { text-align: center; max-width: 760px; }
+/* Padrão de pontos (halftone), clássico de quadrinhos pop-art */
+.hero-halftone {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(26,26,26,0.16) 1.6px, transparent 1.6px);
+  background-size: 16px 16px;
+  mask-image: radial-gradient(120% 100% at 50% 0%, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 0%, black 40%, transparent 90%);
+}
+/* Raios e estrela decorativos */
+.hero-bolt {
+  position: absolute;
+  width: 70px;
+  height: auto;
+  filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.15));
+  z-index: 0;
+}
+.hero-bolt-1 { top: 14%; left: 4%; transform: rotate(-18deg); animation: pulseSoft 3.2s ease-in-out infinite; }
+.hero-bolt-2 { bottom: 10%; right: 6%; width: 56px; transform: rotate(14deg); animation: pulseSoft 3.6s ease-in-out infinite 0.4s; }
+.hero-star {
+  position: absolute;
+  top: 8%;
+  right: 10%;
+  width: 60px;
+  height: auto;
+  z-index: 0;
+  filter: drop-shadow(2px 3px 0 rgba(0,0,0,0.15));
+  animation: spinSlow 12s linear infinite;
+}
+@media (max-width: 768px) {
+  .hero-bolt { width: 46px; }
+  .hero-bolt-2 { width: 38px; }
+  .hero-star { width: 42px; }
+}
+
+.hero-inner { text-align: center; max-width: 760px; position: relative; z-index: 1; }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.18);
-  padding: 8px 18px;
+  background: var(--comic-ink);
+  border: 3px solid var(--comic-ink);
+  color: var(--comic-yellow);
+  padding: 8px 20px;
   border-radius: var(--radius-pill);
   font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  margin-bottom: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
 }
-.eyebrow i { color: var(--color-orange-light); }
+.eyebrow i { color: var(--comic-yellow); }
 
 .hero-title {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(1.92rem, 4.8vw, 3.36rem);
+  font-family: var(--font-comic);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 5.6vw, 4rem);
   line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
-  text-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  color: var(--comic-yellow);
+  -webkit-text-stroke: 2.5px var(--comic-ink);
+  text-stroke: 2.5px var(--comic-ink);
+  text-shadow:
+    4px 4px 0 var(--comic-ink),
+    -1px -1px 0 var(--comic-ink),
+    1px -1px 0 var(--comic-ink),
+    -1px 1px 0 var(--comic-ink);
+  transform: rotate(-1.5deg);
 }
 .hero-subtitle {
   font-size: clamp(1.15rem, 2.4vw, 1.5rem);
-  font-weight: 600;
-  color: #FFD9B8;
-  margin-bottom: 16px;
+  font-weight: 800;
+  color: var(--comic-ink);
+  background: #fff;
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
+  border: 3px solid var(--comic-ink);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+  margin-bottom: 18px;
 }
 .hero-text {
   font-size: 1.05rem;
-  color: rgba(255,255,255,0.82);
+  font-weight: 600;
+  color: var(--comic-ink);
   line-height: 1.6;
   margin-bottom: 16px;
 }
+.hero-text strong { color: #fff; -webkit-text-stroke: 1px var(--comic-ink); }
 .hero-note {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.65);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  font-weight: 700;
+  color: var(--comic-ink);
+  background: rgba(255,255,255,0.75);
+  border: 2px solid var(--comic-ink);
   padding: 8px 16px;
   border-radius: var(--radius-pill);
   margin-bottom: 28px;
 }
-.hero-note i { color: var(--color-green); }
+.hero-note i { color: var(--comic-red); }
 
 /* ===================== BOTÕES ===================== */
 .btn {
@@ -232,6 +294,29 @@ input:focus-visible,
   box-shadow: 0 14px 34px rgba(255,107,0,0.38);
 }
 .btn-primary:hover { filter: brightness(1.06); transform: translateY(-3px); box-shadow: 0 18px 44px rgba(255,107,0,0.46); }
+
+/* Botão "COMEÇAR AGORA" com visual de quadrinho (só no hero) */
+.hero #startBtn.btn-primary {
+  background: var(--comic-yellow);
+  color: var(--comic-ink);
+  font-family: var(--font-comic);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  font-size: 1.3rem;
+  border: 4px solid var(--comic-ink);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 var(--comic-ink);
+}
+.hero #startBtn.btn-primary:hover {
+  filter: none;
+  background: #FFE066;
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--comic-ink);
+}
+.hero #startBtn.btn-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--comic-ink);
+}
 
 .btn-secondary {
   background: var(--color-navy);
@@ -266,7 +351,7 @@ input:focus-visible,
   pointer-events: none;
 }
 
-/* ===================== REGRAS / RULE CARDS ===================== */
+/* ===================== REGRAS / RULE CARDS (pop-art) ===================== */
 .rules-grid {
   margin-top: 44px;
   display: grid;
@@ -274,9 +359,8 @@ input:focus-visible,
   gap: 14px;
 }
 .rule-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
+  background: #fff;
+  border: 3px solid var(--comic-ink);
   border-radius: var(--radius-md);
   padding: 18px 12px;
   display: flex;
@@ -284,11 +368,17 @@ input:focus-visible,
   align-items: center;
   gap: 10px;
   font-size: 0.85rem;
-  font-weight: 600;
-  transition: transform .25s ease, background .25s ease;
+  font-weight: 700;
+  color: var(--comic-ink);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.22);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
-.rule-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.14); }
-.rule-card i { font-size: 1.4rem; color: var(--color-orange-light); }
+.rule-card:hover { transform: translate(-2px, -4px); box-shadow: 6px 8px 0 rgba(0,0,0,0.22); }
+.rule-card:nth-child(1) i { color: var(--comic-red); }
+.rule-card:nth-child(2) i { color: var(--color-green); }
+.rule-card:nth-child(3) i { color: var(--comic-orange); }
+.rule-card:nth-child(4) i { color: #7B4FE0; }
+.rule-card i { font-size: 1.5rem; }
 
 /* ===================== QUIZ SECTION ===================== */
 .quiz-section {
