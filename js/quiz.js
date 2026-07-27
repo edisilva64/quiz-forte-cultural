@@ -2845,6 +2845,4206 @@
       options: ["6", "7", "8", "9"],
       correctIndex: 2,
       explanation: "2n - 1 = 15 → 2n = 16 → n = 8."
+    },
+    {
+      id: 401,
+      question: "Complete a sequência: 80, 67, 54, 41, 28, ?",
+      options: ["15", "2", "-11", "28"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 13 em relação ao anterior. 28 - 13 = 15."
+    },
+    {
+      id: 402,
+      question: "Complete a sequência: 89, 86, 83, 80, 77, ?",
+      options: ["74", "71", "68", "77"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 3 em relação ao anterior. 77 - 3 = 74."
+    },
+    {
+      id: 403,
+      question: "Complete a sequência: 86, 78, 70, 62, 54, ?",
+      options: ["30", "54", "46", "38"],
+      correctIndex: 2,
+      explanation: "Cada termo subtrai 8 em relação ao anterior. 54 - 8 = 46."
+    },
+    {
+      id: 404,
+      question: "Complete a sequência: 14, 19, 24, 29, 34, ?",
+      options: ["39", "34", "44", "49"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 5 em relação ao anterior. 34 + 5 = 39."
+    },
+    {
+      id: 405,
+      question: "Complete a sequência: 83, 96, 109, 122, 135, ?",
+      options: ["148", "174", "161", "135"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 13 em relação ao anterior. 135 + 13 = 148."
+    },
+    {
+      id: 406,
+      question: "Complete a sequência: 18, 22, 26, 30, 34, ?",
+      options: ["46", "34", "42", "38"],
+      correctIndex: 3,
+      explanation: "Cada termo soma 4 em relação ao anterior. 34 + 4 = 38."
+    },
+    {
+      id: 407,
+      question: "Complete a sequência: 24, 20, 16, 12, 8, ?",
+      options: ["4", "-4", "8", "0"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 4 em relação ao anterior. 8 - 4 = 4."
+    },
+    {
+      id: 408,
+      question: "Complete a sequência: 29, 33, 37, 41, 45, ?",
+      options: ["49", "57", "45", "53"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 4 em relação ao anterior. 45 + 4 = 49."
+    },
+    {
+      id: 409,
+      question: "Complete a sequência: 70, 59, 48, 37, 26, ?",
+      options: ["26", "-7", "4", "15"],
+      correctIndex: 3,
+      explanation: "Cada termo subtrai 11 em relação ao anterior. 26 - 11 = 15."
+    },
+    {
+      id: 410,
+      question: "Complete a sequência: 74, 78, 82, 86, 90, ?",
+      options: ["98", "102", "90", "94"],
+      correctIndex: 3,
+      explanation: "Cada termo soma 4 em relação ao anterior. 90 + 4 = 94."
+    },
+    {
+      id: 411,
+      question: "Complete a sequência: 75, 89, 103, 117, 131, ?",
+      options: ["131", "159", "145", "173"],
+      correctIndex: 2,
+      explanation: "Cada termo soma 14 em relação ao anterior. 131 + 14 = 145."
+    },
+    {
+      id: 412,
+      question: "Complete a sequência: 80, 66, 52, 38, 24, ?",
+      options: ["24", "-18", "10", "-4"],
+      correctIndex: 2,
+      explanation: "Cada termo subtrai 14 em relação ao anterior. 24 - 14 = 10."
+    },
+    {
+      id: 413,
+      question: "Complete a sequência: 71, 79, 87, 95, 103, ?",
+      options: ["119", "103", "127", "111"],
+      correctIndex: 3,
+      explanation: "Cada termo soma 8 em relação ao anterior. 103 + 8 = 111."
+    },
+    {
+      id: 414,
+      question: "Complete a sequência: 18, 20, 22, 24, 26, ?",
+      options: ["30", "26", "32", "28"],
+      correctIndex: 3,
+      explanation: "Cada termo soma 2 em relação ao anterior. 26 + 2 = 28."
+    },
+    {
+      id: 415,
+      question: "Complete a sequência: 52, 48, 44, 40, 36, ?",
+      options: ["36", "32", "28", "24"],
+      correctIndex: 1,
+      explanation: "Cada termo subtrai 4 em relação ao anterior. 36 - 4 = 32."
+    },
+    {
+      id: 416,
+      question: "Complete a sequência: 6, 20, 34, 48, 62, ?",
+      options: ["90", "76", "104", "62"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 14 em relação ao anterior. 62 + 14 = 76."
+    },
+    {
+      id: 417,
+      question: "Complete a sequência: 54, 46, 38, 30, 22, ?",
+      options: ["-2", "22", "6", "14"],
+      correctIndex: 3,
+      explanation: "Cada termo subtrai 8 em relação ao anterior. 22 - 8 = 14."
+    },
+    {
+      id: 418,
+      question: "Complete a sequência: 10, 12, 14, 16, 18, ?",
+      options: ["18", "20", "22", "24"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 2 em relação ao anterior. 18 + 2 = 20."
+    },
+    {
+      id: 419,
+      question: "Complete a sequência: 81, 79, 77, 75, 73, ?",
+      options: ["69", "71", "73", "67"],
+      correctIndex: 1,
+      explanation: "Cada termo subtrai 2 em relação ao anterior. 73 - 2 = 71."
+    },
+    {
+      id: 420,
+      question: "Complete a sequência: 57, 52, 47, 42, 37, ?",
+      options: ["32", "37", "22", "27"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 5 em relação ao anterior. 37 - 5 = 32."
+    },
+    {
+      id: 421,
+      question: "Complete a sequência: 14, 15, 16, 17, 18, ?",
+      options: ["19", "18", "20", "21"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 1 em relação ao anterior. 18 + 1 = 19."
+    },
+    {
+      id: 422,
+      question: "Complete a sequência: 81, 89, 97, 105, 113, ?",
+      options: ["129", "113", "137", "121"],
+      correctIndex: 3,
+      explanation: "Cada termo soma 8 em relação ao anterior. 113 + 8 = 121."
+    },
+    {
+      id: 423,
+      question: "Complete a sequência: 67, 71, 75, 79, 83, ?",
+      options: ["87", "95", "83", "91"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 4 em relação ao anterior. 83 + 4 = 87."
+    },
+    {
+      id: 424,
+      question: "Complete a sequência: 48, 34, 20, 6, -8, ?",
+      options: ["-8", "-22", "-50", "-36"],
+      correctIndex: 1,
+      explanation: "Cada termo subtrai 14 em relação ao anterior. -8 - 14 = -22."
+    },
+    {
+      id: 425,
+      question: "Complete a sequência: 30, 19, 8, -3, -14, ?",
+      options: ["-25", "-47", "-14", "-36"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 11 em relação ao anterior. -14 - 11 = -25."
+    },
+    {
+      id: 426,
+      question: "Complete a sequência: 17, 26, 35, 44, 53, ?",
+      options: ["71", "80", "62", "53"],
+      correctIndex: 2,
+      explanation: "Cada termo soma 9 em relação ao anterior. 53 + 9 = 62."
+    },
+    {
+      id: 427,
+      question: "Complete a sequência: 50, 41, 32, 23, 14, ?",
+      options: ["5", "-4", "-13", "14"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 9 em relação ao anterior. 14 - 9 = 5."
+    },
+    {
+      id: 428,
+      question: "Complete a sequência: 26, 30, 34, 38, 42, ?",
+      options: ["54", "46", "50", "42"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 4 em relação ao anterior. 42 + 4 = 46."
+    },
+    {
+      id: 429,
+      question: "Complete a sequência: 18, 14, 10, 6, 2, ?",
+      options: ["-2", "-6", "-10", "2"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 4 em relação ao anterior. 2 - 4 = -2."
+    },
+    {
+      id: 430,
+      question: "Complete a sequência: 52, 43, 34, 25, 16, ?",
+      options: ["7", "16", "-11", "-2"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 9 em relação ao anterior. 16 - 9 = 7."
+    },
+    {
+      id: 431,
+      question: "Complete a sequência: 1, 11, 21, 31, 41, ?",
+      options: ["61", "51", "71", "41"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 10 em relação ao anterior. 41 + 10 = 51."
+    },
+    {
+      id: 432,
+      question: "Complete a sequência: 13, 16, 19, 22, 25, ?",
+      options: ["28", "25", "34", "31"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 3 em relação ao anterior. 25 + 3 = 28."
+    },
+    {
+      id: 433,
+      question: "Complete a sequência: 88, 89, 90, 91, 92, ?",
+      options: ["94", "95", "93", "92"],
+      correctIndex: 2,
+      explanation: "Cada termo soma 1 em relação ao anterior. 92 + 1 = 93."
+    },
+    {
+      id: 434,
+      question: "Complete a sequência: 70, 58, 46, 34, 22, ?",
+      options: ["-14", "-2", "10", "22"],
+      correctIndex: 2,
+      explanation: "Cada termo subtrai 12 em relação ao anterior. 22 - 12 = 10."
+    },
+    {
+      id: 435,
+      question: "Complete a sequência: 38, 28, 18, 8, -2, ?",
+      options: ["-2", "-12", "-22", "-32"],
+      correctIndex: 1,
+      explanation: "Cada termo subtrai 10 em relação ao anterior. -2 - 10 = -12."
+    },
+    {
+      id: 436,
+      question: "Complete a sequência: 18, 30, 42, 54, 66, ?",
+      options: ["66", "78", "102", "90"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 12 em relação ao anterior. 66 + 12 = 78."
+    },
+    {
+      id: 437,
+      question: "Complete a sequência: 58, 62, 66, 70, 74, ?",
+      options: ["82", "78", "86", "74"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 4 em relação ao anterior. 74 + 4 = 78."
+    },
+    {
+      id: 438,
+      question: "Complete a sequência: 15, 24, 33, 42, 51, ?",
+      options: ["60", "51", "69", "78"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 9 em relação ao anterior. 51 + 9 = 60."
+    },
+    {
+      id: 439,
+      question: "Complete a sequência: 40, 35, 30, 25, 20, ?",
+      options: ["20", "5", "10", "15"],
+      correctIndex: 3,
+      explanation: "Cada termo subtrai 5 em relação ao anterior. 20 - 5 = 15."
+    },
+    {
+      id: 440,
+      question: "Complete a sequência: 48, 60, 72, 84, 96, ?",
+      options: ["96", "132", "108", "120"],
+      correctIndex: 2,
+      explanation: "Cada termo soma 12 em relação ao anterior. 96 + 12 = 108."
+    },
+    {
+      id: 441,
+      question: "Complete a sequência: 30, 23, 16, 9, 2, ?",
+      options: ["2", "-19", "-12", "-5"],
+      correctIndex: 3,
+      explanation: "Cada termo subtrai 7 em relação ao anterior. 2 - 7 = -5."
+    },
+    {
+      id: 442,
+      question: "Complete a sequência: 81, 67, 53, 39, 25, ?",
+      options: ["25", "-17", "11", "-3"],
+      correctIndex: 2,
+      explanation: "Cada termo subtrai 14 em relação ao anterior. 25 - 14 = 11."
+    },
+    {
+      id: 443,
+      question: "Complete a sequência: 39, 27, 15, 3, -9, ?",
+      options: ["-21", "-33", "-45", "-9"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 12 em relação ao anterior. -9 - 12 = -21."
+    },
+    {
+      id: 444,
+      question: "Complete a sequência: 1, -3, -7, -11, -15, ?",
+      options: ["-19", "-15", "-23", "-27"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 4 em relação ao anterior. -15 - 4 = -19."
+    },
+    {
+      id: 445,
+      question: "Complete a sequência: 36, 50, 64, 78, 92, ?",
+      options: ["92", "106", "120", "134"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 14 em relação ao anterior. 92 + 14 = 106."
+    },
+    {
+      id: 446,
+      question: "Complete a sequência: 23, 11, -1, -13, -25, ?",
+      options: ["-61", "-49", "-25", "-37"],
+      correctIndex: 3,
+      explanation: "Cada termo subtrai 12 em relação ao anterior. -25 - 12 = -37."
+    },
+    {
+      id: 447,
+      question: "Complete a sequência: 35, 22, 9, -4, -17, ?",
+      options: ["-43", "-56", "-17", "-30"],
+      correctIndex: 3,
+      explanation: "Cada termo subtrai 13 em relação ao anterior. -17 - 13 = -30."
+    },
+    {
+      id: 448,
+      question: "Complete a sequência: 59, 48, 37, 26, 15, ?",
+      options: ["15", "-7", "4", "-18"],
+      correctIndex: 2,
+      explanation: "Cada termo subtrai 11 em relação ao anterior. 15 - 11 = 4."
+    },
+    {
+      id: 449,
+      question: "Complete a sequência: 75, 79, 83, 87, 91, ?",
+      options: ["95", "99", "91", "103"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 4 em relação ao anterior. 91 + 4 = 95."
+    },
+    {
+      id: 450,
+      question: "Complete a sequência: 51, 50, 49, 48, 47, ?",
+      options: ["46", "44", "47", "45"],
+      correctIndex: 0,
+      explanation: "Cada termo subtrai 1 em relação ao anterior. 47 - 1 = 46."
+    },
+    {
+      id: 451,
+      question: "Complete a sequência: 33, 23, 13, 3, -7, ?",
+      options: ["-27", "-7", "-17", "-37"],
+      correctIndex: 2,
+      explanation: "Cada termo subtrai 10 em relação ao anterior. -7 - 10 = -17."
+    },
+    {
+      id: 452,
+      question: "Complete a sequência: 23, 37, 51, 65, 79, ?",
+      options: ["121", "107", "93", "79"],
+      correctIndex: 2,
+      explanation: "Cada termo soma 14 em relação ao anterior. 79 + 14 = 93."
+    },
+    {
+      id: 453,
+      question: "Complete a sequência: 49, 62, 75, 88, 101, ?",
+      options: ["140", "114", "127", "101"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 13 em relação ao anterior. 101 + 13 = 114."
+    },
+    {
+      id: 454,
+      question: "Complete a sequência: 12, 23, 34, 45, 56, ?",
+      options: ["67", "89", "56", "78"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 11 em relação ao anterior. 56 + 11 = 67."
+    },
+    {
+      id: 455,
+      question: "Complete a sequência: 33, 36, 39, 42, 45, ?",
+      options: ["48", "51", "45", "54"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 3 em relação ao anterior. 45 + 3 = 48."
+    },
+    {
+      id: 456,
+      question: "Complete a sequência: 77, 82, 87, 92, 97, ?",
+      options: ["97", "107", "102", "112"],
+      correctIndex: 2,
+      explanation: "Cada termo soma 5 em relação ao anterior. 97 + 5 = 102."
+    },
+    {
+      id: 457,
+      question: "Complete a sequência: 6, 10, 14, 18, 22, ?",
+      options: ["22", "26", "34", "30"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 4 em relação ao anterior. 22 + 4 = 26."
+    },
+    {
+      id: 458,
+      question: "Complete a sequência: 53, 47, 41, 35, 29, ?",
+      options: ["29", "17", "11", "23"],
+      correctIndex: 3,
+      explanation: "Cada termo subtrai 6 em relação ao anterior. 29 - 6 = 23."
+    },
+    {
+      id: 459,
+      question: "Complete a sequência: 16, 28, 40, 52, 64, ?",
+      options: ["88", "64", "100", "76"],
+      correctIndex: 3,
+      explanation: "Cada termo soma 12 em relação ao anterior. 64 + 12 = 76."
+    },
+    {
+      id: 460,
+      question: "Complete a sequência: 33, 29, 25, 21, 17, ?",
+      options: ["17", "5", "13", "9"],
+      correctIndex: 2,
+      explanation: "Cada termo subtrai 4 em relação ao anterior. 17 - 4 = 13."
+    },
+    {
+      id: 461,
+      question: "Complete a sequência: 47, 53, 59, 65, 71, ?",
+      options: ["89", "77", "83", "71"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 6 em relação ao anterior. 71 + 6 = 77."
+    },
+    {
+      id: 462,
+      question: "Complete a sequência: 33, 42, 51, 60, 69, ?",
+      options: ["78", "96", "69", "87"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 9 em relação ao anterior. 69 + 9 = 78."
+    },
+    {
+      id: 463,
+      question: "Complete a sequência: 7, 6, 5, 4, 3, ?",
+      options: ["1", "0", "3", "2"],
+      correctIndex: 3,
+      explanation: "Cada termo subtrai 1 em relação ao anterior. 3 - 1 = 2."
+    },
+    {
+      id: 464,
+      question: "Complete a sequência: 86, 92, 98, 104, 110, ?",
+      options: ["122", "128", "116", "110"],
+      correctIndex: 2,
+      explanation: "Cada termo soma 6 em relação ao anterior. 110 + 6 = 116."
+    },
+    {
+      id: 465,
+      question: "Complete a sequência: 5, 6, 7, 8, 9, ?",
+      options: ["11", "9", "10", "12"],
+      correctIndex: 2,
+      explanation: "Cada termo soma 1 em relação ao anterior. 9 + 1 = 10."
+    },
+    {
+      id: 466,
+      question: "Complete a sequência: 67, 63, 59, 55, 51, ?",
+      options: ["51", "47", "43", "39"],
+      correctIndex: 1,
+      explanation: "Cada termo subtrai 4 em relação ao anterior. 51 - 4 = 47."
+    },
+    {
+      id: 467,
+      question: "Complete a sequência: 31, 39, 47, 55, 63, ?",
+      options: ["71", "79", "63", "87"],
+      correctIndex: 0,
+      explanation: "Cada termo soma 8 em relação ao anterior. 63 + 8 = 71."
+    },
+    {
+      id: 468,
+      question: "Complete a sequência: 45, 31, 17, 3, -11, ?",
+      options: ["-11", "-39", "-53", "-25"],
+      correctIndex: 3,
+      explanation: "Cada termo subtrai 14 em relação ao anterior. -11 - 14 = -25."
+    },
+    {
+      id: 469,
+      question: "Complete a sequência: 29, 36, 43, 50, 57, ?",
+      options: ["57", "78", "64", "71"],
+      correctIndex: 2,
+      explanation: "Cada termo soma 7 em relação ao anterior. 57 + 7 = 64."
+    },
+    {
+      id: 470,
+      question: "Complete a sequência: 24, 28, 32, 36, 40, ?",
+      options: ["48", "44", "40", "52"],
+      correctIndex: 1,
+      explanation: "Cada termo soma 4 em relação ao anterior. 40 + 4 = 44."
+    },
+    {
+      id: 471,
+      question: "Complete a sequência: 23, -92, 368, -1472, ?",
+      options: ["5888", "5911", "5865", "11776"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por -4. -1472 × -4 = 5888."
+    },
+    {
+      id: 472,
+      question: "Complete a sequência: 30, 60, 120, 240, ?",
+      options: ["480", "510", "450", "960"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por 2. 240 × 2 = 480."
+    },
+    {
+      id: 473,
+      question: "Complete a sequência: 29, 87, 261, 783, ?",
+      options: ["2320", "2378", "4698", "2349"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por 3. 783 × 3 = 2349."
+    },
+    {
+      id: 474,
+      question: "Complete a sequência: 30, 120, 480, 1920, ?",
+      options: ["7710", "15360", "7680", "7650"],
+      correctIndex: 2,
+      explanation: "Cada termo é multiplicado por 4. 1920 × 4 = 7680."
+    },
+    {
+      id: 475,
+      question: "Complete a sequência: 22, -88, 352, -1408, ?",
+      options: ["5654", "5610", "5632", "11264"],
+      correctIndex: 2,
+      explanation: "Cada termo é multiplicado por -4. -1408 × -4 = 5632."
+    },
+    {
+      id: 476,
+      question: "Complete a sequência: 15, 60, 240, 960, ?",
+      options: ["3840", "3825", "7680", "3855"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por 4. 960 × 4 = 3840."
+    },
+    {
+      id: 477,
+      question: "Complete a sequência: 18, -72, 288, -1152, ?",
+      options: ["9216", "4590", "4626", "4608"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por -4. -1152 × -4 = 4608."
+    },
+    {
+      id: 478,
+      question: "Complete a sequência: 16, -32, 64, -128, ?",
+      options: ["272", "512", "240", "256"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por -2. -128 × -2 = 256."
+    },
+    {
+      id: 479,
+      question: "Complete a sequência: 29, 145, 725, 3625, ?",
+      options: ["18096", "36250", "18154", "18125"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por 5. 3625 × 5 = 18125."
+    },
+    {
+      id: 480,
+      question: "Complete a sequência: 15, 30, 60, 120, ?",
+      options: ["240", "225", "255", "480"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por 2. 120 × 2 = 240."
+    },
+    {
+      id: 481,
+      question: "Complete a sequência: 14, 70, 350, 1750, ?",
+      options: ["8764", "8736", "17500", "8750"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por 5. 1750 × 5 = 8750."
+    },
+    {
+      id: 482,
+      question: "Complete a sequência: 24, -48, 96, -192, ?",
+      options: ["360", "408", "384", "768"],
+      correctIndex: 2,
+      explanation: "Cada termo é multiplicado por -2. -192 × -2 = 384."
+    },
+    {
+      id: 483,
+      question: "Complete a sequência: 26, -52, 104, -208, ?",
+      options: ["442", "390", "832", "416"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por -2. -208 × -2 = 416."
+    },
+    {
+      id: 484,
+      question: "Complete a sequência: 16, 48, 144, 432, ?",
+      options: ["2592", "1280", "1296", "1312"],
+      correctIndex: 2,
+      explanation: "Cada termo é multiplicado por 3. 432 × 3 = 1296."
+    },
+    {
+      id: 485,
+      question: "Complete a sequência: 8, -24, 72, -216, ?",
+      options: ["656", "640", "1296", "648"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por -3. -216 × -3 = 648."
+    },
+    {
+      id: 486,
+      question: "Complete a sequência: 11, -44, 176, -704, ?",
+      options: ["2805", "5632", "2827", "2816"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por -4. -704 × -4 = 2816."
+    },
+    {
+      id: 487,
+      question: "Complete a sequência: 22, 88, 352, 1408, ?",
+      options: ["5654", "5610", "5632", "11264"],
+      correctIndex: 2,
+      explanation: "Cada termo é multiplicado por 4. 1408 × 4 = 5632."
+    },
+    {
+      id: 488,
+      question: "Complete a sequência: 2, -8, 32, -128, ?",
+      options: ["1024", "512", "510", "514"],
+      correctIndex: 1,
+      explanation: "Cada termo é multiplicado por -4. -128 × -4 = 512."
+    },
+    {
+      id: 489,
+      question: "Complete a sequência: 28, -56, 112, -224, ?",
+      options: ["420", "448", "896", "476"],
+      correctIndex: 1,
+      explanation: "Cada termo é multiplicado por -2. -224 × -2 = 448."
+    },
+    {
+      id: 490,
+      question: "Complete a sequência: 6, 12, 24, 48, ?",
+      options: ["90", "192", "96", "102"],
+      correctIndex: 2,
+      explanation: "Cada termo é multiplicado por 2. 48 × 2 = 96."
+    },
+    {
+      id: 491,
+      question: "Complete a sequência: 9, -36, 144, -576, ?",
+      options: ["2295", "2304", "4608", "2313"],
+      correctIndex: 1,
+      explanation: "Cada termo é multiplicado por -4. -576 × -4 = 2304."
+    },
+    {
+      id: 492,
+      question: "Complete a sequência: 26, 104, 416, 1664, ?",
+      options: ["6656", "13312", "6630", "6682"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por 4. 1664 × 4 = 6656."
+    },
+    {
+      id: 493,
+      question: "Complete a sequência: 6, -18, 54, -162, ?",
+      options: ["480", "486", "492", "972"],
+      correctIndex: 1,
+      explanation: "Cada termo é multiplicado por -3. -162 × -3 = 486."
+    },
+    {
+      id: 494,
+      question: "Complete a sequência: 21, 42, 84, 168, ?",
+      options: ["336", "315", "357", "672"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por 2. 168 × 2 = 336."
+    },
+    {
+      id: 495,
+      question: "Complete a sequência: 6, 24, 96, 384, ?",
+      options: ["1542", "1530", "3072", "1536"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por 4. 384 × 4 = 1536."
+    },
+    {
+      id: 496,
+      question: "Complete a sequência: 25, 50, 100, 200, ?",
+      options: ["400", "375", "425", "800"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por 2. 200 × 2 = 400."
+    },
+    {
+      id: 497,
+      question: "Complete a sequência: 20, -40, 80, -160, ?",
+      options: ["640", "320", "300", "340"],
+      correctIndex: 1,
+      explanation: "Cada termo é multiplicado por -2. -160 × -2 = 320."
+    },
+    {
+      id: 498,
+      question: "Complete a sequência: 7, 35, 175, 875, ?",
+      options: ["4375", "4382", "4368", "8750"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por 5. 875 × 5 = 4375."
+    },
+    {
+      id: 499,
+      question: "Complete a sequência: 19, -38, 76, -152, ?",
+      options: ["304", "323", "285", "608"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por -2. -152 × -2 = 304."
+    },
+    {
+      id: 500,
+      question: "Complete a sequência: 19, 95, 475, 2375, ?",
+      options: ["11875", "11894", "11856", "23750"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por 5. 2375 × 5 = 11875."
+    },
+    {
+      id: 501,
+      question: "Complete a sequência: 24, 48, 96, 192, ?",
+      options: ["360", "384", "768", "408"],
+      correctIndex: 1,
+      explanation: "Cada termo é multiplicado por 2. 192 × 2 = 384."
+    },
+    {
+      id: 502,
+      question: "Complete a sequência: 11, 22, 44, 88, ?",
+      options: ["352", "165", "187", "176"],
+      correctIndex: 3,
+      explanation: "Cada termo é multiplicado por 2. 88 × 2 = 176."
+    },
+    {
+      id: 503,
+      question: "Complete a sequência: 20, 40, 80, 160, ?",
+      options: ["320", "300", "640", "340"],
+      correctIndex: 0,
+      explanation: "Cada termo é multiplicado por 2. 160 × 2 = 320."
+    },
+    {
+      id: 504,
+      question: "Complete a sequência: 28, -84, 252, -756, ?",
+      options: ["4536", "2240", "2268", "2296"],
+      correctIndex: 2,
+      explanation: "Cada termo é multiplicado por -3. -756 × -3 = 2268."
+    },
+    {
+      id: 505,
+      question: "Complete a sequência: 23, 69, 207, 621, ?",
+      options: ["3726", "1840", "1863", "1886"],
+      correctIndex: 2,
+      explanation: "Cada termo é multiplicado por 3. 621 × 3 = 1863."
+    },
+    {
+      id: 506,
+      question: "Se 40% de um número é igual a 46, qual é esse número?",
+      options: ["155", "115", "230", "75"],
+      correctIndex: 1,
+      explanation: "Se 40% = 46, o número total é 46 ÷ (40/100) = 115."
+    },
+    {
+      id: 507,
+      question: "Se 75% de um número é igual a 102, qual é esse número?",
+      options: ["136", "211", "61", "272"],
+      correctIndex: 0,
+      explanation: "Se 75% = 102, o número total é 102 ÷ (75/100) = 136."
+    },
+    {
+      id: 508,
+      question: "Se 15% de um número é igual a 45, qual é esse número?",
+      options: ["285", "315", "300", "600"],
+      correctIndex: 2,
+      explanation: "Se 15% = 45, o número total é 45 ÷ (15/100) = 300."
+    },
+    {
+      id: 509,
+      question: "Se 15% de um número é igual a 78, qual é esse número?",
+      options: ["505", "1040", "535", "520"],
+      correctIndex: 3,
+      explanation: "Se 15% = 78, o número total é 78 ÷ (15/100) = 520."
+    },
+    {
+      id: 510,
+      question: "Se 5% de um número é igual a 58, qual é esse número?",
+      options: ["2320", "1165", "1155", "1160"],
+      correctIndex: 3,
+      explanation: "Se 5% = 58, o número total é 58 ÷ (5/100) = 1160."
+    },
+    {
+      id: 511,
+      question: "Se 20% de um número é igual a 40, qual é esse número?",
+      options: ["180", "200", "400", "220"],
+      correctIndex: 1,
+      explanation: "Se 20% = 40, o número total é 40 ÷ (20/100) = 200."
+    },
+    {
+      id: 512,
+      question: "Se 50% de um número é igual a 37, qual é esse número?",
+      options: ["148", "74", "124", "24"],
+      correctIndex: 1,
+      explanation: "Se 50% = 37, o número total é 37 ÷ (50/100) = 74."
+    },
+    {
+      id: 513,
+      question: "Se 15% de um número é igual a 123, qual é esse número?",
+      options: ["835", "820", "805", "1640"],
+      correctIndex: 1,
+      explanation: "Se 15% = 123, o número total é 123 ÷ (15/100) = 820."
+    },
+    {
+      id: 514,
+      question: "Se 5% de um número é igual a 56, qual é esse número?",
+      options: ["2240", "1125", "1120", "1115"],
+      correctIndex: 2,
+      explanation: "Se 5% = 56, o número total é 56 ÷ (5/100) = 1120."
+    },
+    {
+      id: 515,
+      question: "Se 60% de um número é igual a 12, qual é esse número?",
+      options: ["80", "20", "-40", "40"],
+      correctIndex: 1,
+      explanation: "Se 60% = 12, o número total é 12 ÷ (60/100) = 20."
+    },
+    {
+      id: 516,
+      question: "Se 20% de um número é igual a 2, qual é esse número?",
+      options: ["30", "20", "10", "-10"],
+      correctIndex: 2,
+      explanation: "Se 20% = 2, o número total é 2 ÷ (20/100) = 10."
+    },
+    {
+      id: 517,
+      question: "Se 20% de um número é igual a 54, qual é esse número?",
+      options: ["540", "270", "290", "250"],
+      correctIndex: 1,
+      explanation: "Se 20% = 54, o número total é 54 ÷ (20/100) = 270."
+    },
+    {
+      id: 518,
+      question: "Se 30% de um número é igual a 45, qual é esse número?",
+      options: ["300", "120", "150", "180"],
+      correctIndex: 2,
+      explanation: "Se 30% = 45, o número total é 45 ÷ (30/100) = 150."
+    },
+    {
+      id: 519,
+      question: "Se 75% de um número é igual a 30, qual é esse número?",
+      options: ["115", "40", "80", "-35"],
+      correctIndex: 1,
+      explanation: "Se 75% = 30, o número total é 30 ÷ (75/100) = 40."
+    },
+    {
+      id: 520,
+      question: "Se 15% de um número é igual a 57, qual é esse número?",
+      options: ["395", "365", "760", "380"],
+      correctIndex: 3,
+      explanation: "Se 15% = 57, o número total é 57 ÷ (15/100) = 380."
+    },
+    {
+      id: 521,
+      question: "Se 20% de um número é igual a 25, qual é esse número?",
+      options: ["145", "125", "250", "105"],
+      correctIndex: 1,
+      explanation: "Se 20% = 25, o número total é 25 ÷ (20/100) = 125."
+    },
+    {
+      id: 522,
+      question: "Se 40% de um número é igual a 52, qual é esse número?",
+      options: ["90", "260", "130", "170"],
+      correctIndex: 2,
+      explanation: "Se 40% = 52, o número total é 52 ÷ (40/100) = 130."
+    },
+    {
+      id: 523,
+      question: "Se 30% de um número é igual a 120, qual é esse número?",
+      options: ["430", "400", "800", "370"],
+      correctIndex: 1,
+      explanation: "Se 30% = 120, o número total é 120 ÷ (30/100) = 400."
+    },
+    {
+      id: 524,
+      question: "Se 30% de um número é igual a 108, qual é esse número?",
+      options: ["390", "360", "720", "330"],
+      correctIndex: 1,
+      explanation: "Se 30% = 108, o número total é 108 ÷ (30/100) = 360."
+    },
+    {
+      id: 525,
+      question: "Se 75% de um número é igual a 174, qual é esse número?",
+      options: ["464", "232", "307", "157"],
+      correctIndex: 1,
+      explanation: "Se 75% = 174, o número total é 174 ÷ (75/100) = 232."
+    },
+    {
+      id: 526,
+      question: "Se 75% de um número é igual a 87, qual é esse número?",
+      options: ["232", "191", "41", "116"],
+      correctIndex: 3,
+      explanation: "Se 75% = 87, o número total é 87 ÷ (75/100) = 116."
+    },
+    {
+      id: 527,
+      question: "Se 25% de um número é igual a 30, qual é esse número?",
+      options: ["240", "145", "95", "120"],
+      correctIndex: 3,
+      explanation: "Se 25% = 30, o número total é 30 ÷ (25/100) = 120."
+    },
+    {
+      id: 528,
+      question: "Se 10% de um número é igual a 41, qual é esse número?",
+      options: ["820", "400", "410", "420"],
+      correctIndex: 2,
+      explanation: "Se 10% = 41, o número total é 41 ÷ (10/100) = 410."
+    },
+    {
+      id: 529,
+      question: "Se 5% de um número é igual a 39, qual é esse número?",
+      options: ["780", "775", "785", "1560"],
+      correctIndex: 0,
+      explanation: "Se 5% = 39, o número total é 39 ÷ (5/100) = 780."
+    },
+    {
+      id: 530,
+      question: "Se 50% de um número é igual a 21, qual é esse número?",
+      options: ["-8", "42", "92", "84"],
+      correctIndex: 1,
+      explanation: "Se 50% = 21, o número total é 21 ÷ (50/100) = 42."
+    },
+    {
+      id: 531,
+      question: "Se 30% de um número é igual a 114, qual é esse número?",
+      options: ["410", "380", "350", "760"],
+      correctIndex: 1,
+      explanation: "Se 30% = 114, o número total é 114 ÷ (30/100) = 380."
+    },
+    {
+      id: 532,
+      question: "Se 15% de um número é igual a 39, qual é esse número?",
+      options: ["245", "520", "275", "260"],
+      correctIndex: 3,
+      explanation: "Se 15% = 39, o número total é 39 ÷ (15/100) = 260."
+    },
+    {
+      id: 533,
+      question: "Se 40% de um número é igual a 106, qual é esse número?",
+      options: ["305", "225", "530", "265"],
+      correctIndex: 3,
+      explanation: "Se 40% = 106, o número total é 106 ÷ (40/100) = 265."
+    },
+    {
+      id: 534,
+      question: "Se 50% de um número é igual a 51, qual é esse número?",
+      options: ["102", "152", "204", "52"],
+      correctIndex: 0,
+      explanation: "Se 50% = 51, o número total é 51 ÷ (50/100) = 102."
+    },
+    {
+      id: 535,
+      question: "Se 25% de um número é igual a 5, qual é esse número?",
+      options: ["20", "45", "40", "-5"],
+      correctIndex: 0,
+      explanation: "Se 25% = 5, o número total é 5 ÷ (25/100) = 20."
+    },
+    {
+      id: 536,
+      question: "Se 15% de um número é igual a 138, qual é esse número?",
+      options: ["935", "905", "920", "1840"],
+      correctIndex: 2,
+      explanation: "Se 15% = 138, o número total é 138 ÷ (15/100) = 920."
+    },
+    {
+      id: 537,
+      question: "Se 15% de um número é igual a 105, qual é esse número?",
+      options: ["715", "700", "685", "1400"],
+      correctIndex: 1,
+      explanation: "Se 15% = 105, o número total é 105 ÷ (15/100) = 700."
+    },
+    {
+      id: 538,
+      question: "Se 15% de um número é igual a 93, qual é esse número?",
+      options: ["635", "620", "1240", "605"],
+      correctIndex: 1,
+      explanation: "Se 15% = 93, o número total é 93 ÷ (15/100) = 620."
+    },
+    {
+      id: 539,
+      question: "Se 20% de um número é igual a 58, qual é esse número?",
+      options: ["580", "270", "310", "290"],
+      correctIndex: 3,
+      explanation: "Se 20% = 58, o número total é 58 ÷ (20/100) = 290."
+    },
+    {
+      id: 540,
+      question: "Se 50% de um número é igual a 55, qual é esse número?",
+      options: ["160", "220", "110", "60"],
+      correctIndex: 2,
+      explanation: "Se 50% = 55, o número total é 55 ÷ (50/100) = 110."
+    },
+    {
+      id: 541,
+      question: "Se 20% de um número é igual a 57, qual é esse número?",
+      options: ["265", "305", "570", "285"],
+      correctIndex: 3,
+      explanation: "Se 20% = 57, o número total é 57 ÷ (20/100) = 285."
+    },
+    {
+      id: 542,
+      question: "Se 25% de um número é igual a 43, qual é esse número?",
+      options: ["197", "147", "172", "344"],
+      correctIndex: 2,
+      explanation: "Se 25% = 43, o número total é 43 ÷ (25/100) = 172."
+    },
+    {
+      id: 543,
+      question: "Se 25% de um número é igual a 14, qual é esse número?",
+      options: ["31", "81", "112", "56"],
+      correctIndex: 3,
+      explanation: "Se 25% = 14, o número total é 14 ÷ (25/100) = 56."
+    },
+    {
+      id: 544,
+      question: "Se 25% de um número é igual a 20, qual é esse número?",
+      options: ["80", "160", "55", "105"],
+      correctIndex: 0,
+      explanation: "Se 25% = 20, o número total é 20 ÷ (25/100) = 80."
+    },
+    {
+      id: 545,
+      question: "Se 5% de um número é igual a 51, qual é esse número?",
+      options: ["1015", "1025", "1020", "2040"],
+      correctIndex: 2,
+      explanation: "Se 5% = 51, o número total é 51 ÷ (5/100) = 1020."
+    },
+    {
+      id: 546,
+      question: "Se 50% de um número é igual a 25, qual é esse número?",
+      options: ["60", "50", "0", "100"],
+      correctIndex: 1,
+      explanation: "Se 50% = 25, o número total é 25 ÷ (50/100) = 50."
+    },
+    {
+      id: 547,
+      question: "Se 75% de um número é igual a 168, qual é esse número?",
+      options: ["224", "149", "448", "299"],
+      correctIndex: 0,
+      explanation: "Se 75% = 168, o número total é 168 ÷ (75/100) = 224."
+    },
+    {
+      id: 548,
+      question: "Se 10% de um número é igual a 5, qual é esse número?",
+      options: ["100", "60", "40", "50"],
+      correctIndex: 3,
+      explanation: "Se 10% = 5, o número total é 5 ÷ (10/100) = 50."
+    },
+    {
+      id: 549,
+      question: "Se 5% de um número é igual a 50, qual é esse número?",
+      options: ["995", "2000", "1005", "1000"],
+      correctIndex: 3,
+      explanation: "Se 5% = 50, o número total é 50 ÷ (5/100) = 1000."
+    },
+    {
+      id: 550,
+      question: "Se 75% de um número é igual a 177, qual é esse número?",
+      options: ["236", "161", "472", "311"],
+      correctIndex: 0,
+      explanation: "Se 75% = 177, o número total é 177 ÷ (75/100) = 236."
+    },
+    {
+      id: 551,
+      question: "Um produto custa R$350 e está com 50% de desconto. Qual é o preço final?",
+      options: ["165", "185", "350", "175"],
+      correctIndex: 3,
+      explanation: "O desconto é 50% de R$350 = R$175. Preço final: R$350 - R$175 = R$175."
+    },
+    {
+      id: 552,
+      question: "Um produto custa R$360 e está com 50% de desconto. Qual é o preço final?",
+      options: ["360", "180", "170", "190"],
+      correctIndex: 1,
+      explanation: "O desconto é 50% de R$360 = R$180. Preço final: R$360 - R$180 = R$180."
+    },
+    {
+      id: 553,
+      question: "Um produto custa R$310 e está com 50% de desconto. Qual é o preço final?",
+      options: ["145", "155", "165", "310"],
+      correctIndex: 1,
+      explanation: "O desconto é 50% de R$310 = R$155. Preço final: R$310 - R$155 = R$155."
+    },
+    {
+      id: 554,
+      question: "Um produto custa R$260 e está com 30% de desconto. Qual é o preço final?",
+      options: ["192", "172", "182", "260"],
+      correctIndex: 2,
+      explanation: "O desconto é 30% de R$260 = R$78. Preço final: R$260 - R$78 = R$182."
+    },
+    {
+      id: 555,
+      question: "Um produto custa R$350 e está com 40% de desconto. Qual é o preço final?",
+      options: ["210", "220", "200", "350"],
+      correctIndex: 0,
+      explanation: "O desconto é 40% de R$350 = R$140. Preço final: R$350 - R$140 = R$210."
+    },
+    {
+      id: 556,
+      question: "Um produto custa R$260 e está com 10% de desconto. Qual é o preço final?",
+      options: ["224", "244", "234", "260"],
+      correctIndex: 2,
+      explanation: "O desconto é 10% de R$260 = R$26. Preço final: R$260 - R$26 = R$234."
+    },
+    {
+      id: 557,
+      question: "Um produto custa R$230 e está com 20% de desconto. Qual é o preço final?",
+      options: ["184", "230", "174", "194"],
+      correctIndex: 0,
+      explanation: "O desconto é 20% de R$230 = R$46. Preço final: R$230 - R$46 = R$184."
+    },
+    {
+      id: 558,
+      question: "Um produto custa R$120 e está com 10% de desconto. Qual é o preço final?",
+      options: ["118", "120", "108", "98"],
+      correctIndex: 2,
+      explanation: "O desconto é 10% de R$120 = R$12. Preço final: R$120 - R$12 = R$108."
+    },
+    {
+      id: 559,
+      question: "Um produto custa R$150 e está com 30% de desconto. Qual é o preço final?",
+      options: ["150", "115", "95", "105"],
+      correctIndex: 3,
+      explanation: "O desconto é 30% de R$150 = R$45. Preço final: R$150 - R$45 = R$105."
+    },
+    {
+      id: 560,
+      question: "Um produto custa R$140 e está com 40% de desconto. Qual é o preço final?",
+      options: ["84", "74", "140", "94"],
+      correctIndex: 0,
+      explanation: "O desconto é 40% de R$140 = R$56. Preço final: R$140 - R$56 = R$84."
+    },
+    {
+      id: 561,
+      question: "Um produto custa R$140 e está com 15% de desconto. Qual é o preço final?",
+      options: ["109", "119", "140", "129"],
+      correctIndex: 1,
+      explanation: "O desconto é 15% de R$140 = R$21. Preço final: R$140 - R$21 = R$119."
+    },
+    {
+      id: 562,
+      question: "Um produto custa R$160 e está com 40% de desconto. Qual é o preço final?",
+      options: ["96", "86", "106", "160"],
+      correctIndex: 0,
+      explanation: "O desconto é 40% de R$160 = R$64. Preço final: R$160 - R$64 = R$96."
+    },
+    {
+      id: 563,
+      question: "Um produto custa R$350 e está com 30% de desconto. Qual é o preço final?",
+      options: ["255", "350", "245", "235"],
+      correctIndex: 2,
+      explanation: "O desconto é 30% de R$350 = R$105. Preço final: R$350 - R$105 = R$245."
+    },
+    {
+      id: 564,
+      question: "Um produto custa R$330 e está com 40% de desconto. Qual é o preço final?",
+      options: ["188", "208", "198", "330"],
+      correctIndex: 2,
+      explanation: "O desconto é 40% de R$330 = R$132. Preço final: R$330 - R$132 = R$198."
+    },
+    {
+      id: 565,
+      question: "Um produto custa R$400 e está com 50% de desconto. Qual é o preço final?",
+      options: ["210", "190", "200", "400"],
+      correctIndex: 2,
+      explanation: "O desconto é 50% de R$400 = R$200. Preço final: R$400 - R$200 = R$200."
+    },
+    {
+      id: 566,
+      question: "Um produto custa R$260 e está com 20% de desconto. Qual é o preço final?",
+      options: ["218", "260", "208", "198"],
+      correctIndex: 2,
+      explanation: "O desconto é 20% de R$260 = R$52. Preço final: R$260 - R$52 = R$208."
+    },
+    {
+      id: 567,
+      question: "Um produto custa R$160 e está com 15% de desconto. Qual é o preço final?",
+      options: ["126", "160", "146", "136"],
+      correctIndex: 3,
+      explanation: "O desconto é 15% de R$160 = R$24. Preço final: R$160 - R$24 = R$136."
+    },
+    {
+      id: 568,
+      question: "Um produto custa R$180 e está com 15% de desconto. Qual é o preço final?",
+      options: ["143", "153", "163", "180"],
+      correctIndex: 1,
+      explanation: "O desconto é 15% de R$180 = R$27. Preço final: R$180 - R$27 = R$153."
+    },
+    {
+      id: 569,
+      question: "Um produto custa R$100 e está com 30% de desconto. Qual é o preço final?",
+      options: ["70", "60", "80", "100"],
+      correctIndex: 0,
+      explanation: "O desconto é 30% de R$100 = R$30. Preço final: R$100 - R$30 = R$70."
+    },
+    {
+      id: 570,
+      question: "Um produto custa R$110 e está com 40% de desconto. Qual é o preço final?",
+      options: ["66", "110", "76", "56"],
+      correctIndex: 0,
+      explanation: "O desconto é 40% de R$110 = R$44. Preço final: R$110 - R$44 = R$66."
+    },
+    {
+      id: 571,
+      question: "Um produto custa R$220 e está com 10% de desconto. Qual é o preço final?",
+      options: ["198", "220", "208", "188"],
+      correctIndex: 0,
+      explanation: "O desconto é 10% de R$220 = R$22. Preço final: R$220 - R$22 = R$198."
+    },
+    {
+      id: 572,
+      question: "Um produto custa R$200 e está com 10% de desconto. Qual é o preço final?",
+      options: ["180", "170", "190", "200"],
+      correctIndex: 0,
+      explanation: "O desconto é 10% de R$200 = R$20. Preço final: R$200 - R$20 = R$180."
+    },
+    {
+      id: 573,
+      question: "Um produto custa R$220 e está com 15% de desconto. Qual é o preço final?",
+      options: ["220", "177", "187", "197"],
+      correctIndex: 2,
+      explanation: "O desconto é 15% de R$220 = R$33. Preço final: R$220 - R$33 = R$187."
+    },
+    {
+      id: 574,
+      question: "Um produto custa R$320 e está com 15% de desconto. Qual é o preço final?",
+      options: ["262", "320", "272", "282"],
+      correctIndex: 2,
+      explanation: "O desconto é 15% de R$320 = R$48. Preço final: R$320 - R$48 = R$272."
+    },
+    {
+      id: 575,
+      question: "Um produto custa R$350 e está com 20% de desconto. Qual é o preço final?",
+      options: ["280", "350", "290", "270"],
+      correctIndex: 0,
+      explanation: "O desconto é 20% de R$350 = R$70. Preço final: R$350 - R$70 = R$280."
+    },
+    {
+      id: 576,
+      question: "Um produto custa R$280 e está com 40% de desconto. Qual é o preço final?",
+      options: ["178", "280", "158", "168"],
+      correctIndex: 3,
+      explanation: "O desconto é 40% de R$280 = R$112. Preço final: R$280 - R$112 = R$168."
+    },
+    {
+      id: 577,
+      question: "Um produto custa R$130 e está com 50% de desconto. Qual é o preço final?",
+      options: ["130", "55", "65", "75"],
+      correctIndex: 2,
+      explanation: "O desconto é 50% de R$130 = R$65. Preço final: R$130 - R$65 = R$65."
+    },
+    {
+      id: 578,
+      question: "Um produto custa R$230 e está com 40% de desconto. Qual é o preço final?",
+      options: ["230", "128", "148", "138"],
+      correctIndex: 3,
+      explanation: "O desconto é 40% de R$230 = R$92. Preço final: R$230 - R$92 = R$138."
+    },
+    {
+      id: 579,
+      question: "Um produto custa R$260 e está com 25% de desconto. Qual é o preço final?",
+      options: ["260", "205", "185", "195"],
+      correctIndex: 3,
+      explanation: "O desconto é 25% de R$260 = R$65. Preço final: R$260 - R$65 = R$195."
+    },
+    {
+      id: 580,
+      question: "Um produto custa R$300 e está com 40% de desconto. Qual é o preço final?",
+      options: ["180", "300", "170", "190"],
+      correctIndex: 0,
+      explanation: "O desconto é 40% de R$300 = R$120. Preço final: R$300 - R$120 = R$180."
+    },
+    {
+      id: 581,
+      question: "Um produto custa R$310 e está com 20% de desconto. Qual é o preço final?",
+      options: ["248", "258", "310", "238"],
+      correctIndex: 0,
+      explanation: "O desconto é 20% de R$310 = R$62. Preço final: R$310 - R$62 = R$248."
+    },
+    {
+      id: 582,
+      question: "Um produto custa R$170 e está com 30% de desconto. Qual é o preço final?",
+      options: ["119", "129", "109", "170"],
+      correctIndex: 0,
+      explanation: "O desconto é 30% de R$170 = R$51. Preço final: R$170 - R$51 = R$119."
+    },
+    {
+      id: 583,
+      question: "Um produto custa R$320 e está com 50% de desconto. Qual é o preço final?",
+      options: ["160", "170", "150", "320"],
+      correctIndex: 0,
+      explanation: "O desconto é 50% de R$320 = R$160. Preço final: R$320 - R$160 = R$160."
+    },
+    {
+      id: 584,
+      question: "Um produto custa R$250 e está com 10% de desconto. Qual é o preço final?",
+      options: ["225", "235", "250", "215"],
+      correctIndex: 0,
+      explanation: "O desconto é 10% de R$250 = R$25. Preço final: R$250 - R$25 = R$225."
+    },
+    {
+      id: 585,
+      question: "Um produto custa R$320 e está com 20% de desconto. Qual é o preço final?",
+      options: ["320", "246", "266", "256"],
+      correctIndex: 3,
+      explanation: "O desconto é 20% de R$320 = R$64. Preço final: R$320 - R$64 = R$256."
+    },
+    {
+      id: 586,
+      question: "Quantos mililitros há em 14 litros?",
+      options: ["14000", "13000", "15000", "1400"],
+      correctIndex: 0,
+      explanation: "14 L × 1000 = 14000 mililitros."
+    },
+    {
+      id: 587,
+      question: "Quantos centavos há em 40 reais?",
+      options: ["3900", "400", "4000", "4100"],
+      correctIndex: 2,
+      explanation: "40 R$ × 100 = 4000 centavos."
+    },
+    {
+      id: 588,
+      question: "Quantos unidades há em 44 dúzias?",
+      options: ["528", "540", "516", "52.8"],
+      correctIndex: 0,
+      explanation: "44 dz × 12 = 528 unidades."
+    },
+    {
+      id: 589,
+      question: "Quantos mililitros há em 29 litros?",
+      options: ["30000", "29000", "2900", "28000"],
+      correctIndex: 1,
+      explanation: "29 L × 1000 = 29000 mililitros."
+    },
+    {
+      id: 590,
+      question: "Quantos unidades há em 37 dúzias?",
+      options: ["444", "432", "456", "44.4"],
+      correctIndex: 0,
+      explanation: "37 dz × 12 = 444 unidades."
+    },
+    {
+      id: 591,
+      question: "Quantos centavos há em 3 reais?",
+      options: ["200", "30", "300", "400"],
+      correctIndex: 2,
+      explanation: "3 R$ × 100 = 300 centavos."
+    },
+    {
+      id: 592,
+      question: "Quantos metros há em 40 quilômetros?",
+      options: ["4000", "41000", "39000", "40000"],
+      correctIndex: 3,
+      explanation: "40 km × 1000 = 40000 metros."
+    },
+    {
+      id: 593,
+      question: "Quantos gramas há em 10 quilogramas?",
+      options: ["10000", "1000", "11000", "9000"],
+      correctIndex: 0,
+      explanation: "10 kg × 1000 = 10000 gramas."
+    },
+    {
+      id: 594,
+      question: "Quantos mililitros há em 12 litros?",
+      options: ["13000", "12000", "1200", "11000"],
+      correctIndex: 1,
+      explanation: "12 L × 1000 = 12000 mililitros."
+    },
+    {
+      id: 595,
+      question: "Quantos centímetros há em 24 metros?",
+      options: ["2500", "240", "2400", "2300"],
+      correctIndex: 2,
+      explanation: "24 m × 100 = 2400 centímetros."
+    },
+    {
+      id: 596,
+      question: "Quantos centavos há em 12 reais?",
+      options: ["120", "1100", "1200", "1300"],
+      correctIndex: 2,
+      explanation: "12 R$ × 100 = 1200 centavos."
+    },
+    {
+      id: 597,
+      question: "Quantos centímetros há em 29 metros?",
+      options: ["3000", "2900", "2800", "290"],
+      correctIndex: 1,
+      explanation: "29 m × 100 = 2900 centímetros."
+    },
+    {
+      id: 598,
+      question: "Quantos segundos há em 3 minutos?",
+      options: ["180", "18", "240", "120"],
+      correctIndex: 0,
+      explanation: "3 min × 60 = 180 segundos."
+    },
+    {
+      id: 599,
+      question: "Quantos metros há em 14 quilômetros?",
+      options: ["15000", "13000", "14000", "1400"],
+      correctIndex: 2,
+      explanation: "14 km × 1000 = 14000 metros."
+    },
+    {
+      id: 600,
+      question: "Quantos metros há em 20 quilômetros?",
+      options: ["19000", "2000", "20000", "21000"],
+      correctIndex: 2,
+      explanation: "20 km × 1000 = 20000 metros."
+    },
+    {
+      id: 601,
+      question: "Quantos minutos há em 45 horas?",
+      options: ["2760", "2640", "2700", "270"],
+      correctIndex: 2,
+      explanation: "45 h × 60 = 2700 minutos."
+    },
+    {
+      id: 602,
+      question: "Quantos centímetros há em 27 metros?",
+      options: ["2800", "2600", "2700", "270"],
+      correctIndex: 2,
+      explanation: "27 m × 100 = 2700 centímetros."
+    },
+    {
+      id: 603,
+      question: "Quantos centímetros há em 37 metros?",
+      options: ["3800", "3600", "3700", "370"],
+      correctIndex: 2,
+      explanation: "37 m × 100 = 3700 centímetros."
+    },
+    {
+      id: 604,
+      question: "Quantos unidades há em 17 dúzias?",
+      options: ["216", "20.4", "204", "192"],
+      correctIndex: 2,
+      explanation: "17 dz × 12 = 204 unidades."
+    },
+    {
+      id: 605,
+      question: "Quantos gramas há em 34 quilogramas?",
+      options: ["3400", "33000", "35000", "34000"],
+      correctIndex: 3,
+      explanation: "34 kg × 1000 = 34000 gramas."
+    },
+    {
+      id: 606,
+      question: "Quantos minutos há em 11 horas?",
+      options: ["66", "600", "720", "660"],
+      correctIndex: 3,
+      explanation: "11 h × 60 = 660 minutos."
+    },
+    {
+      id: 607,
+      question: "Quantos unidades há em 12 dúzias?",
+      options: ["14.4", "144", "132", "156"],
+      correctIndex: 1,
+      explanation: "12 dz × 12 = 144 unidades."
+    },
+    {
+      id: 608,
+      question: "Quantos centavos há em 25 reais?",
+      options: ["2400", "250", "2600", "2500"],
+      correctIndex: 3,
+      explanation: "25 R$ × 100 = 2500 centavos."
+    },
+    {
+      id: 609,
+      question: "Quantos mililitros há em 19 litros?",
+      options: ["19000", "1900", "20000", "18000"],
+      correctIndex: 0,
+      explanation: "19 L × 1000 = 19000 mililitros."
+    },
+    {
+      id: 610,
+      question: "Quantos centavos há em 10 reais?",
+      options: ["1000", "900", "100", "1100"],
+      correctIndex: 0,
+      explanation: "10 R$ × 100 = 1000 centavos."
+    },
+    {
+      id: 611,
+      question: "Quantos centavos há em 18 reais?",
+      options: ["1700", "180", "1900", "1800"],
+      correctIndex: 3,
+      explanation: "18 R$ × 100 = 1800 centavos."
+    },
+    {
+      id: 612,
+      question: "Quantos centavos há em 26 reais?",
+      options: ["2700", "260", "2500", "2600"],
+      correctIndex: 3,
+      explanation: "26 R$ × 100 = 2600 centavos."
+    },
+    {
+      id: 613,
+      question: "Quantos metros há em 11 quilômetros?",
+      options: ["12000", "11000", "10000", "1100"],
+      correctIndex: 1,
+      explanation: "11 km × 1000 = 11000 metros."
+    },
+    {
+      id: 614,
+      question: "Quantos gramas há em 19 quilogramas?",
+      options: ["18000", "19000", "1900", "20000"],
+      correctIndex: 1,
+      explanation: "19 kg × 1000 = 19000 gramas."
+    },
+    {
+      id: 615,
+      question: "Quantos minutos há em 36 horas?",
+      options: ["2160", "2220", "216", "2100"],
+      correctIndex: 0,
+      explanation: "36 h × 60 = 2160 minutos."
+    },
+    {
+      id: 616,
+      question: "Quantos minutos há em 4 horas?",
+      options: ["300", "180", "240", "24"],
+      correctIndex: 2,
+      explanation: "4 h × 60 = 240 minutos."
+    },
+    {
+      id: 617,
+      question: "Quantos gramas há em 6 quilogramas?",
+      options: ["7000", "6000", "600", "5000"],
+      correctIndex: 1,
+      explanation: "6 kg × 1000 = 6000 gramas."
+    },
+    {
+      id: 618,
+      question: "Quantos gramas há em 14 quilogramas?",
+      options: ["14000", "15000", "13000", "1400"],
+      correctIndex: 0,
+      explanation: "14 kg × 1000 = 14000 gramas."
+    },
+    {
+      id: 619,
+      question: "Quantos unidades há em 15 dúzias?",
+      options: ["192", "180", "168", "18"],
+      correctIndex: 1,
+      explanation: "15 dz × 12 = 180 unidades."
+    },
+    {
+      id: 620,
+      question: "Quantos minutos há em 32 horas?",
+      options: ["192", "1980", "1860", "1920"],
+      correctIndex: 3,
+      explanation: "32 h × 60 = 1920 minutos."
+    },
+    {
+      id: 621,
+      question: "Quantos minutos há em 18 horas?",
+      options: ["108", "1020", "1140", "1080"],
+      correctIndex: 3,
+      explanation: "18 h × 60 = 1080 minutos."
+    },
+    {
+      id: 622,
+      question: "Quantos centavos há em 33 reais?",
+      options: ["3400", "3300", "3200", "330"],
+      correctIndex: 1,
+      explanation: "33 R$ × 100 = 3300 centavos."
+    },
+    {
+      id: 623,
+      question: "Quantos segundos há em 22 minutos?",
+      options: ["1380", "132", "1320", "1260"],
+      correctIndex: 2,
+      explanation: "22 min × 60 = 1320 segundos."
+    },
+    {
+      id: 624,
+      question: "Quantos segundos há em 28 minutos?",
+      options: ["168", "1620", "1740", "1680"],
+      correctIndex: 3,
+      explanation: "28 min × 60 = 1680 segundos."
+    },
+    {
+      id: 625,
+      question: "Quantos unidades há em 30 dúzias?",
+      options: ["36", "348", "372", "360"],
+      correctIndex: 3,
+      explanation: "30 dz × 12 = 360 unidades."
+    },
+    {
+      id: 626,
+      question: "Hoje, Ana tem 60 anos. Daqui a 2 anos, quantos anos Ana terá?",
+      options: ["63", "61", "64", "62"],
+      correctIndex: 3,
+      explanation: "60 + 2 = 62 anos."
+    },
+    {
+      id: 627,
+      question: "Bruno tem o dobro da idade de seu primo. Se o primo tem 31 anos, quantos anos tem Bruno?",
+      options: ["33", "64", "60", "62"],
+      correctIndex: 3,
+      explanation: "O dobro de 31 é 31 × 2 = 62."
+    },
+    {
+      id: 628,
+      question: "Hoje, Carla tem 70 anos. Há 2 anos, quantos anos Carla tinha?",
+      options: ["69", "67", "70", "68"],
+      correctIndex: 3,
+      explanation: "70 - 2 = 68 anos."
+    },
+    {
+      id: 629,
+      question: "Diego tem o dobro da idade de seu primo. Se o primo tem 5 anos, quantos anos tem Diego?",
+      options: ["10", "7", "8", "12"],
+      correctIndex: 0,
+      explanation: "O dobro de 5 é 5 × 2 = 10."
+    },
+    {
+      id: 630,
+      question: "Hoje, Elena tem 58 anos. Daqui a 20 anos, quantos anos Elena terá?",
+      options: ["98", "78", "79", "77"],
+      correctIndex: 1,
+      explanation: "58 + 20 = 78 anos."
+    },
+    {
+      id: 631,
+      question: "Hoje, Felipe tem 35 anos. Daqui a 5 anos, quantos anos Felipe terá?",
+      options: ["39", "40", "41", "45"],
+      correctIndex: 1,
+      explanation: "35 + 5 = 40 anos."
+    },
+    {
+      id: 632,
+      question: "Hoje, Gabriela tem 21 anos. Daqui a 15 anos, quantos anos Gabriela terá?",
+      options: ["37", "51", "36", "35"],
+      correctIndex: 2,
+      explanation: "21 + 15 = 36 anos."
+    },
+    {
+      id: 633,
+      question: "Hugo tem o dobro da idade de seu primo. Se o primo tem 31 anos, quantos anos tem Hugo?",
+      options: ["33", "64", "62", "60"],
+      correctIndex: 2,
+      explanation: "O dobro de 31 é 31 × 2 = 62."
+    },
+    {
+      id: 634,
+      question: "Hoje, Iris tem 67 anos. Há 9 anos, quantos anos Iris tinha?",
+      options: ["59", "57", "58", "67"],
+      correctIndex: 2,
+      explanation: "67 - 9 = 58 anos."
+    },
+    {
+      id: 635,
+      question: "João tem o dobro da idade de seu primo. Se o primo tem 6 anos, quantos anos tem João?",
+      options: ["14", "10", "8", "12"],
+      correctIndex: 3,
+      explanation: "O dobro de 6 é 6 × 2 = 12."
+    },
+    {
+      id: 636,
+      question: "Hoje, Karina tem 9 anos. Daqui a 21 anos, quantos anos Karina terá?",
+      options: ["30", "31", "29", "51"],
+      correctIndex: 0,
+      explanation: "9 + 21 = 30 anos."
+    },
+    {
+      id: 637,
+      question: "Hoje, Lucas tem 54 anos. Há 16 anos, quantos anos Lucas tinha?",
+      options: ["37", "54", "38", "39"],
+      correctIndex: 2,
+      explanation: "54 - 16 = 38 anos."
+    },
+    {
+      id: 638,
+      question: "Hoje, Marina tem 50 anos. Há 10 anos, quantos anos Marina tinha?",
+      options: ["40", "41", "50", "39"],
+      correctIndex: 0,
+      explanation: "50 - 10 = 40 anos."
+    },
+    {
+      id: 639,
+      question: "Hoje, Nicolas tem 40 anos. Há 9 anos, quantos anos Nicolas tinha?",
+      options: ["32", "40", "31", "30"],
+      correctIndex: 2,
+      explanation: "40 - 9 = 31 anos."
+    },
+    {
+      id: 640,
+      question: "Olívia tem o dobro da idade de seu primo. Se o primo tem 14 anos, quantos anos tem Olívia?",
+      options: ["26", "16", "30", "28"],
+      correctIndex: 3,
+      explanation: "O dobro de 14 é 14 × 2 = 28."
+    },
+    {
+      id: 641,
+      question: "Hoje, Pedro tem 12 anos. Daqui a 22 anos, quantos anos Pedro terá?",
+      options: ["33", "35", "56", "34"],
+      correctIndex: 3,
+      explanation: "12 + 22 = 34 anos."
+    },
+    {
+      id: 642,
+      question: "Rafaela tem o dobro da idade de seu primo. Se o primo tem 34 anos, quantos anos tem Rafaela?",
+      options: ["36", "68", "70", "66"],
+      correctIndex: 1,
+      explanation: "O dobro de 34 é 34 × 2 = 68."
+    },
+    {
+      id: 643,
+      question: "Samuel tem o dobro da idade de seu primo. Se o primo tem 21 anos, quantos anos tem Samuel?",
+      options: ["44", "42", "40", "23"],
+      correctIndex: 1,
+      explanation: "O dobro de 21 é 21 × 2 = 42."
+    },
+    {
+      id: 644,
+      question: "Hoje, Tainá tem 31 anos. Daqui a 12 anos, quantos anos Tainá terá?",
+      options: ["44", "42", "43", "55"],
+      correctIndex: 2,
+      explanation: "31 + 12 = 43 anos."
+    },
+    {
+      id: 645,
+      question: "Hoje, Victor tem 31 anos. Daqui a 17 anos, quantos anos Victor terá?",
+      options: ["48", "65", "47", "49"],
+      correctIndex: 0,
+      explanation: "31 + 17 = 48 anos."
+    },
+    {
+      id: 646,
+      question: "Hoje, Yasmin tem 21 anos. Há 14 anos, quantos anos Yasmin tinha?",
+      options: ["6", "21", "8", "7"],
+      correctIndex: 3,
+      explanation: "21 - 14 = 7 anos."
+    },
+    {
+      id: 647,
+      question: "William tem o dobro da idade de seu primo. Se o primo tem 6 anos, quantos anos tem William?",
+      options: ["8", "10", "12", "14"],
+      correctIndex: 2,
+      explanation: "O dobro de 6 é 6 × 2 = 12."
+    },
+    {
+      id: 648,
+      question: "Hoje, Sofia tem 28 anos. Daqui a 17 anos, quantos anos Sofia terá?",
+      options: ["44", "45", "62", "46"],
+      correctIndex: 1,
+      explanation: "28 + 17 = 45 anos."
+    },
+    {
+      id: 649,
+      question: "Hoje, Renato tem 54 anos. Daqui a 20 anos, quantos anos Renato terá?",
+      options: ["75", "73", "74", "94"],
+      correctIndex: 2,
+      explanation: "54 + 20 = 74 anos."
+    },
+    {
+      id: 650,
+      question: "Hoje, Bianca tem 7 anos. Daqui a 22 anos, quantos anos Bianca terá?",
+      options: ["51", "29", "28", "30"],
+      correctIndex: 1,
+      explanation: "7 + 22 = 29 anos."
+    },
+    {
+      id: 651,
+      question: "Hoje, Otávio tem 59 anos. Daqui a 8 anos, quantos anos Otávio terá?",
+      options: ["66", "67", "75", "68"],
+      correctIndex: 1,
+      explanation: "59 + 8 = 67 anos."
+    },
+    {
+      id: 652,
+      question: "Camila tem o dobro da idade de seu primo. Se o primo tem 7 anos, quantos anos tem Camila?",
+      options: ["9", "14", "16", "12"],
+      correctIndex: 1,
+      explanation: "O dobro de 7 é 7 × 2 = 14."
+    },
+    {
+      id: 653,
+      question: "Hoje, Fábio tem 10 anos. Daqui a 19 anos, quantos anos Fábio terá?",
+      options: ["28", "30", "29", "48"],
+      correctIndex: 2,
+      explanation: "10 + 19 = 29 anos."
+    },
+    {
+      id: 654,
+      question: "Hoje, Larissa tem 51 anos. Há 13 anos, quantos anos Larissa tinha?",
+      options: ["39", "51", "38", "37"],
+      correctIndex: 2,
+      explanation: "51 - 13 = 38 anos."
+    },
+    {
+      id: 655,
+      question: "Hoje, Vinícius tem 43 anos. Daqui a 13 anos, quantos anos Vinícius terá?",
+      options: ["69", "56", "57", "55"],
+      correctIndex: 1,
+      explanation: "43 + 13 = 56 anos."
+    },
+    {
+      id: 656,
+      question: "Hoje, Ana tem 39 anos. Daqui a 10 anos, quantos anos Ana terá?",
+      options: ["48", "59", "50", "49"],
+      correctIndex: 3,
+      explanation: "39 + 10 = 49 anos."
+    },
+    {
+      id: 657,
+      question: "Hoje, Bruno tem 10 anos. Há 7 anos, quantos anos Bruno tinha?",
+      options: ["2", "3", "10", "4"],
+      correctIndex: 1,
+      explanation: "10 - 7 = 3 anos."
+    },
+    {
+      id: 658,
+      question: "Hoje, Carla tem 9 anos. Daqui a 5 anos, quantos anos Carla terá?",
+      options: ["13", "15", "19", "14"],
+      correctIndex: 3,
+      explanation: "9 + 5 = 14 anos."
+    },
+    {
+      id: 659,
+      question: "Hoje, Diego tem 8 anos. Daqui a 10 anos, quantos anos Diego terá?",
+      options: ["28", "19", "17", "18"],
+      correctIndex: 3,
+      explanation: "8 + 10 = 18 anos."
+    },
+    {
+      id: 660,
+      question: "Hoje, Elena tem 13 anos. Há 9 anos, quantos anos Elena tinha?",
+      options: ["13", "5", "3", "4"],
+      correctIndex: 3,
+      explanation: "13 - 9 = 4 anos."
+    },
+    {
+      id: 661,
+      question: "Complete a sequência de letras: Q, O, M, K, ?",
+      options: ["I", "H", "K", "J"],
+      correctIndex: 0,
+      explanation: "A sequência regride de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 662,
+      question: "Complete a sequência de letras: Q, S, U, W, ?",
+      options: ["Z", "X", "Y", "W"],
+      correctIndex: 2,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 663,
+      question: "Complete a sequência de letras: J, L, N, P, ?",
+      options: ["S", "T", "R", "Q"],
+      correctIndex: 2,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 664,
+      question: "Complete a sequência de letras: Z, W, T, Q, ?",
+      options: ["O", "Q", "N", "M"],
+      correctIndex: 2,
+      explanation: "A sequência regride de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 665,
+      question: "Complete a sequência de letras: J, M, P, S, ?",
+      options: ["W", "U", "Y", "V"],
+      correctIndex: 3,
+      explanation: "A sequência avança de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 666,
+      question: "Complete a sequência de letras: H, J, L, N, ?",
+      options: ["Q", "R", "O", "P"],
+      correctIndex: 3,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 667,
+      question: "Complete a sequência de letras: S, O, K, G, ?",
+      options: ["D", "C", "G", "B"],
+      correctIndex: 1,
+      explanation: "A sequência regride de 4 em 4 letras no alfabeto."
+    },
+    {
+      id: 668,
+      question: "Complete a sequência de letras: W, T, Q, N, ?",
+      options: ["J", "K", "N", "L"],
+      correctIndex: 1,
+      explanation: "A sequência regride de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 669,
+      question: "Complete a sequência de letras: I, L, O, R, ?",
+      options: ["T", "X", "V", "U"],
+      correctIndex: 3,
+      explanation: "A sequência avança de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 670,
+      question: "Complete a sequência de letras: P, R, T, V, ?",
+      options: ["Z", "Y", "X", "W"],
+      correctIndex: 2,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 671,
+      question: "Complete a sequência de letras: V, S, P, M, ?",
+      options: ["M", "J", "I", "K"],
+      correctIndex: 1,
+      explanation: "A sequência regride de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 672,
+      question: "Complete a sequência de letras: X, T, P, L, ?",
+      options: ["H", "I", "L", "G"],
+      correctIndex: 0,
+      explanation: "A sequência regride de 4 em 4 letras no alfabeto."
+    },
+    {
+      id: 673,
+      question: "Complete a sequência de letras: V, T, R, P, ?",
+      options: ["P", "N", "M", "O"],
+      correctIndex: 1,
+      explanation: "A sequência regride de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 674,
+      question: "Complete a sequência de letras: I, K, M, O, ?",
+      options: ["S", "Q", "R", "P"],
+      correctIndex: 1,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 675,
+      question: "Complete a sequência de letras: K, M, O, Q, ?",
+      options: ["T", "U", "R", "S"],
+      correctIndex: 3,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 676,
+      question: "Complete a sequência de letras: E, G, I, K, ?",
+      options: ["L", "N", "M", "O"],
+      correctIndex: 2,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 677,
+      question: "Complete a sequência de letras: T, Q, N, K, ?",
+      options: ["K", "H", "I", "G"],
+      correctIndex: 1,
+      explanation: "A sequência regride de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 678,
+      question: "Complete a sequência de letras: R, O, L, I, ?",
+      options: ["E", "G", "F", "I"],
+      correctIndex: 2,
+      explanation: "A sequência regride de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 679,
+      question: "Complete a sequência de letras: P, M, J, G, ?",
+      options: ["C", "G", "D", "E"],
+      correctIndex: 2,
+      explanation: "A sequência regride de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 680,
+      question: "Complete a sequência de letras: E, H, K, N, ?",
+      options: ["R", "P", "Q", "T"],
+      correctIndex: 2,
+      explanation: "A sequência avança de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 681,
+      question: "Complete a sequência de letras: U, Q, M, I, ?",
+      options: ["F", "D", "E", "I"],
+      correctIndex: 2,
+      explanation: "A sequência regride de 4 em 4 letras no alfabeto."
+    },
+    {
+      id: 682,
+      question: "Complete a sequência de letras: W, S, O, K, ?",
+      options: ["F", "H", "K", "G"],
+      correctIndex: 3,
+      explanation: "A sequência regride de 4 em 4 letras no alfabeto."
+    },
+    {
+      id: 683,
+      question: "Complete a sequência de letras: L, O, R, U, ?",
+      options: ["Y", "U", "X", "W"],
+      correctIndex: 2,
+      explanation: "A sequência avança de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 684,
+      question: "Complete a sequência de letras: Q, N, K, H, ?",
+      options: ["D", "F", "H", "E"],
+      correctIndex: 3,
+      explanation: "A sequência regride de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 685,
+      question: "Complete a sequência de letras: C, E, G, I, ?",
+      options: ["J", "L", "M", "K"],
+      correctIndex: 3,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 686,
+      question: "Complete a sequência de letras: O, M, K, I, ?",
+      options: ["G", "I", "H", "F"],
+      correctIndex: 0,
+      explanation: "A sequência regride de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 687,
+      question: "Complete a sequência de letras: O, Q, S, U, ?",
+      options: ["Y", "V", "X", "W"],
+      correctIndex: 3,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 688,
+      question: "Complete a sequência de letras: M, K, I, G, ?",
+      options: ["G", "D", "E", "F"],
+      correctIndex: 2,
+      explanation: "A sequência regride de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 689,
+      question: "Complete a sequência de letras: I, M, Q, U, ?",
+      options: ["Z", "Y", "U", "X"],
+      correctIndex: 1,
+      explanation: "A sequência avança de 4 em 4 letras no alfabeto."
+    },
+    {
+      id: 690,
+      question: "Complete a sequência de letras: W, U, S, Q, ?",
+      options: ["N", "P", "O", "Q"],
+      correctIndex: 2,
+      explanation: "A sequência regride de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 691,
+      question: "Complete a sequência de letras: D, H, L, P, ?",
+      options: ["X", "U", "S", "T"],
+      correctIndex: 3,
+      explanation: "A sequência avança de 4 em 4 letras no alfabeto."
+    },
+    {
+      id: 692,
+      question: "Complete a sequência de letras: A, D, G, J, ?",
+      options: ["P", "L", "M", "N"],
+      correctIndex: 2,
+      explanation: "A sequência avança de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 693,
+      question: "Complete a sequência de letras: P, N, L, J, ?",
+      options: ["H", "G", "J", "I"],
+      correctIndex: 0,
+      explanation: "A sequência regride de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 694,
+      question: "Complete a sequência de letras: D, F, H, J, ?",
+      options: ["K", "N", "M", "L"],
+      correctIndex: 3,
+      explanation: "A sequência avança de 2 em 2 letras no alfabeto."
+    },
+    {
+      id: 695,
+      question: "Complete a sequência de letras: B, E, H, K, ?",
+      options: ["N", "Q", "M", "O"],
+      correctIndex: 0,
+      explanation: "A sequência avança de 3 em 3 letras no alfabeto."
+    },
+    {
+      id: 696,
+      question: "Uma caixa tem 15 itens. Se você tem 19 caixas iguais, quantos itens há ao todo?",
+      options: ["285", "304", "300", "266"],
+      correctIndex: 0,
+      explanation: "15 × 19 = 285."
+    },
+    {
+      id: 697,
+      question: "228 itens foram divididos igualmente entre 12 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["19", "18", "31", "20"],
+      correctIndex: 0,
+      explanation: "228 ÷ 12 = 19."
+    },
+    {
+      id: 698,
+      question: "Uma caixa tem 33 itens. Se você tem 5 caixas iguais, quantos itens há ao todo?",
+      options: ["165", "198", "160", "170"],
+      correctIndex: 0,
+      explanation: "33 × 5 = 165."
+    },
+    {
+      id: 699,
+      question: "196 itens foram divididos igualmente entre 7 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["35", "29", "27", "28"],
+      correctIndex: 3,
+      explanation: "196 ÷ 7 = 28."
+    },
+    {
+      id: 700,
+      question: "300 itens foram divididos igualmente entre 10 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["40", "29", "31", "30"],
+      correctIndex: 3,
+      explanation: "300 ÷ 10 = 30."
+    },
+    {
+      id: 701,
+      question: "198 itens foram divididos igualmente entre 11 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["19", "17", "29", "18"],
+      correctIndex: 3,
+      explanation: "198 ÷ 11 = 18."
+    },
+    {
+      id: 702,
+      question: "364 itens foram divididos igualmente entre 14 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["40", "27", "26", "25"],
+      correctIndex: 2,
+      explanation: "364 ÷ 14 = 26."
+    },
+    {
+      id: 703,
+      question: "Uma caixa tem 28 itens. Se você tem 9 caixas iguais, quantos itens há ao todo?",
+      options: ["261", "243", "252", "280"],
+      correctIndex: 2,
+      explanation: "28 × 9 = 252."
+    },
+    {
+      id: 704,
+      question: "Uma caixa tem 40 itens. Se você tem 21 caixas iguais, quantos itens há ao todo?",
+      options: ["819", "840", "861", "880"],
+      correctIndex: 1,
+      explanation: "40 × 21 = 840."
+    },
+    {
+      id: 705,
+      question: "Uma caixa tem 8 itens. Se você tem 15 caixas iguais, quantos itens há ao todo?",
+      options: ["135", "128", "120", "105"],
+      correctIndex: 2,
+      explanation: "8 × 15 = 120."
+    },
+    {
+      id: 706,
+      question: "16 itens foram divididos igualmente entre 2 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["8", "10", "9", "7"],
+      correctIndex: 0,
+      explanation: "16 ÷ 2 = 8."
+    },
+    {
+      id: 707,
+      question: "Uma caixa tem 19 itens. Se você tem 13 caixas iguais, quantos itens há ao todo?",
+      options: ["266", "260", "247", "234"],
+      correctIndex: 2,
+      explanation: "19 × 13 = 247."
+    },
+    {
+      id: 708,
+      question: "54 itens foram divididos igualmente entre 6 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["8", "9", "15", "10"],
+      correctIndex: 1,
+      explanation: "54 ÷ 6 = 9."
+    },
+    {
+      id: 709,
+      question: "341 itens foram divididos igualmente entre 11 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["30", "31", "42", "32"],
+      correctIndex: 1,
+      explanation: "341 ÷ 11 = 31."
+    },
+    {
+      id: 710,
+      question: "108 itens foram divididos igualmente entre 9 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["12", "13", "11", "21"],
+      correctIndex: 0,
+      explanation: "108 ÷ 9 = 12."
+    },
+    {
+      id: 711,
+      question: "Uma caixa tem 29 itens. Se você tem 15 caixas iguais, quantos itens há ao todo?",
+      options: ["464", "450", "435", "420"],
+      correctIndex: 2,
+      explanation: "29 × 15 = 435."
+    },
+    {
+      id: 712,
+      question: "78 itens foram divididos igualmente entre 6 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["13", "12", "19", "14"],
+      correctIndex: 0,
+      explanation: "78 ÷ 6 = 13."
+    },
+    {
+      id: 713,
+      question: "40 itens foram divididos igualmente entre 4 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["9", "11", "10", "14"],
+      correctIndex: 2,
+      explanation: "40 ÷ 4 = 10."
+    },
+    {
+      id: 714,
+      question: "12 itens foram divididos igualmente entre 6 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["2", "3", "8", "1"],
+      correctIndex: 0,
+      explanation: "12 ÷ 6 = 2."
+    },
+    {
+      id: 715,
+      question: "Uma caixa tem 14 itens. Se você tem 2 caixas iguais, quantos itens há ao todo?",
+      options: ["30", "26", "28", "42"],
+      correctIndex: 2,
+      explanation: "14 × 2 = 28."
+    },
+    {
+      id: 716,
+      question: "80 itens foram divididos igualmente entre 8 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["10", "18", "11", "9"],
+      correctIndex: 0,
+      explanation: "80 ÷ 8 = 10."
+    },
+    {
+      id: 717,
+      question: "264 itens foram divididos igualmente entre 11 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["23", "25", "35", "24"],
+      correctIndex: 3,
+      explanation: "264 ÷ 11 = 24."
+    },
+    {
+      id: 718,
+      question: "Uma caixa tem 23 itens. Se você tem 14 caixas iguais, quantos itens há ao todo?",
+      options: ["345", "308", "336", "322"],
+      correctIndex: 3,
+      explanation: "23 × 14 = 322."
+    },
+    {
+      id: 719,
+      question: "Uma caixa tem 30 itens. Se você tem 22 caixas iguais, quantos itens há ao todo?",
+      options: ["660", "682", "690", "638"],
+      correctIndex: 0,
+      explanation: "30 × 22 = 660."
+    },
+    {
+      id: 720,
+      question: "140 itens foram divididos igualmente entre 14 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["11", "9", "10", "24"],
+      correctIndex: 2,
+      explanation: "140 ÷ 14 = 10."
+    },
+    {
+      id: 721,
+      question: "100 itens foram divididos igualmente entre 5 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["19", "21", "20", "25"],
+      correctIndex: 2,
+      explanation: "100 ÷ 5 = 20."
+    },
+    {
+      id: 722,
+      question: "96 itens foram divididos igualmente entre 8 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["12", "13", "11", "20"],
+      correctIndex: 0,
+      explanation: "96 ÷ 8 = 12."
+    },
+    {
+      id: 723,
+      question: "Uma caixa tem 21 itens. Se você tem 14 caixas iguais, quantos itens há ao todo?",
+      options: ["315", "308", "280", "294"],
+      correctIndex: 3,
+      explanation: "21 × 14 = 294."
+    },
+    {
+      id: 724,
+      question: "Uma caixa tem 35 itens. Se você tem 15 caixas iguais, quantos itens há ao todo?",
+      options: ["540", "560", "525", "510"],
+      correctIndex: 2,
+      explanation: "35 × 15 = 525."
+    },
+    {
+      id: 725,
+      question: "Uma caixa tem 44 itens. Se você tem 2 caixas iguais, quantos itens há ao todo?",
+      options: ["132", "90", "88", "86"],
+      correctIndex: 2,
+      explanation: "44 × 2 = 88."
+    },
+    {
+      id: 726,
+      question: "28 itens foram divididos igualmente entre 2 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["14", "15", "13", "16"],
+      correctIndex: 0,
+      explanation: "28 ÷ 2 = 14."
+    },
+    {
+      id: 727,
+      question: "390 itens foram divididos igualmente entre 13 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["43", "29", "31", "30"],
+      correctIndex: 3,
+      explanation: "390 ÷ 13 = 30."
+    },
+    {
+      id: 728,
+      question: "230 itens foram divididos igualmente entre 10 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["22", "23", "33", "24"],
+      correctIndex: 1,
+      explanation: "230 ÷ 10 = 23."
+    },
+    {
+      id: 729,
+      question: "44 itens foram divididos igualmente entre 2 pessoas. Quantos itens cada pessoa recebeu?",
+      options: ["24", "21", "23", "22"],
+      correctIndex: 3,
+      explanation: "44 ÷ 2 = 22."
+    },
+    {
+      id: 730,
+      question: "Uma caixa tem 23 itens. Se você tem 21 caixas iguais, quantos itens há ao todo?",
+      options: ["506", "462", "504", "483"],
+      correctIndex: 3,
+      explanation: "23 × 21 = 483."
+    },
+    {
+      id: 731,
+      question: "Uma caixa tem 10 itens. Se você tem 16 caixas iguais, quantos itens há ao todo?",
+      options: ["144", "170", "160", "176"],
+      correctIndex: 2,
+      explanation: "10 × 16 = 160."
+    },
+    {
+      id: 732,
+      question: "Uma caixa tem 5 itens. Se você tem 3 caixas iguais, quantos itens há ao todo?",
+      options: ["20", "18", "15", "12"],
+      correctIndex: 2,
+      explanation: "5 × 3 = 15."
+    },
+    {
+      id: 733,
+      question: "Uma caixa tem 20 itens. Se você tem 8 caixas iguais, quantos itens há ao todo?",
+      options: ["152", "168", "180", "160"],
+      correctIndex: 3,
+      explanation: "20 × 8 = 160."
+    },
+    {
+      id: 734,
+      question: "Uma caixa tem 9 itens. Se você tem 19 caixas iguais, quantos itens há ao todo?",
+      options: ["171", "180", "190", "152"],
+      correctIndex: 0,
+      explanation: "9 × 19 = 171."
+    },
+    {
+      id: 735,
+      question: "Uma caixa tem 5 itens. Se você tem 5 caixas iguais, quantos itens há ao todo?",
+      options: ["45", "25", "30", "20"],
+      correctIndex: 1,
+      explanation: "5 × 5 = 25."
+    },
+    {
+      id: 736,
+      question: "Se hoje é Sexta-feira, que dia da semana será daqui a 96 dias?",
+      options: ["Quinta-feira", "Sábado", "Sexta-feira", "Quarta-feira"],
+      correctIndex: 3,
+      explanation: "96 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de sexta-feira, chega-se a quarta-feira."
+    },
+    {
+      id: 737,
+      question: "Se hoje é Quinta-feira, que dia da semana será daqui a 118 dias?",
+      options: ["Quarta-feira", "Domingo", "Sexta-feira", "Quinta-feira"],
+      correctIndex: 0,
+      explanation: "118 dividido por 7 deixa resto 6. Avançando 6 dia(s) a partir de quinta-feira, chega-se a quarta-feira."
+    },
+    {
+      id: 738,
+      question: "Se hoje é Segunda-feira, que dia da semana será daqui a 122 dias?",
+      options: ["Domingo", "Terça-feira", "Quinta-feira", "Quarta-feira"],
+      correctIndex: 2,
+      explanation: "122 dividido por 7 deixa resto 3. Avançando 3 dia(s) a partir de segunda-feira, chega-se a quinta-feira."
+    },
+    {
+      id: 739,
+      question: "Se hoje é Quinta-feira, que dia da semana será daqui a 116 dias?",
+      options: ["Domingo", "Quinta-feira", "Terça-feira", "Segunda-feira"],
+      correctIndex: 3,
+      explanation: "116 dividido por 7 deixa resto 4. Avançando 4 dia(s) a partir de quinta-feira, chega-se a segunda-feira."
+    },
+    {
+      id: 740,
+      question: "Se hoje é Segunda-feira, que dia da semana será daqui a 213 dias?",
+      options: ["Sábado", "Quarta-feira", "Terça-feira", "Quinta-feira"],
+      correctIndex: 3,
+      explanation: "213 dividido por 7 deixa resto 3. Avançando 3 dia(s) a partir de segunda-feira, chega-se a quinta-feira."
+    },
+    {
+      id: 741,
+      question: "Se hoje é Domingo, que dia da semana será daqui a 299 dias?",
+      options: ["Quinta-feira", "Sábado", "Quarta-feira", "Sexta-feira"],
+      correctIndex: 3,
+      explanation: "299 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de domingo, chega-se a sexta-feira."
+    },
+    {
+      id: 742,
+      question: "Se hoje é Segunda-feira, que dia da semana será daqui a 248 dias?",
+      options: ["Sábado", "Sexta-feira", "Domingo", "Quinta-feira"],
+      correctIndex: 3,
+      explanation: "248 dividido por 7 deixa resto 3. Avançando 3 dia(s) a partir de segunda-feira, chega-se a quinta-feira."
+    },
+    {
+      id: 743,
+      question: "Se hoje é Sexta-feira, que dia da semana será daqui a 259 dias?",
+      options: ["Quarta-feira", "Sábado", "Segunda-feira", "Sexta-feira"],
+      correctIndex: 3,
+      explanation: "259 dividido por 7 deixa resto 0. Avançando 0 dia(s) a partir de sexta-feira, chega-se a sexta-feira."
+    },
+    {
+      id: 744,
+      question: "Se hoje é Sábado, que dia da semana será daqui a 170 dias?",
+      options: ["Domingo", "Quinta-feira", "Segunda-feira", "Terça-feira"],
+      correctIndex: 2,
+      explanation: "170 dividido por 7 deixa resto 2. Avançando 2 dia(s) a partir de sábado, chega-se a segunda-feira."
+    },
+    {
+      id: 745,
+      question: "Se hoje é Sexta-feira, que dia da semana será daqui a 61 dias?",
+      options: ["Sábado", "Quinta-feira", "Sexta-feira", "Quarta-feira"],
+      correctIndex: 3,
+      explanation: "61 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de sexta-feira, chega-se a quarta-feira."
+    },
+    {
+      id: 746,
+      question: "Se hoje é Sexta-feira, que dia da semana será daqui a 327 dias?",
+      options: ["Terça-feira", "Quarta-feira", "Domingo", "Sábado"],
+      correctIndex: 1,
+      explanation: "327 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de sexta-feira, chega-se a quarta-feira."
+    },
+    {
+      id: 747,
+      question: "Se hoje é Quinta-feira, que dia da semana será daqui a 222 dias?",
+      options: ["Segunda-feira", "Sexta-feira", "Terça-feira", "Quarta-feira"],
+      correctIndex: 2,
+      explanation: "222 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de quinta-feira, chega-se a terça-feira."
+    },
+    {
+      id: 748,
+      question: "Se hoje é Sábado, que dia da semana será daqui a 226 dias?",
+      options: ["Sexta-feira", "Terça-feira", "Segunda-feira", "Sábado"],
+      correctIndex: 2,
+      explanation: "226 dividido por 7 deixa resto 2. Avançando 2 dia(s) a partir de sábado, chega-se a segunda-feira."
+    },
+    {
+      id: 749,
+      question: "Se hoje é Terça-feira, que dia da semana será daqui a 351 dias?",
+      options: ["Quinta-feira", "Terça-feira", "Quarta-feira", "Domingo"],
+      correctIndex: 2,
+      explanation: "351 dividido por 7 deixa resto 1. Avançando 1 dia(s) a partir de terça-feira, chega-se a quarta-feira."
+    },
+    {
+      id: 750,
+      question: "Se hoje é Sábado, que dia da semana será daqui a 33 dias?",
+      options: ["Sexta-feira", "Terça-feira", "Quarta-feira", "Quinta-feira"],
+      correctIndex: 3,
+      explanation: "33 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de sábado, chega-se a quinta-feira."
+    },
+    {
+      id: 751,
+      question: "Se hoje é Quinta-feira, que dia da semana será daqui a 34 dias?",
+      options: ["Segunda-feira", "Quarta-feira", "Quinta-feira", "Terça-feira"],
+      correctIndex: 1,
+      explanation: "34 dividido por 7 deixa resto 6. Avançando 6 dia(s) a partir de quinta-feira, chega-se a quarta-feira."
+    },
+    {
+      id: 752,
+      question: "Se hoje é Sábado, que dia da semana será daqui a 82 dias?",
+      options: ["Sexta-feira", "Terça-feira", "Quinta-feira", "Quarta-feira"],
+      correctIndex: 2,
+      explanation: "82 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de sábado, chega-se a quinta-feira."
+    },
+    {
+      id: 753,
+      question: "Se hoje é Sábado, que dia da semana será daqui a 342 dias?",
+      options: ["Sábado", "Sexta-feira", "Segunda-feira", "Terça-feira"],
+      correctIndex: 1,
+      explanation: "342 dividido por 7 deixa resto 6. Avançando 6 dia(s) a partir de sábado, chega-se a sexta-feira."
+    },
+    {
+      id: 754,
+      question: "Se hoje é Quarta-feira, que dia da semana será daqui a 132 dias?",
+      options: ["Domingo", "Terça-feira", "Quarta-feira", "Quinta-feira"],
+      correctIndex: 1,
+      explanation: "132 dividido por 7 deixa resto 6. Avançando 6 dia(s) a partir de quarta-feira, chega-se a terça-feira."
+    },
+    {
+      id: 755,
+      question: "Se hoje é Sexta-feira, que dia da semana será daqui a 235 dias?",
+      options: ["Terça-feira", "Sábado", "Segunda-feira", "Sexta-feira"],
+      correctIndex: 0,
+      explanation: "235 dividido por 7 deixa resto 4. Avançando 4 dia(s) a partir de sexta-feira, chega-se a terça-feira."
+    },
+    {
+      id: 756,
+      question: "Se hoje é Terça-feira, que dia da semana será daqui a 277 dias?",
+      options: ["Quinta-feira", "Terça-feira", "Segunda-feira", "Sábado"],
+      correctIndex: 3,
+      explanation: "277 dividido por 7 deixa resto 4. Avançando 4 dia(s) a partir de terça-feira, chega-se a sábado."
+    },
+    {
+      id: 757,
+      question: "Se hoje é Sexta-feira, que dia da semana será daqui a 130 dias?",
+      options: ["Sábado", "Quinta-feira", "Sexta-feira", "Terça-feira"],
+      correctIndex: 3,
+      explanation: "130 dividido por 7 deixa resto 4. Avançando 4 dia(s) a partir de sexta-feira, chega-se a terça-feira."
+    },
+    {
+      id: 758,
+      question: "Se hoje é Terça-feira, que dia da semana será daqui a 383 dias?",
+      options: ["Terça-feira", "Quinta-feira", "Quarta-feira", "Domingo"],
+      correctIndex: 3,
+      explanation: "383 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de terça-feira, chega-se a domingo."
+    },
+    {
+      id: 759,
+      question: "Se hoje é Segunda-feira, que dia da semana será daqui a 171 dias?",
+      options: ["Quinta-feira", "Terça-feira", "Sexta-feira", "Quarta-feira"],
+      correctIndex: 0,
+      explanation: "171 dividido por 7 deixa resto 3. Avançando 3 dia(s) a partir de segunda-feira, chega-se a quinta-feira."
+    },
+    {
+      id: 760,
+      question: "Se hoje é Terça-feira, que dia da semana será daqui a 180 dias?",
+      options: ["Quinta-feira", "Sábado", "Sexta-feira", "Domingo"],
+      correctIndex: 3,
+      explanation: "180 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de terça-feira, chega-se a domingo."
+    },
+    {
+      id: 761,
+      question: "Se hoje é Terça-feira, que dia da semana será daqui a 37 dias?",
+      options: ["Segunda-feira", "Quinta-feira", "Domingo", "Sábado"],
+      correctIndex: 1,
+      explanation: "37 dividido por 7 deixa resto 2. Avançando 2 dia(s) a partir de terça-feira, chega-se a quinta-feira."
+    },
+    {
+      id: 762,
+      question: "Se hoje é Quinta-feira, que dia da semana será daqui a 210 dias?",
+      options: ["Quinta-feira", "Quarta-feira", "Segunda-feira", "Terça-feira"],
+      correctIndex: 0,
+      explanation: "210 dividido por 7 deixa resto 0. Avançando 0 dia(s) a partir de quinta-feira, chega-se a quinta-feira."
+    },
+    {
+      id: 763,
+      question: "Se hoje é Quinta-feira, que dia da semana será daqui a 375 dias?",
+      options: ["Sexta-feira", "Terça-feira", "Sábado", "Segunda-feira"],
+      correctIndex: 3,
+      explanation: "375 dividido por 7 deixa resto 4. Avançando 4 dia(s) a partir de quinta-feira, chega-se a segunda-feira."
+    },
+    {
+      id: 764,
+      question: "Se hoje é Quinta-feira, que dia da semana será daqui a 181 dias?",
+      options: ["Quarta-feira", "Terça-feira", "Sexta-feira", "Segunda-feira"],
+      correctIndex: 0,
+      explanation: "181 dividido por 7 deixa resto 6. Avançando 6 dia(s) a partir de quinta-feira, chega-se a quarta-feira."
+    },
+    {
+      id: 765,
+      question: "Se hoje é Quinta-feira, que dia da semana será daqui a 53 dias?",
+      options: ["Terça-feira", "Quinta-feira", "Segunda-feira", "Domingo"],
+      correctIndex: 2,
+      explanation: "53 dividido por 7 deixa resto 4. Avançando 4 dia(s) a partir de quinta-feira, chega-se a segunda-feira."
+    },
+    {
+      id: 766,
+      question: "Se hoje é Quinta-feira, que dia da semana será daqui a 160 dias?",
+      options: ["Domingo", "Quarta-feira", "Terça-feira", "Segunda-feira"],
+      correctIndex: 1,
+      explanation: "160 dividido por 7 deixa resto 6. Avançando 6 dia(s) a partir de quinta-feira, chega-se a quarta-feira."
+    },
+    {
+      id: 767,
+      question: "Se hoje é Domingo, que dia da semana será daqui a 196 dias?",
+      options: ["Domingo", "Terça-feira", "Segunda-feira", "Sábado"],
+      correctIndex: 0,
+      explanation: "196 dividido por 7 deixa resto 0. Avançando 0 dia(s) a partir de domingo, chega-se a domingo."
+    },
+    {
+      id: 768,
+      question: "Se hoje é Terça-feira, que dia da semana será daqui a 211 dias?",
+      options: ["Quarta-feira", "Sexta-feira", "Segunda-feira", "Terça-feira"],
+      correctIndex: 0,
+      explanation: "211 dividido por 7 deixa resto 1. Avançando 1 dia(s) a partir de terça-feira, chega-se a quarta-feira."
+    },
+    {
+      id: 769,
+      question: "Se hoje é Quarta-feira, que dia da semana será daqui a 310 dias?",
+      options: ["Quinta-feira", "Domingo", "Sexta-feira", "Quarta-feira"],
+      correctIndex: 2,
+      explanation: "310 dividido por 7 deixa resto 2. Avançando 2 dia(s) a partir de quarta-feira, chega-se a sexta-feira."
+    },
+    {
+      id: 770,
+      question: "Se hoje é Quarta-feira, que dia da semana será daqui a 341 dias?",
+      options: ["Segunda-feira", "Domingo", "Sábado", "Quarta-feira"],
+      correctIndex: 0,
+      explanation: "341 dividido por 7 deixa resto 5. Avançando 5 dia(s) a partir de quarta-feira, chega-se a segunda-feira."
+    },
+    {
+      id: 771,
+      question: "Se 5 canetas custam R$145, quanto custam 4 canetas (mesmo preço unitário)?",
+      options: ["145", "87", "116", "120"],
+      correctIndex: 2,
+      explanation: "Cada item custa R$29 (145÷5). 4 itens custam 4 × R$29 = R$116."
+    },
+    {
+      id: 772,
+      question: "Se 7 cadernos custam R$168, quanto custam 3 cadernos (mesmo preço unitário)?",
+      options: ["75", "96", "72", "48"],
+      correctIndex: 2,
+      explanation: "Cada item custa R$24 (168÷7). 3 itens custam 3 × R$24 = R$72."
+    },
+    {
+      id: 773,
+      question: "Se 2 lápis custam R$48, quanto custam 10 lápis (mesmo preço unitário)?",
+      options: ["264", "240", "250", "216"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$24 (48÷2). 10 itens custam 10 × R$24 = R$240."
+    },
+    {
+      id: 774,
+      question: "Se 5 chocolates custam R$145, quanto custam 2 chocolates (mesmo preço unitário)?",
+      options: ["29", "87", "60", "58"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$29 (145÷5). 2 itens custam 2 × R$29 = R$58."
+    },
+    {
+      id: 775,
+      question: "Se 10 lápis custam R$190, quanto custam 13 lápis (mesmo preço unitário)?",
+      options: ["260", "228", "247", "266"],
+      correctIndex: 2,
+      explanation: "Cada item custa R$19 (190÷10). 13 itens custam 13 × R$19 = R$247."
+    },
+    {
+      id: 776,
+      question: "Se 6 ingressos custam R$156, quanto custam 20 ingressos (mesmo preço unitário)?",
+      options: ["546", "540", "494", "520"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$26 (156÷6). 20 itens custam 20 × R$26 = R$520."
+    },
+    {
+      id: 777,
+      question: "Se 4 lápis custam R$88, quanto custam 20 lápis (mesmo preço unitário)?",
+      options: ["418", "462", "440", "460"],
+      correctIndex: 2,
+      explanation: "Cada item custa R$22 (88÷4). 20 itens custam 20 × R$22 = R$440."
+    },
+    {
+      id: 778,
+      question: "Se 4 chocolates custam R$76, quanto custam 14 chocolates (mesmo preço unitário)?",
+      options: ["247", "266", "285", "280"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$19 (76÷4). 14 itens custam 14 × R$19 = R$266."
+    },
+    {
+      id: 779,
+      question: "Se 7 garrafas de água custam R$35, quanto custam 4 garrafas de água (mesmo preço unitário)?",
+      options: ["15", "25", "24", "20"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$5 (35÷7). 4 itens custam 4 × R$5 = R$20."
+    },
+    {
+      id: 780,
+      question: "Se 10 lápis custam R$140, quanto custam 14 lápis (mesmo preço unitário)?",
+      options: ["182", "210", "183", "196"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$14 (140÷10). 14 itens custam 14 × R$14 = R$196."
+    },
+    {
+      id: 781,
+      question: "Se 7 cadernos custam R$175, quanto custam 4 cadernos (mesmo preço unitário)?",
+      options: ["125", "100", "75", "104"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$25 (175÷7). 4 itens custam 4 × R$25 = R$100."
+    },
+    {
+      id: 782,
+      question: "Se 5 balas custam R$30, quanto custam 6 balas (mesmo preço unitário)?",
+      options: ["42", "30", "27", "36"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$6 (30÷5). 6 itens custam 6 × R$6 = R$36."
+    },
+    {
+      id: 783,
+      question: "Se 5 ingressos custam R$150, quanto custam 2 ingressos (mesmo preço unitário)?",
+      options: ["30", "62", "90", "60"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$30 (150÷5). 2 itens custam 2 × R$30 = R$60."
+    },
+    {
+      id: 784,
+      question: "Se 10 garrafas de água custam R$20, quanto custam 10 garrafas de água (mesmo preço unitário)?",
+      options: ["30", "20", "18", "22"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$2 (20÷10). 10 itens custam 10 × R$2 = R$20."
+    },
+    {
+      id: 785,
+      question: "Se 3 cadernos custam R$57, quanto custam 16 cadernos (mesmo preço unitário)?",
+      options: ["304", "285", "320", "323"],
+      correctIndex: 0,
+      explanation: "Cada item custa R$19 (57÷3). 16 itens custam 16 × R$19 = R$304."
+    },
+    {
+      id: 786,
+      question: "Se 3 garrafas de água custam R$39, quanto custam 17 garrafas de água (mesmo preço unitário)?",
+      options: ["238", "221", "208", "234"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$13 (39÷3). 17 itens custam 17 × R$13 = R$221."
+    },
+    {
+      id: 787,
+      question: "Se 9 garrafas de água custam R$99, quanto custam 16 garrafas de água (mesmo preço unitário)?",
+      options: ["192", "165", "176", "187"],
+      correctIndex: 2,
+      explanation: "Cada item custa R$11 (99÷9). 16 itens custam 16 × R$11 = R$176."
+    },
+    {
+      id: 788,
+      question: "Se 6 canetas custam R$72, quanto custam 10 canetas (mesmo preço unitário)?",
+      options: ["130", "132", "108", "120"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$12 (72÷6). 10 itens custam 10 × R$12 = R$120."
+    },
+    {
+      id: 789,
+      question: "Se 6 ingressos custam R$174, quanto custam 14 ingressos (mesmo preço unitário)?",
+      options: ["420", "435", "377", "406"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$29 (174÷6). 14 itens custam 14 × R$29 = R$406."
+    },
+    {
+      id: 790,
+      question: "Se 7 garrafas de água custam R$42, quanto custam 8 garrafas de água (mesmo preço unitário)?",
+      options: ["56", "48", "54", "42"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$6 (42÷7). 8 itens custam 8 × R$6 = R$48."
+    },
+    {
+      id: 791,
+      question: "Se 6 camisetas custam R$24, quanto custam 20 camisetas (mesmo preço unitário)?",
+      options: ["84", "76", "80", "100"],
+      correctIndex: 2,
+      explanation: "Cada item custa R$4 (24÷6). 20 itens custam 20 × R$4 = R$80."
+    },
+    {
+      id: 792,
+      question: "Se 3 camisetas custam R$87, quanto custam 10 camisetas (mesmo preço unitário)?",
+      options: ["261", "319", "300", "290"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$29 (87÷3). 10 itens custam 10 × R$29 = R$290."
+    },
+    {
+      id: 793,
+      question: "Se 5 canetas custam R$60, quanto custam 4 canetas (mesmo preço unitário)?",
+      options: ["60", "52", "36", "48"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$12 (60÷5). 4 itens custam 4 × R$12 = R$48."
+    },
+    {
+      id: 794,
+      question: "Se 5 cadernos custam R$10, quanto custam 12 cadernos (mesmo preço unitário)?",
+      options: ["24", "36", "26", "22"],
+      correctIndex: 0,
+      explanation: "Cada item custa R$2 (10÷5). 12 itens custam 12 × R$2 = R$24."
+    },
+    {
+      id: 795,
+      question: "Se 7 balas custam R$63, quanto custam 15 balas (mesmo preço unitário)?",
+      options: ["135", "126", "144", "150"],
+      correctIndex: 0,
+      explanation: "Cada item custa R$9 (63÷7). 15 itens custam 15 × R$9 = R$135."
+    },
+    {
+      id: 796,
+      question: "Se 7 garrafas de água custam R$105, quanto custam 9 garrafas de água (mesmo preço unitário)?",
+      options: ["135", "120", "144", "150"],
+      correctIndex: 0,
+      explanation: "Cada item custa R$15 (105÷7). 9 itens custam 9 × R$15 = R$135."
+    },
+    {
+      id: 797,
+      question: "Se 7 balas custam R$70, quanto custam 20 balas (mesmo preço unitário)?",
+      options: ["190", "200", "220", "210"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$10 (70÷7). 20 itens custam 20 × R$10 = R$200."
+    },
+    {
+      id: 798,
+      question: "Se 5 canetas custam R$80, quanto custam 14 canetas (mesmo preço unitário)?",
+      options: ["208", "224", "238", "240"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$16 (80÷5). 14 itens custam 14 × R$16 = R$224."
+    },
+    {
+      id: 799,
+      question: "Se 5 ingressos custam R$100, quanto custam 4 ingressos (mesmo preço unitário)?",
+      options: ["80", "84", "100", "60"],
+      correctIndex: 0,
+      explanation: "Cada item custa R$20 (100÷5). 4 itens custam 4 × R$20 = R$80."
+    },
+    {
+      id: 800,
+      question: "Se 3 canetas custam R$27, quanto custam 6 canetas (mesmo preço unitário)?",
+      options: ["54", "63", "60", "45"],
+      correctIndex: 0,
+      explanation: "Cada item custa R$9 (27÷3). 6 itens custam 6 × R$9 = R$54."
+    },
+    {
+      id: 801,
+      question: "Se 8 garrafas de água custam R$56, quanto custam 6 garrafas de água (mesmo preço unitário)?",
+      options: ["42", "35", "49", "48"],
+      correctIndex: 0,
+      explanation: "Cada item custa R$7 (56÷8). 6 itens custam 6 × R$7 = R$42."
+    },
+    {
+      id: 802,
+      question: "Se 10 chocolates custam R$110, quanto custam 3 chocolates (mesmo preço unitário)?",
+      options: ["22", "44", "36", "33"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$11 (110÷10). 3 itens custam 3 × R$11 = R$33."
+    },
+    {
+      id: 803,
+      question: "Se 10 camisetas custam R$40, quanto custam 11 camisetas (mesmo preço unitário)?",
+      options: ["40", "48", "55", "44"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$4 (40÷10). 11 itens custam 11 × R$4 = R$44."
+    },
+    {
+      id: 804,
+      question: "Se 2 ingressos custam R$32, quanto custam 17 ingressos (mesmo preço unitário)?",
+      options: ["272", "289", "288", "256"],
+      correctIndex: 0,
+      explanation: "Cada item custa R$16 (32÷2). 17 itens custam 17 × R$16 = R$272."
+    },
+    {
+      id: 805,
+      question: "Se 8 chocolates custam R$32, quanto custam 12 chocolates (mesmo preço unitário)?",
+      options: ["60", "48", "52", "44"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$4 (32÷8). 12 itens custam 12 × R$4 = R$48."
+    },
+    {
+      id: 806,
+      question: "Se 4 ingressos custam R$116, quanto custam 17 ingressos (mesmo preço unitário)?",
+      options: ["464", "522", "493", "510"],
+      correctIndex: 2,
+      explanation: "Cada item custa R$29 (116÷4). 17 itens custam 17 × R$29 = R$493."
+    },
+    {
+      id: 807,
+      question: "Se 9 garrafas de água custam R$99, quanto custam 11 garrafas de água (mesmo preço unitário)?",
+      options: ["121", "110", "137", "132"],
+      correctIndex: 0,
+      explanation: "Cada item custa R$11 (99÷9). 11 itens custam 11 × R$11 = R$121."
+    },
+    {
+      id: 808,
+      question: "Se 4 canetas custam R$24, quanto custam 20 canetas (mesmo preço unitário)?",
+      options: ["140", "114", "126", "120"],
+      correctIndex: 3,
+      explanation: "Cada item custa R$6 (24÷4). 20 itens custam 20 × R$6 = R$120."
+    },
+    {
+      id: 809,
+      question: "Se 6 balas custam R$138, quanto custam 16 balas (mesmo preço unitário)?",
+      options: ["391", "345", "368", "384"],
+      correctIndex: 2,
+      explanation: "Cada item custa R$23 (138÷6). 16 itens custam 16 × R$23 = R$368."
+    },
+    {
+      id: 810,
+      question: "Se 2 camisetas custam R$48, quanto custam 19 camisetas (mesmo preço unitário)?",
+      options: ["475", "456", "432", "480"],
+      correctIndex: 1,
+      explanation: "Cada item custa R$24 (48÷2). 19 itens custam 19 × R$24 = R$456."
+    },
+    {
+      id: 811,
+      question: "Qual é a área de um retângulo com 24cm de largura e 18cm de altura?",
+      options: ["414", "456", "432", "84"],
+      correctIndex: 2,
+      explanation: "Área = largura × altura = 24 × 18 = 432cm²."
+    },
+    {
+      id: 812,
+      question: "Qual é o perímetro de um retângulo com 20cm de largura e 23cm de altura?",
+      options: ["460", "88", "86", "84"],
+      correctIndex: 2,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (20 + 23) = 86cm."
+    },
+    {
+      id: 813,
+      question: "Qual é a área de um retângulo com 10cm de largura e 25cm de altura?",
+      options: ["250", "260", "70", "225"],
+      correctIndex: 0,
+      explanation: "Área = largura × altura = 10 × 25 = 250cm²."
+    },
+    {
+      id: 814,
+      question: "Qual é a área de um retângulo com 19cm de largura e 18cm de altura?",
+      options: ["361", "74", "342", "324"],
+      correctIndex: 2,
+      explanation: "Área = largura × altura = 19 × 18 = 342cm²."
+    },
+    {
+      id: 815,
+      question: "Qual é a área de um retângulo com 11cm de largura e 14cm de altura?",
+      options: ["165", "154", "50", "140"],
+      correctIndex: 1,
+      explanation: "Área = largura × altura = 11 × 14 = 154cm²."
+    },
+    {
+      id: 816,
+      question: "Qual é o perímetro de um retângulo com 10cm de largura e 23cm de altura?",
+      options: ["64", "66", "230", "68"],
+      correctIndex: 1,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (10 + 23) = 66cm."
+    },
+    {
+      id: 817,
+      question: "Qual é o perímetro de um retângulo com 4cm de largura e 19cm de altura?",
+      options: ["76", "46", "44", "48"],
+      correctIndex: 1,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (4 + 19) = 46cm."
+    },
+    {
+      id: 818,
+      question: "Qual é a área de um retângulo com 17cm de largura e 15cm de altura?",
+      options: ["240", "64", "255", "272"],
+      correctIndex: 2,
+      explanation: "Área = largura × altura = 17 × 15 = 255cm²."
+    },
+    {
+      id: 819,
+      question: "Qual é a área de um retângulo com 10cm de largura e 8cm de altura?",
+      options: ["36", "72", "90", "80"],
+      correctIndex: 3,
+      explanation: "Área = largura × altura = 10 × 8 = 80cm²."
+    },
+    {
+      id: 820,
+      question: "Qual é a área de um retângulo com 6cm de largura e 11cm de altura?",
+      options: ["72", "34", "55", "66"],
+      correctIndex: 3,
+      explanation: "Área = largura × altura = 6 × 11 = 66cm²."
+    },
+    {
+      id: 821,
+      question: "Qual é o perímetro de um retângulo com 22cm de largura e 4cm de altura?",
+      options: ["52", "54", "50", "88"],
+      correctIndex: 0,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (22 + 4) = 52cm."
+    },
+    {
+      id: 822,
+      question: "Qual é o perímetro de um retângulo com 22cm de largura e 18cm de altura?",
+      options: ["82", "396", "78", "80"],
+      correctIndex: 3,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (22 + 18) = 80cm."
+    },
+    {
+      id: 823,
+      question: "Qual é o perímetro de um retângulo com 7cm de largura e 19cm de altura?",
+      options: ["52", "50", "133", "54"],
+      correctIndex: 0,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (7 + 19) = 52cm."
+    },
+    {
+      id: 824,
+      question: "Qual é a área de um retângulo com 19cm de largura e 9cm de altura?",
+      options: ["171", "56", "162", "190"],
+      correctIndex: 0,
+      explanation: "Área = largura × altura = 19 × 9 = 171cm²."
+    },
+    {
+      id: 825,
+      question: "Qual é a área de um retângulo com 16cm de largura e 11cm de altura?",
+      options: ["165", "176", "192", "54"],
+      correctIndex: 1,
+      explanation: "Área = largura × altura = 16 × 11 = 176cm²."
+    },
+    {
+      id: 826,
+      question: "Qual é o perímetro de um retângulo com 5cm de largura e 17cm de altura?",
+      options: ["44", "46", "42", "85"],
+      correctIndex: 0,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (5 + 17) = 44cm."
+    },
+    {
+      id: 827,
+      question: "Qual é a área de um retângulo com 21cm de largura e 16cm de altura?",
+      options: ["336", "320", "74", "357"],
+      correctIndex: 0,
+      explanation: "Área = largura × altura = 21 × 16 = 336cm²."
+    },
+    {
+      id: 828,
+      question: "Qual é a área de um retângulo com 16cm de largura e 15cm de altura?",
+      options: ["240", "256", "225", "62"],
+      correctIndex: 0,
+      explanation: "Área = largura × altura = 16 × 15 = 240cm²."
+    },
+    {
+      id: 829,
+      question: "Qual é o perímetro de um retângulo com 10cm de largura e 8cm de altura?",
+      options: ["80", "36", "38", "34"],
+      correctIndex: 1,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (10 + 8) = 36cm."
+    },
+    {
+      id: 830,
+      question: "Qual é o perímetro de um retângulo com 7cm de largura e 4cm de altura?",
+      options: ["20", "22", "28", "24"],
+      correctIndex: 1,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (7 + 4) = 22cm."
+    },
+    {
+      id: 831,
+      question: "Qual é a área de um retângulo com 8cm de largura e 20cm de altura?",
+      options: ["168", "160", "56", "140"],
+      correctIndex: 1,
+      explanation: "Área = largura × altura = 8 × 20 = 160cm²."
+    },
+    {
+      id: 832,
+      question: "Qual é a área de um retângulo com 7cm de largura e 13cm de altura?",
+      options: ["40", "78", "91", "98"],
+      correctIndex: 2,
+      explanation: "Área = largura × altura = 7 × 13 = 91cm²."
+    },
+    {
+      id: 833,
+      question: "Qual é a área de um retângulo com 11cm de largura e 9cm de altura?",
+      options: ["90", "40", "110", "99"],
+      correctIndex: 3,
+      explanation: "Área = largura × altura = 11 × 9 = 99cm²."
+    },
+    {
+      id: 834,
+      question: "Qual é o perímetro de um retângulo com 3cm de largura e 3cm de altura?",
+      options: ["9", "12", "14", "10"],
+      correctIndex: 1,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (3 + 3) = 12cm."
+    },
+    {
+      id: 835,
+      question: "Qual é a área de um retângulo com 10cm de largura e 16cm de altura?",
+      options: ["160", "52", "170", "144"],
+      correctIndex: 0,
+      explanation: "Área = largura × altura = 10 × 16 = 160cm²."
+    },
+    {
+      id: 836,
+      question: "Qual é o perímetro de um retângulo com 19cm de largura e 5cm de altura?",
+      options: ["48", "50", "95", "46"],
+      correctIndex: 0,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (19 + 5) = 48cm."
+    },
+    {
+      id: 837,
+      question: "Qual é o perímetro de um retângulo com 7cm de largura e 25cm de altura?",
+      options: ["66", "64", "62", "175"],
+      correctIndex: 1,
+      explanation: "Perímetro = 2 × (largura + altura) = 2 × (7 + 25) = 64cm."
+    },
+    {
+      id: 838,
+      question: "Qual é a área de um retângulo com 13cm de largura e 10cm de altura?",
+      options: ["120", "143", "46", "130"],
+      correctIndex: 3,
+      explanation: "Área = largura × altura = 13 × 10 = 130cm²."
+    },
+    {
+      id: 839,
+      question: "Qual é a área de um retângulo com 8cm de largura e 17cm de altura?",
+      options: ["50", "119", "136", "144"],
+      correctIndex: 2,
+      explanation: "Área = largura × altura = 8 × 17 = 136cm²."
+    },
+    {
+      id: 840,
+      question: "Qual é a área de um retângulo com 7cm de largura e 17cm de altura?",
+      options: ["119", "102", "126", "48"],
+      correctIndex: 0,
+      explanation: "Área = largura × altura = 7 × 17 = 119cm²."
+    },
+    {
+      id: 841,
+      question: "Qual é a média aritmética dos números: 12, 20, 9, 21, 48?",
+      options: ["22", "21", "23", "24"],
+      correctIndex: 0,
+      explanation: "Soma dos números: 110. Média = 110 ÷ 5 = 22."
+    },
+    {
+      id: 842,
+      question: "Qual é a média aritmética dos números: 9, 16, 42, 27, 6?",
+      options: ["22", "19", "21", "20"],
+      correctIndex: 3,
+      explanation: "Soma dos números: 100. Média = 100 ÷ 5 = 20."
+    },
+    {
+      id: 843,
+      question: "Qual é a média aritmética dos números: 51, 17, 35, 9?",
+      options: ["29", "28", "30", "27"],
+      correctIndex: 1,
+      explanation: "Soma dos números: 112. Média = 112 ÷ 4 = 28."
+    },
+    {
+      id: 844,
+      question: "Qual é a média aritmética dos números: 15, 36, 36?",
+      options: ["30", "29", "31", "28"],
+      correctIndex: 1,
+      explanation: "Soma dos números: 87. Média = 87 ÷ 3 = 29."
+    },
+    {
+      id: 845,
+      question: "Qual é a média aritmética dos números: 20, 24, 28?",
+      options: ["26", "24", "25", "23"],
+      correctIndex: 1,
+      explanation: "Soma dos números: 72. Média = 72 ÷ 3 = 24."
+    },
+    {
+      id: 846,
+      question: "Qual é a média aritmética dos números: 12, 28, 4, 16?",
+      options: ["17", "15", "14", "16"],
+      correctIndex: 1,
+      explanation: "Soma dos números: 60. Média = 60 ÷ 4 = 15."
+    },
+    {
+      id: 847,
+      question: "Qual é a média aritmética dos números: 10, 76, 100?",
+      options: ["64", "61", "62", "63"],
+      correctIndex: 2,
+      explanation: "Soma dos números: 186. Média = 186 ÷ 3 = 62."
+    },
+    {
+      id: 848,
+      question: "Qual é a média aritmética dos números: 1, 35, 44, 85, 100?",
+      options: ["52", "54", "55", "53"],
+      correctIndex: 3,
+      explanation: "Soma dos números: 265. Média = 265 ÷ 5 = 53."
+    },
+    {
+      id: 849,
+      question: "Qual é a média aritmética dos números: 42, 35, 24, 18, 16?",
+      options: ["28", "26", "29", "27"],
+      correctIndex: 3,
+      explanation: "Soma dos números: 135. Média = 135 ÷ 5 = 27."
+    },
+    {
+      id: 850,
+      question: "Qual é a média aritmética dos números: 20, 64, 28, 32, 16?",
+      options: ["31", "34", "32", "33"],
+      correctIndex: 2,
+      explanation: "Soma dos números: 160. Média = 160 ÷ 5 = 32."
+    },
+    {
+      id: 851,
+      question: "Qual é a média aritmética dos números: 8, 20, 40, 60?",
+      options: ["34", "32", "31", "33"],
+      correctIndex: 1,
+      explanation: "Soma dos números: 128. Média = 128 ÷ 4 = 32."
+    },
+    {
+      id: 852,
+      question: "Qual é a média aritmética dos números: 8, 8, 65, 27?",
+      options: ["27", "29", "28", "26"],
+      correctIndex: 0,
+      explanation: "Soma dos números: 108. Média = 108 ÷ 4 = 27."
+    },
+    {
+      id: 853,
+      question: "Qual é a média aritmética dos números: 12, 36, 12?",
+      options: ["22", "19", "20", "21"],
+      correctIndex: 2,
+      explanation: "Soma dos números: 60. Média = 60 ÷ 3 = 20."
+    },
+    {
+      id: 854,
+      question: "Qual é a média aritmética dos números: 36, 18, 8, 6?",
+      options: ["17", "19", "18", "16"],
+      correctIndex: 0,
+      explanation: "Soma dos números: 68. Média = 68 ÷ 4 = 17."
+    },
+    {
+      id: 855,
+      question: "Qual é a média aritmética dos números: 38, 8, 30, 33, 76?",
+      options: ["36", "38", "37", "39"],
+      correctIndex: 2,
+      explanation: "Soma dos números: 185. Média = 185 ÷ 5 = 37."
+    },
+    {
+      id: 856,
+      question: "Qual é a média aritmética dos números: 9, 15, 9?",
+      options: ["11", "12", "13", "10"],
+      correctIndex: 0,
+      explanation: "Soma dos números: 33. Média = 33 ÷ 3 = 11."
+    },
+    {
+      id: 857,
+      question: "Qual é a média aritmética dos números: 12, 30, 48, 10?",
+      options: ["24", "27", "25", "26"],
+      correctIndex: 2,
+      explanation: "Soma dos números: 100. Média = 100 ÷ 4 = 25."
+    },
+    {
+      id: 858,
+      question: "Qual é a média aritmética dos números: 3, 8, 25, 20, 14?",
+      options: ["14", "15", "13", "16"],
+      correctIndex: 0,
+      explanation: "Soma dos números: 70. Média = 70 ÷ 5 = 14."
+    },
+    {
+      id: 859,
+      question: "Qual é a média aritmética dos números: 12, 25, 11?",
+      options: ["15", "16", "18", "17"],
+      correctIndex: 1,
+      explanation: "Soma dos números: 48. Média = 48 ÷ 3 = 16."
+    },
+    {
+      id: 860,
+      question: "Qual é a média aritmética dos números: 15, 8, 40?",
+      options: ["21", "23", "22", "20"],
+      correctIndex: 0,
+      explanation: "Soma dos números: 63. Média = 63 ÷ 3 = 21."
+    },
+    {
+      id: 861,
+      question: "Qual é a média aritmética dos números: 15, 30, 7, 48, 15?",
+      options: ["22", "24", "25", "23"],
+      correctIndex: 3,
+      explanation: "Soma dos números: 115. Média = 115 ÷ 5 = 23."
+    },
+    {
+      id: 862,
+      question: "Qual é a média aritmética dos números: 39, 3, 24?",
+      options: ["23", "21", "24", "22"],
+      correctIndex: 3,
+      explanation: "Soma dos números: 66. Média = 66 ÷ 3 = 22."
+    },
+    {
+      id: 863,
+      question: "Qual é a média aritmética dos números: 40, 26, 60?",
+      options: ["44", "43", "42", "41"],
+      correctIndex: 2,
+      explanation: "Soma dos números: 126. Média = 126 ÷ 3 = 42."
+    },
+    {
+      id: 864,
+      question: "Qual é a média aritmética dos números: 20, 85, 72?",
+      options: ["60", "58", "61", "59"],
+      correctIndex: 3,
+      explanation: "Soma dos números: 177. Média = 177 ÷ 3 = 59."
+    },
+    {
+      id: 865,
+      question: "Qual é a média aritmética dos números: 90, 50, 7?",
+      options: ["48", "51", "50", "49"],
+      correctIndex: 3,
+      explanation: "Soma dos números: 147. Média = 147 ÷ 3 = 49."
+    },
+    {
+      id: 866,
+      question: "Qual é a média aritmética dos números: 25, 18, 14?",
+      options: ["18", "21", "19", "20"],
+      correctIndex: 2,
+      explanation: "Soma dos números: 57. Média = 57 ÷ 3 = 19."
+    },
+    {
+      id: 867,
+      question: "Qual é a média aritmética dos números: 19, 68, 18?",
+      options: ["37", "34", "36", "35"],
+      correctIndex: 3,
+      explanation: "Soma dos números: 105. Média = 105 ÷ 3 = 35."
+    },
+    {
+      id: 868,
+      question: "Qual é a média aritmética dos números: 10, 28, 9, 30, 18?",
+      options: ["21", "20", "19", "18"],
+      correctIndex: 2,
+      explanation: "Soma dos números: 95. Média = 95 ÷ 5 = 19."
+    },
+    {
+      id: 869,
+      question: "Qual é a média aritmética dos números: 36, 21, 12?",
+      options: ["24", "25", "22", "23"],
+      correctIndex: 3,
+      explanation: "Soma dos números: 69. Média = 69 ÷ 3 = 23."
+    },
+    {
+      id: 870,
+      question: "Qual é a média aritmética dos números: 11, 3, 45, 57?",
+      options: ["30", "29", "28", "31"],
+      correctIndex: 1,
+      explanation: "Soma dos números: 116. Média = 116 ÷ 4 = 29."
+    },
+    {
+      id: 871,
+      question: "Complete a sequência: 1, 7, 8, 15, 23, ? (cada número é a soma dos dois anteriores)",
+      options: ["39", "38", "37", "40"],
+      correctIndex: 1,
+      explanation: "15 + 23 = 38."
+    },
+    {
+      id: 872,
+      question: "Complete a sequência: 2, 1, 3, 4, 7, ? (cada número é a soma dos dois anteriores)",
+      options: ["10", "11", "13", "12"],
+      correctIndex: 1,
+      explanation: "4 + 7 = 11."
+    },
+    {
+      id: 873,
+      question: "Complete a sequência: 8, 3, 11, 14, 25, ? (cada número é a soma dos dois anteriores)",
+      options: ["40", "39", "38", "41"],
+      correctIndex: 1,
+      explanation: "14 + 25 = 39."
+    },
+    {
+      id: 874,
+      question: "Complete a sequência: 5, 8, 13, 21, 34, ? (cada número é a soma dos dois anteriores)",
+      options: ["54", "56", "57", "55"],
+      correctIndex: 3,
+      explanation: "21 + 34 = 55."
+    },
+    {
+      id: 875,
+      question: "Complete a sequência: 10, 10, 20, 30, 50, ? (cada número é a soma dos dois anteriores)",
+      options: ["80", "81", "82", "79"],
+      correctIndex: 0,
+      explanation: "30 + 50 = 80."
+    },
+    {
+      id: 876,
+      question: "Complete a sequência: 8, 7, 15, 22, 37, ? (cada número é a soma dos dois anteriores)",
+      options: ["61", "60", "58", "59"],
+      correctIndex: 3,
+      explanation: "22 + 37 = 59."
+    },
+    {
+      id: 877,
+      question: "Complete a sequência: 9, 7, 16, 23, 39, ? (cada número é a soma dos dois anteriores)",
+      options: ["63", "62", "61", "64"],
+      correctIndex: 1,
+      explanation: "23 + 39 = 62."
+    },
+    {
+      id: 878,
+      question: "Complete a sequência: 4, 7, 11, 18, 29, ? (cada número é a soma dos dois anteriores)",
+      options: ["46", "49", "47", "48"],
+      correctIndex: 2,
+      explanation: "18 + 29 = 47."
+    },
+    {
+      id: 879,
+      question: "Complete a sequência: 3, 4, 7, 11, 18, ? (cada número é a soma dos dois anteriores)",
+      options: ["29", "31", "28", "30"],
+      correctIndex: 0,
+      explanation: "11 + 18 = 29."
+    },
+    {
+      id: 880,
+      question: "Complete a sequência: 2, 5, 7, 12, 19, ? (cada número é a soma dos dois anteriores)",
+      options: ["32", "33", "31", "30"],
+      correctIndex: 2,
+      explanation: "12 + 19 = 31."
+    },
+    {
+      id: 881,
+      question: "Complete a sequência: 7, 2, 9, 11, 20, ? (cada número é a soma dos dois anteriores)",
+      options: ["32", "33", "31", "30"],
+      correctIndex: 2,
+      explanation: "11 + 20 = 31."
+    },
+    {
+      id: 882,
+      question: "Complete a sequência: 6, 8, 14, 22, 36, ? (cada número é a soma dos dois anteriores)",
+      options: ["58", "57", "59", "60"],
+      correctIndex: 0,
+      explanation: "22 + 36 = 58."
+    },
+    {
+      id: 883,
+      question: "Complete a sequência: 10, 3, 13, 16, 29, ? (cada número é a soma dos dois anteriores)",
+      options: ["46", "45", "44", "47"],
+      correctIndex: 1,
+      explanation: "16 + 29 = 45."
+    },
+    {
+      id: 884,
+      question: "Complete a sequência: 7, 9, 16, 25, 41, ? (cada número é a soma dos dois anteriores)",
+      options: ["66", "67", "68", "65"],
+      correctIndex: 0,
+      explanation: "25 + 41 = 66."
+    },
+    {
+      id: 885,
+      question: "Complete a sequência: 7, 4, 11, 15, 26, ? (cada número é a soma dos dois anteriores)",
+      options: ["43", "41", "42", "40"],
+      correctIndex: 1,
+      explanation: "15 + 26 = 41."
+    },
+    {
+      id: 886,
+      question: "Complete a sequência: 1, 8, 9, 17, 26, ? (cada número é a soma dos dois anteriores)",
+      options: ["43", "42", "44", "45"],
+      correctIndex: 0,
+      explanation: "17 + 26 = 43."
+    },
+    {
+      id: 887,
+      question: "Complete a sequência: 7, 10, 17, 27, 44, ? (cada número é a soma dos dois anteriores)",
+      options: ["70", "71", "73", "72"],
+      correctIndex: 1,
+      explanation: "27 + 44 = 71."
+    },
+    {
+      id: 888,
+      question: "Complete a sequência: 6, 5, 11, 16, 27, ? (cada número é a soma dos dois anteriores)",
+      options: ["42", "44", "43", "45"],
+      correctIndex: 2,
+      explanation: "16 + 27 = 43."
+    },
+    {
+      id: 889,
+      question: "Complete a sequência: 6, 4, 10, 14, 24, ? (cada número é a soma dos dois anteriores)",
+      options: ["40", "39", "37", "38"],
+      correctIndex: 3,
+      explanation: "14 + 24 = 38."
+    },
+    {
+      id: 890,
+      question: "Complete a sequência: 4, 10, 14, 24, 38, ? (cada número é a soma dos dois anteriores)",
+      options: ["64", "61", "62", "63"],
+      correctIndex: 2,
+      explanation: "24 + 38 = 62."
+    },
+    {
+      id: 891,
+      question: "Complete a sequência: 5, 4, 9, 13, 22, ? (cada número é a soma dos dois anteriores)",
+      options: ["35", "34", "36", "37"],
+      correctIndex: 0,
+      explanation: "13 + 22 = 35."
+    },
+    {
+      id: 892,
+      question: "Complete a sequência: 10, 5, 15, 20, 35, ? (cada número é a soma dos dois anteriores)",
+      options: ["56", "57", "54", "55"],
+      correctIndex: 3,
+      explanation: "20 + 35 = 55."
+    },
+    {
+      id: 893,
+      question: "Complete a sequência: 10, 7, 17, 24, 41, ? (cada número é a soma dos dois anteriores)",
+      options: ["65", "66", "64", "67"],
+      correctIndex: 0,
+      explanation: "24 + 41 = 65."
+    },
+    {
+      id: 894,
+      question: "Complete a sequência: 5, 2, 7, 9, 16, ? (cada número é a soma dos dois anteriores)",
+      options: ["24", "26", "25", "27"],
+      correctIndex: 2,
+      explanation: "9 + 16 = 25."
+    },
+    {
+      id: 895,
+      question: "Complete a sequência: 8, 2, 10, 12, 22, ? (cada número é a soma dos dois anteriores)",
+      options: ["36", "34", "33", "35"],
+      correctIndex: 1,
+      explanation: "12 + 22 = 34."
+    },
+    {
+      id: 896,
+      question: "Qual é o maior órgão do corpo humano?",
+      options: ["O fígado", "A pele", "O intestino", "O pulmão"],
+      correctIndex: 1,
+      explanation: "A pele é o maior órgão do corpo humano, responsável pela proteção externa."
+    },
+    {
+      id: 897,
+      question: "Em que país se originou o sushi?",
+      options: ["China", "Coreia do Sul", "Japão", "Tailândia"],
+      correctIndex: 2,
+      explanation: "O sushi é um prato tradicional japonês."
+    },
+    {
+      id: 898,
+      question: "Qual é a capital da Espanha?",
+      options: ["Barcelona", "Madri", "Sevilha", "Valência"],
+      correctIndex: 1,
+      explanation: "Madri é a capital e maior cidade da Espanha."
+    },
+    {
+      id: 899,
+      question: "Quem escreveu 'Os Lusíadas'?",
+      options: ["Fernando Pessoa", "Luís de Camões", "José Saramago", "Eça de Queirós"],
+      correctIndex: 1,
+      explanation: "'Os Lusíadas' é um poema épico escrito por Luís de Camões no século XVI."
+    },
+    {
+      id: 900,
+      question: "Qual é o animal símbolo da Austrália, que carrega os filhotes na bolsa?",
+      options: ["O coala", "O canguru", "O wombat", "O dingo"],
+      correctIndex: 1,
+      explanation: "O canguru é um marsupial símbolo da fauna australiana."
+    },
+    {
+      id: 901,
+      question: "Aproximadamente quantos ossos tem a coluna vertebral humana?",
+      options: ["24", "33", "40", "50"],
+      correctIndex: 1,
+      explanation: "A coluna vertebral humana é formada por cerca de 33 vértebras."
+    },
+    {
+      id: 902,
+      question: "Qual é a maior ilha do mundo?",
+      options: ["Madagascar", "Groenlândia", "Bornéu", "Sumatra"],
+      correctIndex: 1,
+      explanation: "A Groenlândia é a maior ilha do mundo em área."
+    },
+    {
+      id: 903,
+      question: "Em que ano o Brasil se tornou independente de Portugal?",
+      options: ["1808", "1822", "1889", "1500"],
+      correctIndex: 1,
+      explanation: "A independência do Brasil foi proclamada por Dom Pedro I em 1822."
+    },
+    {
+      id: 904,
+      question: "Qual metal, conhecido pelo brilho amarelo, é muito usado em joias?",
+      options: ["O bronze", "A prata", "O ouro", "O cobre"],
+      correctIndex: 2,
+      explanation: "O ouro é valorizado por seu brilho característico e é amplamente usado em joalheria."
+    },
+    {
+      id: 905,
+      question: "Quantas patas tem um inseto, em geral?",
+      options: ["4", "6", "8", "10"],
+      correctIndex: 1,
+      explanation: "Insetos são artrópodes que possuem 6 patas."
+    },
+    {
+      id: 906,
+      question: "Qual é o maior rio da Europa em extensão?",
+      options: ["Reno", "Danúbio", "Volga", "Sena"],
+      correctIndex: 2,
+      explanation: "O rio Volga, na Rússia, é o maior rio da Europa em extensão."
+    },
+    {
+      id: 907,
+      question: "Quem foi o primeiro ser humano a viajar ao espaço?",
+      options: ["Neil Armstrong", "Yuri Gagarin", "Buzz Aldrin", "John Glenn"],
+      correctIndex: 1,
+      explanation: "O cosmonauta soviético Yuri Gagarin foi o primeiro humano a ir ao espaço, em 1961."
+    },
+    {
+      id: 908,
+      question: "Qual é a capital de Portugal?",
+      options: ["Porto", "Lisboa", "Coimbra", "Faro"],
+      correctIndex: 1,
+      explanation: "Lisboa é a capital de Portugal."
+    },
+    {
+      id: 909,
+      question: "Quantos átomos de hidrogênio tem uma molécula de água (H₂O)?",
+      options: ["1", "2", "3", "4"],
+      correctIndex: 1,
+      explanation: "A fórmula H₂O indica 2 átomos de hidrogênio e 1 de oxigênio."
+    },
+    {
+      id: 910,
+      question: "Qual é o esporte mais praticado no mundo?",
+      options: ["O basquete", "O futebol", "O tênis", "O vôlei"],
+      correctIndex: 1,
+      explanation: "O futebol é considerado o esporte com mais praticantes e fãs no mundo todo."
+    },
+    {
+      id: 911,
+      question: "Em que órgão do corpo humano o sangue é filtrado?",
+      options: ["O fígado", "O coração", "Os rins", "O baço"],
+      correctIndex: 2,
+      explanation: "Os rins filtram o sangue, removendo toxinas e excesso de líquido, que formam a urina."
+    },
+    {
+      id: 912,
+      question: "Qual é a montanha mais alta da América do Sul?",
+      options: ["Chimborazo", "Aconcágua", "Pico da Neblina", "Cotopaxi"],
+      correctIndex: 1,
+      explanation: "O Aconcágua, na Argentina, é o ponto mais alto da América do Sul e também do hemisfério ocidental."
+    },
+    {
+      id: 913,
+      question: "Quantos lados tem um pentágono?",
+      options: ["4", "5", "6", "7"],
+      correctIndex: 1,
+      explanation: "O prefixo 'penta' significa cinco — um pentágono tem 5 lados."
+    },
+    {
+      id: 914,
+      question: "Qual civilização antiga construiu as pirâmides de Gizé?",
+      options: ["Os romanos", "Os egípcios", "Os maias", "Os gregos"],
+      correctIndex: 1,
+      explanation: "As pirâmides de Gizé foram construídas pelos antigos egípcios há milhares de anos."
+    },
+    {
+      id: 915,
+      question: "Qual é o idioma oficial mais falado como nativo na América Latina?",
+      options: ["O português", "O espanhol", "O inglês", "O francês"],
+      correctIndex: 1,
+      explanation: "O espanhol é o idioma nativo de mais países e falantes na América Latina."
+    },
+    {
+      id: 916,
+      question: "Quem pintou o teto da Capela Sistina?",
+      options: ["Rafael", "Michelangelo", "Leonardo da Vinci", "Ticiano"],
+      correctIndex: 1,
+      explanation: "Michelangelo pintou os afrescos do teto da Capela Sistina no início do século XVI."
+    },
+    {
+      id: 917,
+      question: "Qual país tem o formato de uma bota na Europa?",
+      options: ["Grécia", "Itália", "Espanha", "Croácia"],
+      correctIndex: 1,
+      explanation: "A Itália é famosa por seu território com formato semelhante a uma bota."
+    },
+    {
+      id: 918,
+      question: "Qual é a capital da Alemanha?",
+      options: ["Munique", "Frankfurt", "Berlim", "Hamburgo"],
+      correctIndex: 2,
+      explanation: "Berlim é a capital da Alemanha."
+    },
+    {
+      id: 919,
+      question: "Quem formulou a teoria da relatividade?",
+      options: ["Isaac Newton", "Albert Einstein", "Galileu Galilei", "Niels Bohr"],
+      correctIndex: 1,
+      explanation: "Albert Einstein desenvolveu a teoria da relatividade no início do século XX."
+    },
+    {
+      id: 920,
+      question: "Qual é o maior deserto frio do mundo?",
+      options: ["O Ártico", "O Saara", "A Antártida", "O Gobi"],
+      correctIndex: 2,
+      explanation: "A Antártida é tecnicamente classificada como o maior deserto do mundo, por sua baixíssima precipitação."
+    },
+    {
+      id: 921,
+      question: "Quantos jogadores de cada time ficam em quadra em uma partida de vôlei?",
+      options: ["5", "6", "7", "8"],
+      correctIndex: 1,
+      explanation: "Cada time de vôlei tem 6 jogadores em quadra."
+    },
+    {
+      id: 922,
+      question: "Qual é a moeda usada pela maioria dos países da União Europeia?",
+      options: ["A libra", "O franco", "O euro", "O marco"],
+      correctIndex: 2,
+      explanation: "O euro é a moeda oficial adotada pela maioria dos países da União Europeia."
+    },
+    {
+      id: 923,
+      question: "Em que continente vivem os pinguins-imperadores em estado selvagem?",
+      options: ["América do Sul", "Antártida", "Ásia", "Oceania"],
+      correctIndex: 1,
+      explanation: "Os pinguins-imperadores habitam naturalmente a Antártida."
+    },
+    {
+      id: 924,
+      question: "Qual foi o primeiro satélite artificial lançado ao espaço?",
+      options: ["Explorer 1", "Sputnik 1", "Voyager 1", "Apollo 1"],
+      correctIndex: 1,
+      explanation: "O Sputnik 1, lançado pela União Soviética em 1957, foi o primeiro satélite artificial da história."
+    },
+    {
+      id: 925,
+      question: "Quantas cordas tem um violino tradicional?",
+      options: ["4", "5", "6", "3"],
+      correctIndex: 0,
+      explanation: "O violino tradicional possui 4 cordas."
+    },
+    {
+      id: 926,
+      question: "Qual é a capital da Rússia?",
+      options: ["São Petersburgo", "Moscou", "Kiev", "Minsk"],
+      correctIndex: 1,
+      explanation: "Moscou é a capital da Rússia."
+    },
+    {
+      id: 927,
+      question: "Quem foi o principal autor da Declaração de Independência dos Estados Unidos?",
+      options: ["George Washington", "Thomas Jefferson", "Benjamin Franklin", "Abraham Lincoln"],
+      correctIndex: 1,
+      explanation: "Thomas Jefferson foi o principal redator da Declaração de Independência americana, em 1776."
+    },
+    {
+      id: 928,
+      question: "Qual é o animal mais alto do mundo?",
+      options: ["O elefante", "A girafa", "O avestruz", "O camelo"],
+      correctIndex: 1,
+      explanation: "A girafa é o animal terrestre mais alto do mundo, podendo ultrapassar 5 metros."
+    },
+    {
+      id: 929,
+      question: "Quantos minutos dura, em média, cada quarto de uma partida da NBA?",
+      options: ["10", "12", "15", "20"],
+      correctIndex: 1,
+      explanation: "Cada um dos 4 quartos de uma partida da NBA tem 12 minutos."
+    },
+    {
+      id: 930,
+      question: "Qual é o maior lago de água doce do mundo em volume?",
+      options: ["Lago Superior", "Lago Vitória", "Lago Baikal", "Lago Titicaca"],
+      correctIndex: 2,
+      explanation: "O Lago Baikal, na Rússia, contém o maior volume de água doce do mundo."
+    },
+    {
+      id: 931,
+      question: "Em que país se originou a pizza margherita?",
+      options: ["França", "Itália", "Grécia", "Espanha"],
+      correctIndex: 1,
+      explanation: "A pizza margherita foi criada em Nápoles, na Itália."
+    },
+    {
+      id: 932,
+      question: "Como se chama o processo pelo qual as plantas produzem seu próprio alimento usando luz solar?",
+      options: ["Respiração", "Fotossíntese", "Germinação", "Fermentação"],
+      correctIndex: 1,
+      explanation: "A fotossíntese é o processo que permite às plantas converter luz solar em energia química."
+    },
+    {
+      id: 933,
+      question: "Aproximadamente quantos ossos tem a mão humana, incluindo o pulso?",
+      options: ["19", "27", "33", "40"],
+      correctIndex: 1,
+      explanation: "A mão humana tem cerca de 27 ossos, contando os do pulso, palma e dedos."
+    },
+    {
+      id: 934,
+      question: "Qual é a capital do Egito?",
+      options: ["Alexandria", "Cairo", "Luxor", "Gizé"],
+      correctIndex: 1,
+      explanation: "Cairo é a capital e maior cidade do Egito."
+    },
+    {
+      id: 935,
+      question: "Quem foi o primeiro imperador do Brasil?",
+      options: ["Dom João VI", "Dom Pedro I", "Dom Pedro II", "Marechal Deodoro"],
+      correctIndex: 1,
+      explanation: "Dom Pedro I tornou-se o primeiro imperador do Brasil após a independência, em 1822."
+    },
+    {
+      id: 936,
+      question: "Qual é o maior primata do mundo?",
+      options: ["O chimpanzé", "O orangotango", "O gorila", "O babuíno"],
+      correctIndex: 2,
+      explanation: "O gorila é o maior primata vivo do mundo."
+    },
+    {
+      id: 937,
+      question: "Quantas horas tem um dia na Terra?",
+      options: ["12", "24", "36", "48"],
+      correctIndex: 1,
+      explanation: "Um dia na Terra, definido pela rotação do planeta, tem 24 horas."
+    },
+    {
+      id: 938,
+      question: "Como se chama a camada mais externa e sólida da Terra, onde vivemos?",
+      options: ["O manto", "O núcleo", "A crosta terrestre", "A atmosfera"],
+      correctIndex: 2,
+      explanation: "A crosta terrestre é a camada sólida mais externa do planeta."
+    },
+    {
+      id: 939,
+      question: "Em qual esporte se usa o termo 'xeque-mate'?",
+      options: ["Damas", "Xadrez", "Dominó", "Buraco"],
+      correctIndex: 1,
+      explanation: "'Xeque-mate' é o termo usado no xadrez para indicar o fim do jogo."
+    },
+    {
+      id: 940,
+      question: "Qual é o maior anfíbio do mundo?",
+      options: ["O sapo-boi", "A salamandra-gigante-chinesa", "A rã-touro", "O axolote"],
+      correctIndex: 1,
+      explanation: "A salamandra-gigante-chinesa é considerada o maior anfíbio vivo do mundo."
+    },
+    {
+      id: 941,
+      question: "Quantos planetas do sistema solar possuem anéis visíveis?",
+      options: ["2", "3", "4", "5"],
+      correctIndex: 2,
+      explanation: "Júpiter, Saturno, Urano e Netuno possuem sistemas de anéis, totalizando 4 planetas."
+    },
+    {
+      id: 942,
+      question: "Qual é a capital da China?",
+      options: ["Xangai", "Pequim", "Hong Kong", "Cantão"],
+      correctIndex: 1,
+      explanation: "Pequim é a capital da China."
+    },
+    {
+      id: 943,
+      question: "Quem compôs a 'Nona Sinfonia'?",
+      options: ["Mozart", "Bach", "Ludwig van Beethoven", "Chopin"],
+      correctIndex: 2,
+      explanation: "A 'Nona Sinfonia' é uma das obras mais célebres de Ludwig van Beethoven."
+    },
+    {
+      id: 944,
+      question: "Qual é o menor planeta do sistema solar?",
+      options: ["Marte", "Vênus", "Mercúrio", "Plutão"],
+      correctIndex: 2,
+      explanation: "Mercúrio é o menor e mais próximo planeta do Sol no sistema solar."
+    },
+    {
+      id: 945,
+      question: "Quantos dias tem um ano bissexto?",
+      options: ["364", "365", "366", "367"],
+      correctIndex: 2,
+      explanation: "Um ano bissexto tem 366 dias, com um dia extra em fevereiro."
+    },
+    {
+      id: 946,
+      question: "Qual é o maior felino do mundo?",
+      options: ["O leão", "O tigre", "O jaguar", "A onça-pintada"],
+      correctIndex: 1,
+      explanation: "O tigre é considerado o maior felino do mundo em tamanho e peso."
+    },
+    {
+      id: 947,
+      question: "Em que país fica o Taj Mahal?",
+      options: ["Paquistão", "Índia", "Bangladesh", "Nepal"],
+      correctIndex: 1,
+      explanation: "O Taj Mahal está localizado na cidade de Agra, na Índia."
+    },
+    {
+      id: 948,
+      question: "Qual é a capital do México?",
+      options: ["Guadalajara", "Cidade do México", "Cancún", "Monterrey"],
+      correctIndex: 1,
+      explanation: "A Cidade do México é a capital do país."
+    },
+    {
+      id: 949,
+      question: "Quantas cores primárias existem na pintura tradicional?",
+      options: ["2", "3", "4", "5"],
+      correctIndex: 1,
+      explanation: "As três cores primárias tradicionais são vermelho, azul e amarelo."
+    },
+    {
+      id: 950,
+      question: "Qual gás as plantas absorvem durante a fotossíntese?",
+      options: ["Oxigênio", "Nitrogênio", "Dióxido de carbono", "Hidrogênio"],
+      correctIndex: 2,
+      explanation: "As plantas absorvem dióxido de carbono (CO₂) e liberam oxigênio durante a fotossíntese."
+    },
+    {
+      id: 951,
+      question: "Quem liderou o movimento de resistência pacífica contra o domínio britânico na Índia?",
+      options: ["Nelson Mandela", "Mahatma Gandhi", "Martin Luther King", "Jawaharlal Nehru"],
+      correctIndex: 1,
+      explanation: "Mahatma Gandhi liderou o movimento de independência indiano por meio da resistência pacífica."
+    },
+    {
+      id: 952,
+      question: "Qual é o maior arquipélago do mundo em número de ilhas?",
+      options: ["Filipinas", "Japão", "Indonésia", "Grécia"],
+      correctIndex: 2,
+      explanation: "A Indonésia é formada por milhares de ilhas, sendo o maior arquipélago do mundo."
+    },
+    {
+      id: 953,
+      question: "Quantos sentidos básicos o ser humano possui, segundo a classificação tradicional?",
+      options: ["3", "4", "5", "6"],
+      correctIndex: 2,
+      explanation: "Os 5 sentidos tradicionais são: visão, audição, olfato, paladar e tato."
+    },
+    {
+      id: 954,
+      question: "Qual é o planeta mais próximo do Sol?",
+      options: ["Vênus", "Terra", "Mercúrio", "Marte"],
+      correctIndex: 2,
+      explanation: "Mercúrio é o planeta mais próximo do Sol no sistema solar."
+    },
+    {
+      id: 955,
+      question: "Qual é a capital da Grécia?",
+      options: ["Atenas", "Esparta", "Tessalônica", "Creta"],
+      correctIndex: 0,
+      explanation: "Atenas é a capital da Grécia e um dos berços da civilização ocidental."
+    },
+    {
+      id: 956,
+      question: "Charada: tenho braços, mas não abraço; me abro quando chove. O que sou?",
+      options: ["Um casaco", "Um guarda-chuva", "Uma capa de chuva", "Uma sombrinha de praia"],
+      correctIndex: 1,
+      explanation: "O guarda-chuva se abre para proteger da chuva, apesar de ter 'braços' (varetas)."
+    },
+    {
+      id: 957,
+      question: "Charada: empurro tudo no meu caminho, mas ninguém consegue me ver. O que sou?",
+      options: ["A gravidade", "O vento", "O tempo", "O som"],
+      correctIndex: 1,
+      explanation: "O vento é invisível, mas sua força pode mover objetos."
+    },
+    {
+      id: 958,
+      question: "Charada: tenho língua, mas não falo; tenho sola, mas não ando sozinho. O que sou?",
+      options: ["Uma meia", "Um sapato", "Uma luva", "Um boné"],
+      correctIndex: 1,
+      explanation: "O sapato tem 'língua' (parte interna) e 'sola', mas não se move sem alguém calçá-lo."
+    },
+    {
+      id: 959,
+      question: "Charada: entro na sua boca todos os dias, mas nunca sou engolida. O que sou?",
+      options: ["Uma colher", "Uma escova de dentes", "Uma pastilha", "Um talher"],
+      correctIndex: 1,
+      explanation: "A escova de dentes é usada dentro da boca diariamente, mas nunca é engolida."
+    },
+    {
+      id: 960,
+      question: "Charada: faço espuma, mas não sou refrigerante; deixo você limpo. O que sou?",
+      options: ["O sabão", "A esponja", "O xampu", "A toalha"],
+      correctIndex: 0,
+      explanation: "O sabão faz espuma ao entrar em contato com água, ajudando na limpeza."
+    },
+    {
+      id: 961,
+      question: "Charada: mostro seu rosto, mas não sou uma câmera; posso quebrar em mil pedaços. O que sou?",
+      options: ["Uma foto", "Um espelho", "Uma tela", "Um retrato"],
+      correctIndex: 1,
+      explanation: "O espelho reflete sua imagem e pode se estilhaçar se for quebrado."
+    },
+    {
+      id: 962,
+      question: "Charada: tenho duas rodas, e você pedala para eu andar. O que sou?",
+      options: ["Uma moto", "Uma bicicleta", "Um patinete", "Um triciclo"],
+      correctIndex: 1,
+      explanation: "A bicicleta tem duas rodas e é movida pela pedalada de quem a usa."
+    },
+    {
+      id: 963,
+      question: "Charada: tenho cordas, mas não sirvo para amarrar nada; faço música quando dedilhado. O que sou?",
+      options: ["Um violão", "Um tambor", "Uma flauta", "Um pandeiro"],
+      correctIndex: 0,
+      explanation: "O violão produz música por meio de suas cordas, que são dedilhadas ou tocadas com palheta."
+    },
+    {
+      id: 964,
+      question: "Charada: fico no fogo, mas não me queimo; ajudo a cozinhar sua comida. O que sou?",
+      options: ["Uma panela", "Uma faca", "Uma tábua", "Uma colher de pau"],
+      correctIndex: 0,
+      explanation: "A panela é feita para resistir ao fogo e cozinhar os alimentos."
+    },
+    {
+      id: 965,
+      question: "Charada: sou fria por dentro mesmo no calor do verão, e guardo sua comida fresca. O que sou?",
+      options: ["Uma caixa térmica", "Uma geladeira", "Um freezer", "Uma adega"],
+      correctIndex: 1,
+      explanation: "A geladeira mantém uma temperatura baixa por dentro para conservar alimentos."
+    },
+    {
+      id: 966,
+      question: "Charada: sou quente por dentro, e é graças a mim que seu bolo fica pronto. O que sou?",
+      options: ["Um fogão", "Um forno", "Uma panela de pressão", "Uma air fryer"],
+      correctIndex: 1,
+      explanation: "O forno assa alimentos usando calor concentrado em seu interior."
+    },
+    {
+      id: 967,
+      question: "Charada: solto fumaça sem fumar, e fico no telhado das casas antigas. O que sou?",
+      options: ["Uma chaminé", "Uma antena", "Um para-raios", "Uma clarabóia"],
+      correctIndex: 0,
+      explanation: "A chaminé permite a saída da fumaça produzida por lareiras ou fogões antigos."
+    },
+    {
+      id: 968,
+      question: "Charada: durmo por anos, mas quando acordo, posso cuspir fogo e cinzas. O que sou?",
+      options: ["Um dragão", "Um vulcão", "Uma fogueira", "Um forno"],
+      correctIndex: 1,
+      explanation: "Um vulcão pode ficar 'adormecido' por longos períodos antes de entrar em erupção."
+    },
+    {
+      id: 969,
+      question: "Charada: sou o melhor amigo do homem e abano o rabo quando estou feliz. O que sou?",
+      options: ["Um gato", "Um cachorro", "Um coelho", "Um papagaio"],
+      correctIndex: 1,
+      explanation: "O cachorro é conhecido como o 'melhor amigo do homem' e costuma abanar o rabo quando contente."
+    },
+    {
+      id: 970,
+      question: "Charada: ronrono quando estou feliz e caço ratos à noite. O que sou?",
+      options: ["Um gato", "Uma coruja", "Um furão", "Um lince"],
+      correctIndex: 0,
+      explanation: "O gato é conhecido por ronronar e caçar pequenos roedores."
+    },
+    {
+      id: 971,
+      question: "Charada: faço mel e posso picar se me incomodarem. O que sou?",
+      options: ["Uma vespa", "Uma abelha", "Uma mosca", "Uma formiga"],
+      correctIndex: 1,
+      explanation: "A abelha produz mel e possui ferrão para se defender."
+    },
+    {
+      id: 972,
+      question: "Charada: sou pequena, mas carrego coisas muito maiores que eu nas costas. O que sou?",
+      options: ["Uma formiga", "Uma barata", "Uma lagarta", "Uma joaninha"],
+      correctIndex: 0,
+      explanation: "As formigas são conhecidas por conseguir carregar objetos muitas vezes maiores que seu próprio corpo."
+    },
+    {
+      id: 973,
+      question: "Charada: tenho 8 pernas e teço minha própria casa no ar. O que sou?",
+      options: ["Um escorpião", "Uma aranha", "Um caranguejo", "Um polvo"],
+      correctIndex: 1,
+      explanation: "A aranha tem 8 pernas e tece teias para viver e caçar."
+    },
+    {
+      id: 974,
+      question: "Charada: tenho camadas como um livro, mas faço você chorar ao me cortar. O que sou?",
+      options: ["Um repolho", "Uma cebola", "Um alho", "Uma alface"],
+      correctIndex: 1,
+      explanation: "A cebola libera um gás irritante ao ser cortada, causando lágrimas."
+    },
+    {
+      id: 975,
+      question: "Charada: sou pequeno e forte, deixo o hálito com cheiro marcante depois que me comem. O que sou?",
+      options: ["O gengibre", "O alho", "A pimenta", "O cravo"],
+      correctIndex: 1,
+      explanation: "O alho é conhecido por deixar um odor forte no hálito."
+    },
+    {
+      id: 976,
+      question: "Charada: sou escuro e quente pela manhã, e deixo você mais desperto. O que sou?",
+      options: ["O chá", "O café", "O chocolate quente", "O leite"],
+      correctIndex: 1,
+      explanation: "O café é uma bebida estimulante tradicionalmente consumida pela manhã."
+    },
+    {
+      id: 977,
+      question: "Charada: sou branco e doce, mas em excesso faço mal aos dentes. O que sou?",
+      options: ["O sal", "O açúcar", "O leite em pó", "O arroz"],
+      correctIndex: 1,
+      explanation: "O açúcar em excesso pode contribuir para cáries e outros problemas dentários."
+    },
+    {
+      id: 978,
+      question: "Charada: as abelhas me fazem, sou doce como o açúcar, mas venho direto da natureza. O que sou?",
+      options: ["O xarope", "O mel", "O melado", "O açúcar mascavo"],
+      correctIndex: 1,
+      explanation: "O mel é produzido pelas abelhas a partir do néctar das flores."
+    },
+    {
+      id: 979,
+      question: "Charada: tenho tronco, galhos e folhas, mas não posso andar de um lugar para o outro. O que sou?",
+      options: ["Uma árvore", "Um arbusto", "Uma trepadeira", "Uma flor"],
+      correctIndex: 0,
+      explanation: "A árvore é fixa ao solo por suas raízes, não podendo se locomover."
+    },
+    {
+      id: 980,
+      question: "Charada: sou pequena, mas dentro de mim mora uma planta inteira esperando para crescer. O que sou?",
+      options: ["Uma semente", "Uma raiz", "Uma muda", "Uma flor"],
+      correctIndex: 0,
+      explanation: "A semente contém o embrião de uma nova planta em seu interior."
+    },
+    {
+      id: 981,
+      question: "Charada: sou colorida e cheirosa, e as abelhas adoram me visitar. O que sou?",
+      options: ["Uma fruta", "Uma flor", "Uma folha", "Uma semente"],
+      correctIndex: 1,
+      explanation: "As flores atraem abelhas e outros polinizadores com suas cores e perfumes."
+    },
+    {
+      id: 982,
+      question: "Charada: sou verde e faço fotossíntese, mas caio no outono. O que sou?",
+      options: ["Uma semente", "Uma folha", "Uma flor", "Uma raiz"],
+      correctIndex: 1,
+      explanation: "As folhas realizam fotossíntese e, em muitas árvores, caem durante o outono."
+    },
+    {
+      id: 983,
+      question: "Charada: fico embaixo da terra e sustento a planta, mesmo sem ninguém me ver. O que sou?",
+      options: ["Uma raiz", "Um caule", "Um bulbo", "Um tubérculo"],
+      correctIndex: 0,
+      explanation: "A raiz fica sob a terra, absorvendo água e nutrientes e sustentando a planta."
+    },
+    {
+      id: 984,
+      question: "Charada: tenho areia e ondas, e as pessoas me visitam no verão. O que sou?",
+      options: ["Um deserto", "Uma praia", "Uma piscina", "Um rio"],
+      correctIndex: 1,
+      explanation: "A praia combina areia e ondas do mar, sendo um destino popular no verão."
+    },
+    {
+      id: 985,
+      question: "Charada: sou feita de vidro e areia derretida, e deixo a luz entrar em sua casa. O que sou?",
+      options: ["Uma porta", "Uma janela", "Uma lâmpada", "Uma claraboia"],
+      correctIndex: 1,
+      explanation: "A janela é feita de vidro (derivado da areia derretida) e permite a entrada de luz natural."
+    },
+    {
+      id: 986,
+      question: "Se hoje é terça-feira, que dia da semana será daqui a 300 dias?",
+      options: ["Domingo", "Segunda-feira", "Sábado", "Quarta-feira"],
+      correctIndex: 1,
+      explanation: "300 dividido por 7 deixa resto 6. Avançando 6 dias a partir de terça: quarta, quinta, sexta, sábado, domingo, segunda-feira."
+    },
+    {
+      id: 987,
+      question: "Numa caixa há 6 bolas verdes e 6 bolas amarelas soltas. Quantas você precisa tirar, no mínimo, para garantir 4 da mesma cor?",
+      options: ["5", "6", "7", "8"],
+      correctIndex: 2,
+      explanation: "No pior caso, você tira 3 de cada cor (6 no total) sem formar um grupo de 4. A 7ª bola garante 4 da mesma cor."
+    },
+    {
+      id: 988,
+      question: "Se o triplo de um número menos 4 é igual a 20, qual é esse número?",
+      options: ["6", "7", "8", "9"],
+      correctIndex: 2,
+      explanation: "3x - 4 = 20 → 3x = 24 → x = 8."
+    },
+    {
+      id: 989,
+      question: "Numa fila, Beatriz está na 7ª posição contando da frente e na 10ª posição contando de trás. Quantas pessoas há na fila?",
+      options: ["15", "16", "17", "18"],
+      correctIndex: 1,
+      explanation: "Total = 7 + 10 - 1 (Beatriz contada duas vezes) = 16 pessoas."
+    },
+    {
+      id: 990,
+      question: "Se 4 bolos custam R$60, quanto custam 9 bolos do mesmo tipo?",
+      options: ["R$120", "R$125", "R$135", "R$140"],
+      correctIndex: 2,
+      explanation: "Cada bolo custa R$15 (60÷4). 9 bolos custam 9 × R$15 = R$135."
+    },
+    {
+      id: 991,
+      question: "Um código transforma cada letra na letra anterior do alfabeto (B→A, C→B...). Qual é o código da palavra 'GOL'?",
+      options: ["FNK", "FMK", "FNJ", "ENK"],
+      correctIndex: 0,
+      explanation: "G→F, O→N, L→K, formando 'FNK'."
+    },
+    {
+      id: 992,
+      question: "Se anteontem foi domingo, que dia da semana é hoje?",
+      options: ["Segunda-feira", "Terça-feira", "Quarta-feira", "Sábado"],
+      correctIndex: 1,
+      explanation: "Anteontem é hoje menos 2 dias. Se anteontem foi domingo, hoje é domingo + 2 = terça-feira."
+    },
+    {
+      id: 993,
+      question: "Numa estante há livros numerados de 1 a 60. Quantos desses números contêm o algarismo 4?",
+      options: ["12", "13", "14", "15"],
+      correctIndex: 3,
+      explanation: "Os números são: 4,14,24,34,40,41,42,43,44,45,46,47,48,49,54 — totalizando 15 números."
+    },
+    {
+      id: 994,
+      question: "Se A é pai de B, e B é pai de C, o que podemos afirmar sobre A e C?",
+      options: ["A é avô de C", "A e C são irmãos", "A é filho de C", "Não há relação entre eles"],
+      correctIndex: 0,
+      explanation: "Se A é pai de B, e B é pai de C, então A é avô de C."
+    },
+    {
+      id: 995,
+      question: "Se X + Y = 15 e X - Y = 5, qual é o valor de Y?",
+      options: ["4", "5", "6", "7"],
+      correctIndex: 1,
+      explanation: "Subtraindo as equações: 2Y = 10 → Y = 5."
+    },
+    {
+      id: 996,
+      question: "Numa sala com 6 pessoas, cada uma aperta a mão de todas as outras exatamente uma vez. Quantos apertos de mão acontecem ao todo?",
+      options: ["12", "14", "15", "18"],
+      correctIndex: 2,
+      explanation: "O total de combinações de 2 pessoas entre 6 é 15 (fórmula de combinação C(6,2) = 15)."
+    },
+    {
+      id: 997,
+      question: "Quantos graus o ponteiro dos minutos de um relógio percorre em 20 minutos?",
+      options: ["60°", "90°", "120°", "180°"],
+      correctIndex: 2,
+      explanation: "O ponteiro dos minutos percorre 360° em 60 minutos, ou seja, 6° por minuto. Em 20 minutos: 20 × 6° = 120°."
+    },
+    {
+      id: 998,
+      question: "Se todos os Alfas são Betas, e alguns Betas são Gamas, o que podemos concluir com certeza?",
+      options: ["Todo Alfa é Gama", "Não é possível concluir que algum Alfa é Gama", "Nenhum Alfa é Gama", "Todo Gama é Alfa"],
+      correctIndex: 1,
+      explanation: "As premissas não garantem que os Betas que são Gamas incluam algum Alfa — essa conclusão não é logicamente válida."
+    },
+    {
+      id: 999,
+      question: "Numa corrida de 6 pessoas, Beto chega antes de Caio, mas depois de Duda. Elis chega antes de Duda. Quem venceu a corrida?",
+      options: ["Beto", "Caio", "Duda", "Elis"],
+      correctIndex: 3,
+      explanation: "A ordem de chegada começa com Elis, depois Duda, Beto e Caio — portanto Elis venceu."
+    },
+    {
+      id: 1000,
+      question: "Um código transforma cada número em seu triplo mais 2 (regra: n → 3n+2). Qual número originou o resultado 20?",
+      options: ["4", "5", "6", "7"],
+      correctIndex: 2,
+      explanation: "3n + 2 = 20 → 3n = 18 → n = 6."
     }
   ];
 
