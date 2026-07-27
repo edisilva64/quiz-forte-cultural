@@ -82,7 +82,7 @@ Recomendação: use imagens com no máximo ~700px de largura e comprimidas (JPG 
 
 **Se o banco de dados (Supabase) estiver configurado:** gerencie as perguntas direto pelo painel do Supabase — veja a seção "Como adicionar/editar perguntas pelo banco de dados" mais abaixo. É o método recomendado, não exige subir código novo.
 
-**Banco de reserva local (fallback):** o arquivo `js/quiz.js` mantém uma cópia local de 400 perguntas, usada automaticamente caso o banco de dados não esteja configurado ou fique indisponível. Para editar esse fallback, vá em `js/quiz.js`, array `FALLBACK_QUESTIONS`. Cada pergunta segue este formato:
+**Banco de reserva local (fallback):** o arquivo `js/quiz.js` mantém uma cópia local de 1000 perguntas, usada automaticamente caso o banco de dados não esteja configurado ou fique indisponível. Para editar esse fallback, vá em `js/quiz.js`, array `FALLBACK_QUESTIONS`. Cada pergunta segue este formato:
 
 ```js
 {
@@ -120,6 +120,20 @@ As cores ficam centralizadas em `css/style.css`, no bloco `:root`:
 
 Basta alterar os valores hexadecimais — todo o site se atualiza automaticamente, pois os componentes usam essas variáveis.
 
+### Visual pop-art / HQ da página de abertura
+
+A página de abertura (hero) tem um visual próprio, inspirado em quiz de rede social (fundo em gradiente laranja/amarelo/vermelho, textura de pontinhos "halftone", raios e estrela decorativos, título com contorno preto estilo quadrinho). Esse visual é isolado do resto do site — as demais telas (quiz, resultado) mantêm o design original.
+
+As cores desse tema ficam em variáveis próprias, também no bloco `:root` de `css/style.css`:
+```css
+--comic-yellow: #FFD400;
+--comic-red: #FF3D3D;
+--comic-orange: #FF8A00;
+--comic-ink: #1A1A1A;
+```
+A fonte do título ("DESAFIO LÓGICO") é a **Bangers**, importada do Google Fonts — para trocar, edite `--font-comic` no mesmo bloco `:root`.
+
+Os elementos decorativos (raios e estrela) são SVGs simples dentro do `<section class="hero">` em `index.html` — podem ser removidos ou ajustados de posição/tamanho pelas classes `.hero-bolt`, `.hero-bolt-1`, `.hero-bolt-2` e `.hero-star` em `css/style.css`.
 ---
 
 ## 🖼️ Logo e link do cabeçalho
@@ -254,11 +268,11 @@ As tags de SEO ficam no `<head>` do `index.html`:
 ## 🗄️ Configurando o banco de dados (Supabase — gratuito)
 
 O quiz agora usa um banco de dados real e gratuito ([Supabase](https://supabase.com)) para três coisas:
-1. **Banco de perguntas** — 400 perguntas cadastradas; a cada partida, 15 são sorteadas aleatoriamente.
+1. **Banco de perguntas** — 1000 perguntas cadastradas; a cada partida, 15 são sorteadas aleatoriamente.
 2. **Estatísticas gerais** — média de acertos e média de tempo de todos os jogadores, mostradas de forma incentivadora junto com o resultado de cada pessoa.
 3. **Contador de acessos** — visível só para você, no painel administrativo (`admin.html`).
 
-> **Enquanto você não configurar isso, o site continua funcionando normalmente** — ele usa um banco de 400 perguntas local (`js/quiz.js`) como reserva e simplesmente não mostra a comparação com outros jogadores nem o contador de acessos. Nada quebra.
+> **Enquanto você não configurar isso, o site continua funcionando normalmente** — ele usa um banco de 1000 perguntas local (`js/quiz.js`) como reserva e simplesmente não mostra a comparação com outros jogadores nem o contador de acessos. Nada quebra.
 
 ### Aplicando atualizações no banco já configurado (patches)
 
@@ -270,7 +284,8 @@ Sempre que houver uma correção ou melhoria no banco de dados depois que você 
 Patches disponíveis até agora:
 - `patch_2026-07-18_fix_admin_count.sql` — corrige o painel administrativo mostrando "Desafios Concluídos: 0".
 - `patch_2026-07-18_expand_to_120_questions.sql` — atualiza o banco de perguntas de 30 para 120 (todas diferentes).
-- `patch_2026-07-19_expand_to_400_questions.sql` — atualiza o banco de perguntas de 120 para 400 (todas diferentes). **Se você já rodou o patch de 120, não precisa rodar o de 120 de novo — só este.**
+- `patch_2026-07-19_expand_to_400_questions.sql` — atualiza o banco de perguntas de 120 para 400 (todas diferentes).
+- `patch_2026-07-26_expand_to_1000_questions.sql` — atualiza o banco de perguntas de 400 para 1000 (todas diferentes). **Você só precisa rodar este — ele já substitui os anteriores.**
 
 > Se você está configurando o Supabase pela primeira vez agora, **não precisa rodar os patches** — basta rodar o `schema.sql` completo, que já vem com tudo atualizado.
 
@@ -284,7 +299,7 @@ Patches disponíveis até agora:
 **2. Rodar o script de configuração**
 1. No menu lateral, clique em **SQL Editor** → **New query**.
 2. Abra o arquivo `supabase/schema.sql` (está dentro desta pasta do projeto), copie **todo o conteúdo** e cole no editor.
-3. Clique em **Run**. Isso cria as tabelas, as permissões de segurança e já cadastra as 400 perguntas.
+3. Clique em **Run**. Isso cria as tabelas, as permissões de segurança e já cadastra as 1000 perguntas.
 
 **3. Pegar as chaves de acesso**
 1. No menu lateral, vá em **Project Settings** (ícone de engrenagem) → **API**.
