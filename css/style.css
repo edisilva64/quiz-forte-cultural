@@ -389,6 +389,17 @@ input:focus-visible,
 .quiz-container { width: 100%; max-width: 780px; margin: 0 auto; }
 
 .quiz-topbar { margin-bottom: 24px; }
+.tier-badge {
+  display: inline-block;
+  background: var(--grad-brand);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 12px;
+}
 .progress-info {
   display: flex;
   justify-content: space-between;
@@ -554,6 +565,42 @@ input:focus-visible,
 .btn-sm { padding: 12px 20px; font-size: 0.85rem; width: 100%; }
 
 /* ===================== RESULTADO ===================== */
+/* ===================== BLOCO CONCLUÍDO (interstitial) ===================== */
+.block-complete-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  background: var(--surface-alt);
+  scroll-margin-top: 110px;
+}
+.block-complete-container { max-width: 560px; margin: 0 auto; width: 100%; }
+.block-complete-card {
+  background: var(--grad-hero);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 50px 34px;
+  text-align: center;
+  box-shadow: var(--shadow-strong);
+  animation: popIn .45s cubic-bezier(.34,1.56,.64,1) both;
+}
+.block-complete-emoji { font-size: 3.6rem; margin-bottom: 10px; }
+.block-complete-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 14px; }
+.block-complete-score { font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 6px; }
+.block-complete-overall { font-size: 0.92rem; color: rgba(255,255,255,0.7); margin-bottom: 22px; }
+.block-complete-warning {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 0.92rem;
+  color: #FFD9B8;
+  margin-bottom: 28px;
+}
+.block-complete-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.block-complete-actions .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.3); }
+.block-complete-actions .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
 .result-section { padding: 60px 0 100px; background: var(--surface-alt); scroll-margin-top: 110px; }
 .result-container { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
 
