@@ -7,6 +7,31 @@ Quiz interativo de raciocínio lógico, construído em **HTML5, CSS3 e JavaScrip
 
 ---
 
+## 🎮 Sistema de dificuldade progressiva (blocos de 10)
+
+O quiz não usa mais um total fixo de 15 perguntas aleatórias. Agora funciona assim:
+
+1. As 1000 perguntas do banco são automaticamente **classificadas por dificuldade** (mais fácil → mais difícil), usando um classificador heurístico em `js/quiz.js` (`difficultyScore`). Ele considera: o tipo de pergunta (cultura geral e charadas tendem a ser mais fáceis; problemas de lógica com várias etapas tendem a ser mais difíceis), o tamanho dos números envolvidos, e o tamanho do enunciado.
+2. As perguntas classificadas são divididas em **10 níveis** de 100 perguntas cada (`buildDifficultyTiers`).
+3. O jogador sempre começa no **Nível 1** (as 100 perguntas mais fáceis) e responde um **bloco de 10**, sorteadas aleatoriamente dentro desse nível (isso mantém a variedade entre partidas — nem todo mundo vê as mesmas 10 perguntas).
+4. Ao final do bloco, aparece uma tela avisando que o próximo bloco será mais difícil, com duas opções: **continuar** (avança para o Nível 2) ou **parar e ver o resultado**.
+5. Isso se repete até o Nível 10 (o mais difícil) ou até o jogador decidir parar. No Nível 10, não há mais opção de continuar — só ver o resultado final.
+
+### Por que sortear dentro de níveis, e não usar 100 blocos fixos?
+
+Uma abordagem mais simples seria dividir as 1000 perguntas em exatamente 100 blocos fixos de 10 (sempre as mesmas 10 perguntas em cada posição). A desvantagem é que **todo mundo veria exatamente as mesmas perguntas na mesma ordem**, sempre. Agrupando em 10 níveis de 100 perguntas e sorteando 10 por vez dentro do nível, a dificuldade ainda cresce de forma consistente, mas cada partida continua sendo diferente — o melhor dos dois mundos.
+
+### Ajustando o sistema
+
+- **Quantidade de níveis:** altere `NUM_TIERS` em `js/quiz.js` (hoje: 10).
+- **Tamanho de cada bloco:** altere `BLOCK_SIZE` em `js/quiz.js` (hoje: 10).
+- **Critério de dificuldade:** ajuste os pesos em `CATEGORY_BASE_SCORE` e a função `difficultyScore` em `js/quiz.js`.
+- **Níveis de resultado (Iniciante, Aprendiz, etc.):** agora são calculados por **porcentagem de acertos**, não mais por número fixo — veja o array `LEVELS` em `js/quiz.js`.
+
+### Estatísticas da comunidade (Supabase)
+
+Como cada jogador agora pode responder uma quantidade diferente de perguntas (10, 20, 30... até 100), a comparação com outros jogadores passou a ser feita por **precisão (%)**, não mais por número bruto de acertos — isso é o que faz sentido comparar quando os totais variam. Isso exigiu uma atualização na função `get_stats()` do banco — veja `supabase/patch_2026-07-27_progressive_difficulty_stats.sql`.
+
 ## 📁 Estrutura do projeto
 
 ```
@@ -286,6 +311,7 @@ Patches disponíveis até agora:
 - `patch_2026-07-18_expand_to_120_questions.sql` — atualiza o banco de perguntas de 30 para 120 (todas diferentes).
 - `patch_2026-07-19_expand_to_400_questions.sql` — atualiza o banco de perguntas de 120 para 400 (todas diferentes).
 - `patch_2026-07-26_expand_to_1000_questions.sql` — atualiza o banco de perguntas de 400 para 1000 (todas diferentes). **Você só precisa rodar este — ele já substitui os anteriores.**
+- `patch_2026-07-27_progressive_difficulty_stats.sql` — atualiza a função de estatísticas para comparar jogadores por precisão (%), necessário após a mudança para blocos progressivos de dificuldade.
 
 > Se você está configurando o Supabase pela primeira vez agora, **não precisa rodar os patches** — basta rodar o `schema.sql` completo, que já vem com tudo atualizado.
 

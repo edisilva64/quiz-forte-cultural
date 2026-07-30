@@ -213,14 +213,14 @@
       const totalViews = viewsRes.count;
       const totalPlayers = playersRes.count;
       const row = (statsRes.data && statsRes.data[0]) || {};
-      const avgScore = row.avg_score !== undefined && row.avg_score !== null ? Number(row.avg_score).toFixed(1) : "—";
+      const avgAccuracy = row.avg_accuracy !== undefined && row.avg_accuracy !== null ? Number(row.avg_accuracy).toFixed(1) : "—";
       const avgTimeMs = row.avg_time_ms !== undefined && row.avg_time_ms !== null ? Number(row.avg_time_ms) : null;
       const avgTimeText = avgTimeMs !== null ? formatMs(avgTimeMs) : "—";
 
       statsArea.innerHTML =
         '<div class="stat-card"><i class="fa-solid fa-eye"></i><div><div class="stat-value">' + (totalViews ?? "—") + '</div><div class="stat-label">ACESSOS TOTAIS AO SITE</div></div></div>' +
         '<div class="stat-card"><i class="fa-solid fa-flag-checkered"></i><div><div class="stat-value">' + (totalPlayers ?? "—") + '</div><div class="stat-label">DESAFIOS CONCLUÍDOS</div></div></div>' +
-        '<div class="stat-card"><i class="fa-solid fa-star"></i><div><div class="stat-value">' + avgScore + '/15</div><div class="stat-label">MÉDIA GERAL DE ACERTOS</div></div></div>' +
+        '<div class="stat-card"><i class="fa-solid fa-star"></i><div><div class="stat-value">' + avgAccuracy + '%</div><div class="stat-label">PRECISÃO MÉDIA GERAL</div></div></div>' +
         '<div class="stat-card"><i class="fa-solid fa-stopwatch"></i><div><div class="stat-value">' + avgTimeText + '</div><div class="stat-label">TEMPO MÉDIO GERAL</div></div></div>';
     } catch (e) {
       statsArea.innerHTML =

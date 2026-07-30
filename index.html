@@ -6,7 +6,7 @@
 <title>Desafio Lógico Forte Cultural | Você é um Mestre da Lógica?</title>
 
 <!-- ===================== SEO ===================== -->
-<meta name="description" content="Teste sua lógica com o Desafio Forte Cultural: 15 charadas para descobrir se você é um Mestre da Lógica. Jogue grátis, receba seu certificado e concorra a estampas exclusivas.">
+<meta name="description" content="Teste sua lógica com o Desafio Forte Cultural: comece pelas perguntas mais fáceis e avance por níveis cada vez mais difíceis. Jogue grátis e receba seu certificado.">
 <meta name="keywords" content="quiz de lógica, desafio lógico, charadas, teste de inteligência, forte cultural, quiz cultura geral">
 <meta name="author" content="Forte Cultural">
 <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="🧠 Desafio Lógico Forte Cultural">
-<meta property="og:description" content="15 charadas. Apenas 5% das pessoas acertam todas. Será que você consegue ser um Mestre da Lógica?">
+<meta property="og:description" content="Comece fácil e avance por níveis cada vez mais difíceis. Até onde você consegue chegar?">
 <meta property="og:image" content="img/logo.png">
 <meta property="og:url" content="https://edisilva64.github.io/quiz-forte-cultural/">
 <meta property="og:locale" content="pt_BR">
@@ -23,7 +23,7 @@
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Desafio Lógico Forte Cultural">
-<meta name="twitter:description" content="15 charadas. Um só vencedor de verdade: você consegue?">
+<meta name="twitter:description" content="Dificuldade progressiva: cada bloco é mais difícil que o anterior. Até onde você chega?">
 <meta name="twitter:image" content="img/logo.png">
 
 <!-- PWA -->
@@ -55,7 +55,7 @@
   "@context": "https://schema.org",
   "@type": "Quiz",
   "name": "Desafio Lógico Forte Cultural",
-  "description": "Quiz interativo com 15 charadas de lógica.",
+  "description": "Quiz interativo de lógica com dificuldade progressiva, em blocos de 10 perguntas.",
   "educationalLevel": "Todos os níveis",
   "publisher": {
     "@type": "Organization",
@@ -103,18 +103,18 @@
     <div class="container hero-inner">
       <p class="eyebrow"><i class="fa-solid fa-brain" aria-hidden="true"></i> Desafio de raciocínio</p>
       <h1 class="hero-title">🧠 DESAFIO LÓGICO</h1>
-      <p class="hero-subtitle">Você consegue acertar todas as 15 charadas?</p>
+      <p class="hero-subtitle">Até onde você consegue chegar?</p>
       <p class="hero-text">Mais de <strong>95% das pessoas</strong> erram pelo menos 3 perguntas.<br>
       Será que você consegue ser um <strong>Mestre da Lógica</strong>?</p>
-      <p class="hero-note"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> Temos um banco com centenas de perguntas — a cada desafio, 15 são sorteadas na hora, então cada partida é diferente!</p>
+      <p class="hero-note"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> Banco com 1000 perguntas em 10 níveis de dificuldade — você começa fácil e escolhe até onde quer ir!</p>
       <button id="startBtn" class="btn btn-primary btn-xl ripple">
         <i class="fa-solid fa-play" aria-hidden="true"></i> COMEÇAR AGORA
       </button>
 
       <div class="rules-grid" role="list">
-        <div class="rule-card" role="listitem"><i class="fa-solid fa-list-ol"></i><span>15 perguntas</span></div>
+        <div class="rule-card" role="listitem"><i class="fa-solid fa-list-ol"></i><span>Blocos de 10 perguntas</span></div>
         <div class="rule-card" role="listitem"><i class="fa-solid fa-check-circle"></i><span>Apenas uma resposta</span></div>
-        <div class="rule-card" role="listitem"><i class="fa-solid fa-bolt"></i><span>Resultado imediato</span></div>
+        <div class="rule-card" role="listitem"><i class="fa-solid fa-bolt"></i><span>Dificuldade progressiva</span></div>
         <div class="rule-card" role="listitem"><i class="fa-solid fa-share-nodes"></i><span>Compartilhe com amigos</span></div>
       </div>
 
@@ -138,8 +138,9 @@
     <div class="container quiz-container">
 
       <div class="quiz-topbar">
+        <span class="tier-badge" id="tierBadge">Nível 1 de 10</span>
         <div class="progress-info">
-          <span id="progressLabel">Questão 1 de 15</span>
+          <span id="progressLabel">Questão 1 de 10</span>
           <span id="timerDisplay" class="timer"><i class="fa-regular fa-clock"></i> 00:00</span>
         </div>
         <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar">
@@ -165,6 +166,13 @@
         <!-- Perguntas injetadas via JS -->
       </div>
 
+    </div>
+  </section>
+
+  <!-- ===================== BLOCO CONCLUÍDO (continuar ou parar) ===================== -->
+  <section class="block-complete-section" id="blockCompleteSection" hidden>
+    <div class="container block-complete-container" id="blockCompleteContainer">
+      <!-- Preenchido via JS -->
     </div>
   </section>
 
