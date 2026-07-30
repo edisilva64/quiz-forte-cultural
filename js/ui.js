@@ -134,12 +134,14 @@
 
   /**
    * Retorna a chave de produto (cafe/gato/fada) de acordo com a pergunta atual.
-   * @param {number} zeroBasedIndex - índice da pergunta (0 a total-1)
+   * Cicla indefinidamente a cada 5 perguntas, já que o jogo agora pode ter
+   * múltiplos blocos de 10 (sem limite fixo de 15).
+   * @param {number} zeroBasedIndex - índice cumulativo da pergunta (0, 1, 2...)
    */
   function getPromoKeyForIndex(zeroBasedIndex) {
-    if (zeroBasedIndex < 5) return "cafe";
-    if (zeroBasedIndex < 10) return "gato";
-    return "fada";
+    const keys = ["cafe", "gato", "fada"];
+    const cycle = Math.floor(zeroBasedIndex / 5) % keys.length;
+    return keys[cycle];
   }
 
   /** Atualiza o conteúdo da faixa lateral (chamado a cada pergunta renderizada) */
@@ -165,7 +167,11 @@
   }
 
   /* ---------- RESULTADO ---------- */
-  function renderResultCard(el, level, score, total, timeFormatted) {
+  function renderResultCard(el, level, score, total, timeFormatted, highestTier, numTiers) {
+    const accuracy = total > 0 ? Math.round((score / total) * 100) : 0;
+    const tierInfo = highestTier
+      ? '<div class="stat-box"><div class="stat-value">' + highestTier + '/' + numTiers + '</div><div class="stat-label">NÍVEL ALCANÇADO</div></div>'
+      : "";
     el.innerHTML =
       '<div class="result-emoji">' + level.emoji + '</div>' +
       '<div class="result-level" style="color:' + level.color + '">' + level.title + '</div>' +
@@ -175,7 +181,8 @@
         '<div class="stat-box"><div class="stat-value">' + timeFormatted + '</div><div class="stat-label">TEMPO TOTAL</div></div>' +
         '<div class="stat-box"><div class="stat-value">' + score + '</div><div class="stat-label">ACERTOS</div></div>' +
         '<div class="stat-box"><div class="stat-value">' + (total - score) + '</div><div class="stat-label">ERROS</div></div>' +
-        '<div class="stat-box"><div class="stat-value">' + Math.round((score / total) * 100) + '%</div><div class="stat-label">PRECISÃO</div></div>' +
+        '<div class="stat-box"><div class="stat-value">' + accuracy + '%</div><div class="stat-label">PRECISÃO</div></div>' +
+        tierInfo +
       '</div>' +
       '<div class="community-stats loading" id="communityStatsBlock"></div>';
   }
@@ -183,8 +190,11 @@
   /**
    * Preenche o bloco de estatísticas da comunidade com mensagens sempre
    * positivas/incentivadoras — nunca como um placar crítico de "perdeu".
+   * A comparação usa PRECISÃO (%), não o número bruto de acertos, já que
+   * cada jogador pode ter respondido uma quantidade diferente de perguntas
+   * (o jogo agora tem blocos progressivos de 10, sem total fixo).
    * @param {HTMLElement} el - o container #communityStatsBlock
-   * @param {object|null} stats - { players, avgScore, avgTimeMs } ou null
+   * @param {object|null} stats - { players, avgScore, avgTimeMs, avgAccuracy } ou null
    * @param {number} score, total, timeMs - dados do jogador atual
    */
   function renderCommunityStats(el, stats, score, total, timeMs) {
@@ -201,18 +211,21 @@
       return;
     }
 
-    const avgScoreText = stats.avgScore !== null ? stats.avgScore.toFixed(1).replace(".", ",") : null;
+    const myAccuracy = total > 0 ? (score / total) * 100 : 0;
+    const avgAccuracyText = stats.avgAccuracy !== null && stats.avgAccuracy !== undefined
+      ? stats.avgAccuracy.toFixed(0)
+      : null;
     const avgTimeText = stats.avgTimeMs !== null ? window.QuizTimer.formatMs(stats.avgTimeMs) : null;
 
     let scoreMsg;
-    if (avgScoreText === null) {
+    if (avgAccuracyText === null) {
       scoreMsg = null;
-    } else if (score - stats.avgScore >= 1) {
-      scoreMsg = 'Você acertou mais que a média geral dos jogadores — <strong>mandou muito bem!</strong> 🎉 (média: ' + avgScoreText + '/' + total + ')';
-    } else if (score - stats.avgScore > -1) {
-      scoreMsg = 'Você ficou bem próximo da média geral dos jogadores — <strong>ótimo equilíbrio!</strong> 👏 (média: ' + avgScoreText + '/' + total + ')';
+    } else if (myAccuracy - stats.avgAccuracy >= 3) {
+      scoreMsg = 'Sua precisão ficou acima da média geral dos jogadores — <strong>mandou muito bem!</strong> 🎉 (média geral: ' + avgAccuracyText + '%)';
+    } else if (myAccuracy - stats.avgAccuracy > -3) {
+      scoreMsg = 'Sua precisão ficou bem próxima da média geral dos jogadores — <strong>ótimo equilíbrio!</strong> 👏 (média geral: ' + avgAccuracyText + '%)';
     } else {
-      scoreMsg = 'A média geral dos jogadores é ' + avgScoreText + '/' + total + '. <strong>Jogue de novo e mostre do que você é capaz!</strong> 💪';
+      scoreMsg = 'A precisão média geral dos jogadores é ' + avgAccuracyText + '%. <strong>Jogue de novo e mostre do que você é capaz!</strong> 💪';
     }
 
     let timeMsg;
@@ -237,6 +250,42 @@
     }
 
     el.innerHTML = html;
+  }
+
+  /* ---------- TELA DE "BLOCO CONCLUÍDO" (continuar ou parar) ---------- */
+  /**
+   * Renderiza a tela intermediária mostrada ao final de cada bloco de 10
+   * perguntas, avisando que o próximo bloco será mais difícil.
+   */
+  function renderBlockComplete(el, opts) {
+    const blockScore = opts.blockScore;
+    const blockTotal = opts.blockTotal;
+    const tierNumber = opts.tierNumber;   // 1-based
+    const numTiers = opts.numTiers;
+    const overallScore = opts.overallScore;
+    const overallTotal = opts.overallTotal;
+    const isLastTier = tierNumber >= numTiers;
+
+    const accuracy = blockTotal > 0 ? Math.round((blockScore / blockTotal) * 100) : 0;
+
+    el.innerHTML =
+      '<div class="block-complete-card">' +
+        '<div class="block-complete-emoji">🎉</div>' +
+        '<h2 class="block-complete-title">Nível ' + tierNumber + ' de ' + numTiers + ' concluído!</h2>' +
+        '<p class="block-complete-score">Você acertou ' + blockScore + ' de ' + blockTotal + ' nesta parte (' + accuracy + '%)</p>' +
+        '<p class="block-complete-overall">No total, até agora: ' + overallScore + ' de ' + overallTotal + ' perguntas certas.</p>' +
+        (isLastTier
+          ? '<p class="block-complete-warning">🏁 Você chegou ao nível mais difícil do desafio! Não há mais blocos — hora de ver seu resultado final.</p>'
+          : '<p class="block-complete-warning">⚠️ As próximas 10 perguntas serão <strong>mais difíceis</strong> que as anteriores.</p>'
+        ) +
+        '<div class="block-complete-actions">' +
+          (isLastTier
+            ? '<button id="blockFinishBtn" class="btn btn-primary btn-xl ripple">VER RESULTADO FINAL</button>'
+            : '<button id="blockContinueBtn" class="btn btn-primary btn-xl ripple"><i class="fa-solid fa-arrow-right"></i> CONTINUAR (MAIS DIFÍCIL)</button>' +
+              '<button id="blockStopBtn" class="btn btn-ghost ripple">PARAR E VER RESULTADO</button>'
+          ) +
+        '</div>' +
+      '</div>';
   }
 
   function renderReview(el, answers, questions) {
@@ -267,6 +316,7 @@
     updatePromoRail: updatePromoRail,
     renderResultCard: renderResultCard,
     renderCommunityStats: renderCommunityStats,
+    renderBlockComplete: renderBlockComplete,
     renderReview: renderReview
   };
 })();

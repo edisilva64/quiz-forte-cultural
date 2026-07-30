@@ -76,8 +76,10 @@
   }
 
   /**
-   * Retorna { players, avgScore, avgTimeMs } com base em todas as partidas
-   * já registradas, ou null se o banco não estiver configurado/disponível.
+   * Retorna { players, avgScore, avgTimeMs, avgAccuracy } com base em todas
+   * as partidas já registradas, ou null se o banco não estiver configurado/disponível.
+   * avgAccuracy é a % média de acertos — usada para comparação, já que o
+   * total de perguntas agora varia por partida (blocos progressivos de 10).
    */
   async function getStats() {
     const sb = getClient();
@@ -91,7 +93,8 @@
       return {
         players: Number(row.players) || 0,
         avgScore: row.avg_score !== null ? Number(row.avg_score) : null,
-        avgTimeMs: row.avg_time_ms !== null ? Number(row.avg_time_ms) : null
+        avgTimeMs: row.avg_time_ms !== null ? Number(row.avg_time_ms) : null,
+        avgAccuracy: row.avg_accuracy !== undefined && row.avg_accuracy !== null ? Number(row.avg_accuracy) : null
       };
     } catch (e) {
       return null;

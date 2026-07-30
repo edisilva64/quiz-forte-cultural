@@ -7048,7 +7048,107 @@
     }
   ];
 
-  const QUESTIONS_PER_GAME = 15;
+  /* ===================================================================
+     CLASSIFICAÇÃO DE DIFICULDADE
+     Cada pergunta recebe uma pontuação de dificuldade (quanto maior, mais
+     difícil), calculada por heurística: categoria da pergunta (detectada
+     pelo padrão do texto) + magnitude dos números envolvidos + tamanho
+     do enunciado. Não existe um "gabarito oficial" de dificuldade humana
+     testada — é uma estimativa automática, mas consistente e reprodutível.
+     =================================================================== */
+
+  // Pontuação-base por categoria, da mais fácil para a mais difícil
+  const CATEGORY_BASE_SCORE = {
+    cultura_geral: 8,
+    charada: 18,
+    sequencia_letras: 26,
+    conversao_unidades: 32,
+    sequencia_aritmetica: 34,
+    sequencia_geometrica: 40,
+    sequencia_fibonacci: 42,
+    multiplicacao_divisao: 40,
+    problema_idade: 44,
+    media_aritmetica: 46,
+    perimetro_area: 46,
+    regra_de_tres: 48,
+    porcentagem_numero: 50,
+    desconto_percentual: 52,
+    dia_semana: 56,
+    logica_geral: 66
+  };
+
+  /** Detecta a categoria de uma pergunta a partir do padrão do texto/explicação */
+  function detectCategory(q) {
+    const text = q.question;
+    const exp = q.explanation || "";
+
+    if (/^Charada:/i.test(text)) return "charada";
+    if (/sequência de letras/i.test(text)) return "sequencia_letras";
+    if (/dia da semana/i.test(text)) return "dia_semana";
+    if (/% de desconto/i.test(text)) return "desconto_percentual";
+    if (/% de um número/i.test(text)) return "porcentagem_numero";
+    if (/perímetro|área de um retângulo/i.test(text)) return "perimetro_area";
+    if (/média aritmética/i.test(text)) return "media_aritmetica";
+    if (/mesmo preço unitário/i.test(text)) return "regra_de_tres";
+    if (/anos\b/i.test(text) && /(Hoje,|idade)/i.test(text)) return "problema_idade";
+    if (/há em \d|quantos? (centavos|gramas|metros|minutos|segundos|mililitros|centímetros|unidades)/i.test(text)) return "conversao_unidades";
+    if (/divididos? igualmente|caixas? iguais/i.test(text)) return "multiplicacao_divisao";
+    if (/soma dos dois anteriores/i.test(text)) return "sequencia_fibonacci";
+    if (/multiplicado por/i.test(exp)) return "sequencia_geometrica";
+    if (/Complete a sequência/i.test(text)) return "sequencia_aritmetica";
+    if (/^(Qual|Quem|Em que|Quantos?|Quantas?)\b/i.test(text) && !/\d/.test(text)) return "cultura_geral";
+    if (/^(Qual|Quem|Em que|Quantos?|Quantas?)\b/i.test(text)) return "cultura_geral";
+    return "logica_geral"; // catch-all: problemas de lógica, silogismos, combinatória etc.
+  }
+
+  /** Extrai os números presentes no texto e retorna o maior valor absoluto encontrado */
+  function maxNumberIn(text) {
+    const matches = text.match(/\d+([.,]\d+)?/g);
+    if (!matches) return 0;
+    return Math.max.apply(null, matches.map(function (m) { return parseFloat(m.replace(",", ".")); }));
+  }
+
+  /** Calcula a pontuação de dificuldade (aproximada) de uma pergunta */
+  function difficultyScore(q) {
+    const category = detectCategory(q);
+    const base = CATEGORY_BASE_SCORE[category] !== undefined ? CATEGORY_BASE_SCORE[category] : 55;
+    const maxNum = maxNumberIn(q.question);
+    const magnitudeBonus = Math.min(20, Math.log10(maxNum + 1) * 6);
+    const lengthBonus = Math.min(10, q.question.length / 40);
+    return base + magnitudeBonus + lengthBonus;
+  }
+
+  const NUM_TIERS = 10;   // 10 níveis de dificuldade
+  const BLOCK_SIZE = 10;  // perguntas exibidas por bloco/rodada
+
+  /**
+   * Ordena todas as perguntas do pool da mais fácil para a mais difícil e
+   * as divide em NUM_TIERS grupos (tiers) de tamanho igual. O tier 0 é o
+   * mais fácil; o último tier é o mais difícil.
+   */
+  function buildDifficultyTiers(pool) {
+    const scored = (pool || []).map(function (q) {
+      return { q: q, score: difficultyScore(q) };
+    });
+    scored.sort(function (a, b) { return a.score - b.score; });
+    const sorted = scored.map(function (s) { return s.q; });
+
+    const tierSize = Math.ceil(sorted.length / NUM_TIERS);
+    const tiers = [];
+    for (let i = 0; i < NUM_TIERS; i++) {
+      tiers.push(sorted.slice(i * tierSize, (i + 1) * tierSize));
+    }
+    return tiers.filter(function (t) { return t.length > 0; });
+  }
+
+  /**
+   * Sorteia `count` perguntas aleatórias dentro de um tier específico,
+   * com as alternativas de cada uma também embaralhadas.
+   */
+  function pickTierQuestions(tiers, tierIndex, count) {
+    const pool = (tiers && tiers[tierIndex]) || [];
+    return pickRandom(pool, count);
+  }
 
   /** Embaralha uma cópia do array (Fisher-Yates) sem alterar o original */
   function shuffleArray(arr) {
@@ -7090,33 +7190,42 @@
   }
 
   /**
-   * Níveis de classificação final, do maior para o menor.
-   * min/max referem-se à quantidade de acertos (0 a 15).
+   * Níveis de classificação final, baseados na PORCENTAGEM de acertos
+   * (não mais num número fixo de perguntas), já que agora o jogador pode
+   * responder qualquer quantidade de perguntas (múltiplos de 10).
    */
   const LEVELS = [
-    { min: 15, max: 15, title: "Lenda Suprema",       emoji: "👑", color: "#FF6B00",
+    { min: 100, max: 100, title: "Lenda Suprema",       emoji: "👑", color: "#FF6B00",
       message: "Perfeição absoluta! Sua lógica está em outro nível — você enxerga padrões que ninguém mais vê." },
-    { min: 13, max: 14, title: "Mestre da Lógica",    emoji: "🧠", color: "#00A651",
+    { min: 90,  max: 99,  title: "Mestre da Lógica",    emoji: "🧠", color: "#00A651",
       message: "Impressionante! Você domina o raciocínio lógico como poucos. Faltou muito pouco para a perfeição." },
-    { min: 10, max: 12, title: "Especialista",        emoji: "🎯", color: "#1877F2",
+    { min: 75,  max: 89,  title: "Especialista",        emoji: "🎯", color: "#1877F2",
       message: "Ótimo desempenho! Sua capacidade analítica está muito acima da média." },
-    { min: 7,  max: 9,  title: "Intelectual Curioso", emoji: "📚", color: "#8E5CF7",
+    { min: 55,  max: 74,  title: "Intelectual Curioso", emoji: "📚", color: "#8E5CF7",
       message: "Bom trabalho! Você tem uma boa base de raciocínio, com espaço para evoluir ainda mais." },
-    { min: 4,  max: 6,  title: "Aprendiz",             emoji: "🌱", color: "#F5A623",
+    { min: 35,  max: 54,  title: "Aprendiz",             emoji: "🌱", color: "#F5A623",
       message: "Você está no caminho certo! Continue exercitando a lógica e os resultados vão melhorar." },
-    { min: 0,  max: 3,  title: "Iniciante",            emoji: "🔰", color: "#FF3C3C",
+    { min: 0,   max: 34,  title: "Iniciante",            emoji: "🔰", color: "#FF3C3C",
       message: "Todo mestre um dia foi iniciante. Tente novamente e desafie sua mente!" }
   ];
 
-  function getLevel(score) {
-    return LEVELS.find(function (lvl) { return score >= lvl.min && score <= lvl.max; }) || LEVELS[LEVELS.length - 1];
+  /** Calcula o nível com base na porcentagem de acertos (score/total) */
+  function getLevel(score, total) {
+    const pct = total > 0 ? (score / total) * 100 : 0;
+    return LEVELS.find(function (lvl) { return pct >= lvl.min && pct <= lvl.max; }) || LEVELS[LEVELS.length - 1];
   }
 
   window.QuizData = {
     FALLBACK_QUESTIONS: FALLBACK_QUESTIONS,
-    QUESTIONS_PER_GAME: QUESTIONS_PER_GAME,
+    QUESTIONS_PER_GAME: BLOCK_SIZE, // mantido por compatibilidade (agora representa o tamanho do bloco)
+    BLOCK_SIZE: BLOCK_SIZE,
+    NUM_TIERS: NUM_TIERS,
     LEVELS: LEVELS,
     getLevel: getLevel,
-    pickRandom: pickRandom
+    pickRandom: pickRandom,
+    buildDifficultyTiers: buildDifficultyTiers,
+    pickTierQuestions: pickTierQuestions,
+    difficultyScore: difficultyScore,
+    detectCategory: detectCategory
   };
 })();
