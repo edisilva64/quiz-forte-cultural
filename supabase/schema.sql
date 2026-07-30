@@ -70,7 +70,7 @@ create policy "results_select_admin"
 -- ===================== FUNÇÃO: get_stats() =====================
 -- Retorna estatísticas agregadas (nunca dados individuais de um jogador).
 create or replace function get_stats()
-returns table (players bigint, avg_score numeric, avg_time_ms numeric)
+returns table (players bigint, avg_score numeric, avg_time_ms numeric, avg_accuracy numeric)
 language sql
 security definer
 set search_path = public
@@ -78,7 +78,8 @@ as $$
   select
     count(*)::bigint as players,
     avg(score)::numeric as avg_score,
-    avg(time_ms)::numeric as avg_time_ms
+    avg(time_ms)::numeric as avg_time_ms,
+    avg(case when total > 0 then (score::numeric / total::numeric) * 100 else null end)::numeric as avg_accuracy
   from results;
 $$;
 
