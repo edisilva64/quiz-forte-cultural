@@ -106,7 +106,7 @@
       <p class="hero-subtitle">Até onde você consegue chegar?</p>
       <p class="hero-text">Mais de <strong>95% das pessoas</strong> erram pelo menos 3 perguntas.<br>
       Será que você consegue ser um <strong>Mestre da Lógica</strong>?</p>
-      <p class="hero-note"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> Banco com 1000 perguntas em 10 níveis de dificuldade — você começa fácil e escolhe até onde quer ir!</p>
+      <p class="hero-note"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> Banco com 1000 perguntas em 3 níveis de dificuldade — você escolhe onde começar e até onde quer ir!</p>
       <button id="startBtn" class="btn btn-primary btn-xl ripple">
         <i class="fa-solid fa-play" aria-hidden="true"></i> COMEÇAR AGORA
       </button>
@@ -133,12 +133,23 @@
     </div>
   </section>
 
+  <!-- ===================== ESCOLHA DE NÍVEL ===================== -->
+  <section class="level-select-section" id="levelSelectSection" hidden aria-label="Escolha do nível de dificuldade">
+    <div class="container level-select-container">
+      <h2 class="level-select-title">Escolha seu nível de dificuldade</h2>
+      <p class="level-select-subtitle">Você pode começar por onde quiser. Depois de cada bloco de 10 perguntas, é possível avançar para um nível mais difícil.</p>
+      <div class="level-cards" id="levelCards">
+        <!-- Preenchido via JS -->
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== QUIZ ===================== -->
   <section class="quiz-section" id="quizSection" aria-live="polite" hidden>
     <div class="container quiz-container">
 
       <div class="quiz-topbar">
-        <span class="tier-badge" id="tierBadge">Nível 1 de 10</span>
+        <span class="tier-badge" id="tierBadge">Nível Fácil</span>
         <div class="progress-info">
           <span id="progressLabel">Questão 1 de 10</span>
           <span id="timerDisplay" class="timer"><i class="fa-regular fa-clock"></i> 00:00</span>

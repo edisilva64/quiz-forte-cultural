@@ -3,7 +3,7 @@
    Estratégia: cache-first para assets estáticos (app shell)
    =================================================================== */
 
-const CACHE_NAME = "forte-cultural-v8";
+const CACHE_NAME = "forte-cultural-v9";
 
 const ASSETS_TO_CACHE = [
   "./index.html",

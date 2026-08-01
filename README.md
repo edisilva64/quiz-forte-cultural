@@ -7,30 +7,32 @@ Quiz interativo de raciocínio lógico, construído em **HTML5, CSS3 e JavaScrip
 
 ---
 
-## 🎮 Sistema de dificuldade progressiva (blocos de 10)
+## 🎮 Sistema de dificuldade progressiva (Fácil / Médio / Difícil)
 
 O quiz não usa mais um total fixo de 15 perguntas aleatórias. Agora funciona assim:
 
 1. As 1000 perguntas do banco são automaticamente **classificadas por dificuldade** (mais fácil → mais difícil), usando um classificador heurístico em `js/quiz.js` (`difficultyScore`). Ele considera: o tipo de pergunta (cultura geral e charadas tendem a ser mais fáceis; problemas de lógica com várias etapas tendem a ser mais difíceis), o tamanho dos números envolvidos, e o tamanho do enunciado.
-2. As perguntas classificadas são divididas em **10 níveis** de 100 perguntas cada (`buildDifficultyTiers`).
-3. O jogador sempre começa no **Nível 1** (as 100 perguntas mais fáceis) e responde um **bloco de 10**, sorteadas aleatoriamente dentro desse nível (isso mantém a variedade entre partidas — nem todo mundo vê as mesmas 10 perguntas).
-4. Ao final do bloco, aparece uma tela avisando que o próximo bloco será mais difícil, com duas opções: **continuar** (avança para o Nível 2) ou **parar e ver o resultado**.
-5. Isso se repete até o Nível 10 (o mais difícil) ou até o jogador decidir parar. No Nível 10, não há mais opção de continuar — só ver o resultado final.
+2. As perguntas classificadas são divididas em **3 níveis nomeados**: 🟢 **Fácil**, 🟠 **Médio** e 🔴 **Difícil** (cerca de 333 perguntas em cada) — `buildDifficultyTiers`.
+3. Ao clicar em "Começar Agora", o jogador **escolhe em qual nível quer começar**, numa tela com 3 cartões coloridos (verde/laranja/vermelho).
+4. Ele então responde um **bloco de 10** perguntas, sorteadas aleatoriamente dentro do nível escolhido (isso mantém a variedade entre partidas — nem todo mundo vê as mesmas 10 perguntas). O painel de perguntas, os círculos de alternativas e a barra de progresso mudam de cor de acordo com o nível atual.
+5. Ao final do bloco, aparece uma tela avisando que o próximo bloco será do nível seguinte (mais difícil), com duas opções: **continuar** ou **parar e ver o resultado**. Quem começa no Médio, ao continuar, avança direto para o Difícil (pula o Fácil, já que seria um retrocesso). Quem começa no Difícil não tem para onde avançar — só ver o resultado ao final do bloco.
 
-### Por que sortear dentro de níveis, e não usar 100 blocos fixos?
+### Por que sortear dentro de níveis, e não usar blocos 100% fixos?
 
-Uma abordagem mais simples seria dividir as 1000 perguntas em exatamente 100 blocos fixos de 10 (sempre as mesmas 10 perguntas em cada posição). A desvantagem é que **todo mundo veria exatamente as mesmas perguntas na mesma ordem**, sempre. Agrupando em 10 níveis de 100 perguntas e sorteando 10 por vez dentro do nível, a dificuldade ainda cresce de forma consistente, mas cada partida continua sendo diferente — o melhor dos dois mundos.
+Uma abordagem mais simples seria ter blocos fixos (sempre as mesmas 10 perguntas em cada nível, para todo mundo). A desvantagem é que **todo mundo veria exatamente as mesmas perguntas sempre**. Sorteando 10 por vez dentro de cada nível (~333 perguntas de pool), a dificuldade sobe de forma consistente, mas cada partida continua sendo diferente.
 
 ### Ajustando o sistema
 
-- **Quantidade de níveis:** altere `NUM_TIERS` em `js/quiz.js` (hoje: 10).
+- **Nomes, cores e descrições dos níveis:** edite o array `TIER_META` em `js/quiz.js`.
+- **Quantidade de níveis:** altere `NUM_TIERS` em `js/quiz.js` (hoje: 3). Se mudar esse número, ajuste também `TIER_META` para ter a mesma quantidade de itens.
 - **Tamanho de cada bloco:** altere `BLOCK_SIZE` em `js/quiz.js` (hoje: 10).
 - **Critério de dificuldade:** ajuste os pesos em `CATEGORY_BASE_SCORE` e a função `difficultyScore` em `js/quiz.js`.
-- **Níveis de resultado (Iniciante, Aprendiz, etc.):** agora são calculados por **porcentagem de acertos**, não mais por número fixo — veja o array `LEVELS` em `js/quiz.js`.
+- **Cores do painel de perguntas:** as cores (verde/laranja/vermelho) vêm de `TIER_META[i].color` e `colorLight`, aplicadas via variáveis CSS `--level-color` / `--level-color-light` (ver `css/style.css`, seletores `.question-card`, `.option-letter`, `.progress-fill`, `.tier-badge`).
+- **Níveis de resultado (Iniciante, Aprendiz, etc.):** são calculados por **porcentagem de acertos**, não por número fixo — veja o array `LEVELS` em `js/quiz.js` (não confundir com os 3 níveis de dificuldade — são dois conceitos diferentes: nível de dificuldade das perguntas vs. nível de desempenho do jogador no resultado final).
 
 ### Estatísticas da comunidade (Supabase)
 
-Como cada jogador agora pode responder uma quantidade diferente de perguntas (10, 20, 30... até 100), a comparação com outros jogadores passou a ser feita por **precisão (%)**, não mais por número bruto de acertos — isso é o que faz sentido comparar quando os totais variam. Isso exigiu uma atualização na função `get_stats()` do banco — veja `supabase/patch_2026-07-27_progressive_difficulty_stats.sql`.
+Como cada jogador agora pode responder uma quantidade diferente de perguntas, a comparação com outros jogadores é feita por **precisão (%)**, não por número bruto de acertos. Isso exigiu uma atualização na função `get_stats()` do banco — veja `supabase/patch_2026-07-27_progressive_difficulty_stats.sql`.
 
 ## 📁 Estrutura do projeto
 
