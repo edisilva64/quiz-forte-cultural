@@ -7118,8 +7118,40 @@
     return base + magnitudeBonus + lengthBonus;
   }
 
-  const NUM_TIERS = 10;   // 10 níveis de dificuldade
+  const NUM_TIERS = 3;    // 3 níveis nomeados: Fácil, Médio, Difícil
   const BLOCK_SIZE = 10;  // perguntas exibidas por bloco/rodada
+
+  /**
+   * Metadados de cada nível: nome exibido, cores (harmonizadas com a
+   * paleta do site) e ícone. O índice aqui corresponde ao índice do tier
+   * gerado por buildDifficultyTiers (0 = mais fácil, 2 = mais difícil).
+   */
+  const TIER_META = [
+    {
+      key: "facil",
+      name: "Nível Fácil",
+      color: "#00A651",       // verde da marca
+      colorLight: "#E7F8EF",
+      icon: "fa-seedling",
+      description: "Perguntas mais simples, ótimo para aquecer o raciocínio."
+    },
+    {
+      key: "medio",
+      name: "Nível Médio",
+      color: "#FF8A00",       // laranja da marca
+      colorLight: "#FFF1E0",
+      icon: "fa-bolt",
+      description: "Um desafio equilibrado — nem tão fácil, nem tão difícil."
+    },
+    {
+      key: "dificil",
+      name: "Nível Difícil",
+      color: "#FF3C3C",       // vermelho (mesmo tom já usado em erros/alertas do site)
+      colorLight: "#FFEAEA",
+      icon: "fa-fire",
+      description: "Só para quem não tem medo de um desafio de verdade."
+    }
+  ];
 
   /**
    * Ordena todas as perguntas do pool da mais fácil para a mais difícil e
@@ -7220,6 +7252,7 @@
     QUESTIONS_PER_GAME: BLOCK_SIZE, // mantido por compatibilidade (agora representa o tamanho do bloco)
     BLOCK_SIZE: BLOCK_SIZE,
     NUM_TIERS: NUM_TIERS,
+    TIER_META: TIER_META,
     LEVELS: LEVELS,
     getLevel: getLevel,
     pickRandom: pickRandom,

@@ -167,10 +167,10 @@
   }
 
   /* ---------- RESULTADO ---------- */
-  function renderResultCard(el, level, score, total, timeFormatted, highestTier, numTiers) {
+  function renderResultCard(el, level, score, total, timeFormatted, highestTierName) {
     const accuracy = total > 0 ? Math.round((score / total) * 100) : 0;
-    const tierInfo = highestTier
-      ? '<div class="stat-box"><div class="stat-value">' + highestTier + '/' + numTiers + '</div><div class="stat-label">NÍVEL ALCANÇADO</div></div>'
+    const tierInfo = highestTierName
+      ? '<div class="stat-box"><div class="stat-value" style="font-size:1.05rem;">' + highestTierName + '</div><div class="stat-label">NÍVEL ALCANÇADO</div></div>'
       : "";
     el.innerHTML =
       '<div class="result-emoji">' + level.emoji + '</div>' +
@@ -264,6 +264,8 @@
     const numTiers = opts.numTiers;
     const overallScore = opts.overallScore;
     const overallTotal = opts.overallTotal;
+    const tierName = opts.tierName;
+    const nextTierName = opts.nextTierName;
     const isLastTier = tierNumber >= numTiers;
 
     const accuracy = blockTotal > 0 ? Math.round((blockScore / blockTotal) * 100) : 0;
@@ -271,17 +273,17 @@
     el.innerHTML =
       '<div class="block-complete-card">' +
         '<div class="block-complete-emoji">🎉</div>' +
-        '<h2 class="block-complete-title">Nível ' + tierNumber + ' de ' + numTiers + ' concluído!</h2>' +
+        '<h2 class="block-complete-title">' + tierName + ' concluído!</h2>' +
         '<p class="block-complete-score">Você acertou ' + blockScore + ' de ' + blockTotal + ' nesta parte (' + accuracy + '%)</p>' +
         '<p class="block-complete-overall">No total, até agora: ' + overallScore + ' de ' + overallTotal + ' perguntas certas.</p>' +
         (isLastTier
           ? '<p class="block-complete-warning">🏁 Você chegou ao nível mais difícil do desafio! Não há mais blocos — hora de ver seu resultado final.</p>'
-          : '<p class="block-complete-warning">⚠️ As próximas 10 perguntas serão <strong>mais difíceis</strong> que as anteriores.</p>'
+          : '<p class="block-complete-warning">⚠️ As próximas 10 perguntas serão do <strong>' + nextTierName + '</strong> — mais difíceis que as anteriores.</p>'
         ) +
         '<div class="block-complete-actions">' +
           (isLastTier
             ? '<button id="blockFinishBtn" class="btn btn-primary btn-xl ripple">VER RESULTADO FINAL</button>'
-            : '<button id="blockContinueBtn" class="btn btn-primary btn-xl ripple"><i class="fa-solid fa-arrow-right"></i> CONTINUAR (MAIS DIFÍCIL)</button>' +
+            : '<button id="blockContinueBtn" class="btn btn-primary btn-xl ripple"><i class="fa-solid fa-arrow-right"></i> CONTINUAR PARA O ' + nextTierName.toUpperCase() + '</button>' +
               '<button id="blockStopBtn" class="btn btn-ghost ripple">PARAR E VER RESULTADO</button>'
           ) +
         '</div>' +
@@ -309,6 +311,33 @@
     });
   }
 
+  /* ---------- SELEÇÃO DE NÍVEL ---------- */
+  /**
+   * Renderiza os cartões de escolha de nível (Fácil/Médio/Difícil).
+   * @param {HTMLElement} el - container onde os cartões serão inseridos
+   * @param {Array} tierMeta - QuizData.TIER_META (nome, cor, ícone, descrição)
+   * @param {Function} onSelect - callback(tierIndex) ao clicar em um cartão
+   */
+  function renderLevelCards(el, tierMeta, onSelect) {
+    el.innerHTML = "";
+    tierMeta.forEach(function (meta, index) {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "level-card ripple";
+      card.style.setProperty("--level-card-color", meta.color);
+      card.setAttribute("aria-label", "Começar no " + meta.name);
+
+      card.innerHTML =
+        '<div class="level-card-icon"><i class="fa-solid ' + meta.icon + '"></i></div>' +
+        '<div class="level-card-name">' + meta.name + '</div>' +
+        '<p class="level-card-desc">' + meta.description + '</p>' +
+        '<span class="level-card-btn">COMEÇAR AQUI</span>';
+
+      card.addEventListener("click", function () { onSelect(index); });
+      el.appendChild(card);
+    });
+  }
+
   window.QuizUI = {
     attachRipple: attachRipple,
     renderQuestion: renderQuestion,
@@ -317,6 +346,7 @@
     renderResultCard: renderResultCard,
     renderCommunityStats: renderCommunityStats,
     renderBlockComplete: renderBlockComplete,
+    renderLevelCards: renderLevelCards,
     renderReview: renderReview
   };
 })();
