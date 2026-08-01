@@ -7,6 +7,10 @@
 -- clique em "Run". Não apaga nenhum dado — só redefine a função.
 -- ===================================================================
 
+-- Precisa apagar a função antiga primeiro: o Postgres não permite trocar
+-- o formato de retorno de uma função existente com CREATE OR REPLACE.
+drop function if exists get_stats();
+
 create or replace function get_stats()
 returns table (players bigint, avg_score numeric, avg_time_ms numeric, avg_accuracy numeric)
 language sql
