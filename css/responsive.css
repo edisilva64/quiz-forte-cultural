@@ -40,6 +40,8 @@
   .rule-card { padding: 14px 8px; font-size: 0.78rem; }
 
   .level-cards { grid-template-columns: 1fr; }
+  .module-cards { grid-template-columns: 1fr; }
+  .module-select-section { padding: 40px 0; }
   .level-select-section { padding: 40px 0; }
 
   .question-card { padding: 46px 20px 30px; }
