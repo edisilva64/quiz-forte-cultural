@@ -218,10 +218,27 @@
       const avgTimeText = avgTimeMs !== null ? formatMs(avgTimeMs) : "—";
 
       statsArea.innerHTML =
-        '<div class="stat-card"><i class="fa-solid fa-eye"></i><div><div class="stat-value">' + (totalViews ?? "—") + '</div><div class="stat-label">ACESSOS TOTAIS AO SITE</div></div></div>' +
+        '<div class="stat-card"><i class="fa-solid fa-eye"></i><div><div class="stat-value">' + (totalViews ?? "—") + '</div><div class="stat-label">ACESSOS TOTAIS AO SITE (QUIZ)</div></div></div>' +
         '<div class="stat-card"><i class="fa-solid fa-flag-checkered"></i><div><div class="stat-value">' + (totalPlayers ?? "—") + '</div><div class="stat-label">DESAFIOS CONCLUÍDOS</div></div></div>' +
         '<div class="stat-card"><i class="fa-solid fa-star"></i><div><div class="stat-value">' + avgAccuracy + '%</div><div class="stat-label">PRECISÃO MÉDIA GERAL</div></div></div>' +
         '<div class="stat-card"><i class="fa-solid fa-stopwatch"></i><div><div class="stat-value">' + avgTimeText + '</div><div class="stat-label">TEMPO MÉDIO GERAL</div></div></div>';
+
+      // Estatísticas da Forca da Cela (tabelas separadas, podem ainda não
+      // existir se o patch_2026-08-15_forca_module.sql não foi aplicado —
+      // por isso ficam num try/catch próprio, sem travar o resto do painel).
+      try {
+        const [forcaViewsRes, forcaResultsRes] = await Promise.all([
+          sb.from("forca_page_views").select("*", { count: "exact", head: true }),
+          sb.from("forca_results").select("*", { count: "exact", head: true })
+        ]);
+        if (!forcaViewsRes.error && !forcaResultsRes.error) {
+          statsArea.innerHTML +=
+            '<div class="stat-card"><i class="fa-solid fa-lock"></i><div><div class="stat-value">' + (forcaViewsRes.count ?? "—") + '</div><div class="stat-label">ACESSOS À FORCA DA CELA</div></div></div>' +
+            '<div class="stat-card"><i class="fa-solid fa-gamepad"></i><div><div class="stat-value">' + (forcaResultsRes.count ?? "—") + '</div><div class="stat-label">PARTIDAS DE FORCA JOGADAS</div></div></div>';
+        }
+      } catch (e) {
+        /* módulo da Forca ainda não configurado — não afeta o resto do painel */
+      }
     } catch (e) {
       statsArea.innerHTML =
         '<p class="loading-text">Não foi possível carregar as estatísticas agora.</p>' +

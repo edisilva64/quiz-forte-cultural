@@ -7,32 +7,87 @@ Quiz interativo de raciocínio lógico, construído em **HTML5, CSS3 e JavaScrip
 
 ---
 
-## 🎮 Sistema de dificuldade progressiva (Fácil / Médio / Difícil)
+## 🔒 Forca da Cela (novo jogo, separado do quiz)
 
-O quiz não usa mais um total fixo de 15 perguntas aleatórias. Agora funciona assim:
+Além do quiz, o site agora tem um segundo jogo independente: **`forca.html`** — um jogo de adivinhação de palavras no estilo forca, mas com uma cela de cadeia sendo construída a cada erro em vez do boneco na forca tradicional.
 
-1. As 1000 perguntas do banco são automaticamente **classificadas por dificuldade** (mais fácil → mais difícil), usando um classificador heurístico em `js/quiz.js` (`difficultyScore`). Ele considera: o tipo de pergunta (cultura geral e charadas tendem a ser mais fáceis; problemas de lógica com várias etapas tendem a ser mais difíceis), o tamanho dos números envolvidos, e o tamanho do enunciado.
-2. As perguntas classificadas são divididas em **3 níveis nomeados**: 🟢 **Fácil**, 🟠 **Médio** e 🔴 **Difícil** (cerca de 333 perguntas em cada) — `buildDifficultyTiers`.
-3. Ao clicar em "Começar Agora", o jogador **escolhe em qual nível quer começar**, numa tela com 3 cartões coloridos (verde/laranja/vermelho).
-4. Ele então responde um **bloco de 10** perguntas, sorteadas aleatoriamente dentro do nível escolhido (isso mantém a variedade entre partidas — nem todo mundo vê as mesmas 10 perguntas). O painel de perguntas, os círculos de alternativas e a barra de progresso mudam de cor de acordo com o nível atual.
-5. Ao final do bloco, aparece uma tela avisando que o próximo bloco será do nível seguinte (mais difícil), com duas opções: **continuar** ou **parar e ver o resultado**. Quem começa no Médio, ao continuar, avança direto para o Difícil (pula o Fácil, já que seria um retrocesso). Quem começa no Difícil não tem para onde avançar — só ver o resultado ao final do bloco.
+### Regras principais
+- O jogador tenta letras de uma palavra secreta. Acertos revelam a letra em todas as posições; erros constroem uma parte da cela.
+- **6 erros** fecham a cela por completo — nesse ponto, o jogador perde.
+- É possível pedir uma **dica** a qualquer momento, mas isso também constrói uma parte da cela (como se fosse um erro). **Se a dica for pedida quando já faltar só 1 parte para a cela fechar, o jogador perde na hora** — essa regra é avisada na tela inicial.
+- Cada palavra tem um **cronômetro de 60 segundos**. Se o tempo acabar, a cela se fecha e o jogador perde. Nos **10 segundos finais**, um alarme visual (o cronômetro pulsa em vermelho) e sonoro (beep, gerado via Web Audio API, sem precisar de arquivo de áudio) é ativado.
+- As palavras vão da mais fácil para a mais difícil a cada rodada vencida (banco de **301 palavras**, com pequena variedade de sorteio dentro de grupos de 10, no mesmo espírito do quiz).
+- Acentos e cedilhas são aceitos sem o sinal gráfico — digitar "C" acerta tanto "C" quanto "Ç", por exemplo (importante para digitação em celulares).
+- Ao vencer uma palavra, o personagem "dança" em comemoração.
+- A faixa lateral do jogo alterna, a cada jogada, entre as camisetas do quiz (café, gato, fada, sarcasmo), sempre com um link clicável para a loja.
 
-### Por que sortear dentro de níveis, e não usar blocos 100% fixos?
+### Estrutura de arquivos do jogo
+```
+forca.html              → página do jogo
+css/forca.css           → estilos específicos (cela, teclado, cronômetro)
+js/forca-words.js       → banco de 301 palavras (fácil → difícil, com dicas)
+js/forca-db.js          → contador de acessos e resultados (Supabase)
+js/forca-app.js         → motor do jogo (toda a lógica)
+```
 
-Uma abordagem mais simples seria ter blocos fixos (sempre as mesmas 10 perguntas em cada nível, para todo mundo). A desvantagem é que **todo mundo veria exatamente as mesmas perguntas sempre**. Sorteando 10 por vez dentro de cada nível (~333 perguntas de pool), a dificuldade sobe de forma consistente, mas cada partida continua sendo diferente.
+### Banco de dados: contador separado do quiz
+
+Como pedido, o contador de acessos da Forca é **totalmente separado** do contador do quiz — usa tabelas próprias (`forca_page_views` e `forca_results`) no mesmo projeto Supabase. Para ativar:
+1. Rode `supabase/patch_2026-08-15_forca_module.sql` no SQL Editor do Supabase (mesmo processo dos outros patches).
+2. Os números aparecem automaticamente no mesmo painel `admin.html` que você já usa para o quiz (mesmo login) — não precisa de uma segunda conta ou senha.
+
+Se você não configurar o Supabase, o jogo funciona normalmente, só sem o contador (mesma filosofia "tolerante a falhas" do resto do site).
+
+### Ajustando o jogo
+- **Palavras e dicas:** edite `js/forca-words.js` — cada entrada é `{ id, word, hint }`. A ordem no array define a dificuldade (do início = mais fácil, ao fim = mais difícil).
+- **Número de erros permitidos:** altere `MAX_WRONG` em `js/forca-app.js` (hoje: 6).
+- **Tempo por palavra e limiar do alarme:** altere `TIME_PER_ROUND` e `ALARM_THRESHOLD` em `js/forca-app.js` (hoje: 60s e 10s).
+- **Imagens da faixa lateral:** edite o array `RAIL_CONTENT` em `js/forca-app.js`.
+
+## 🗺️ Módulos: Quiz Geral e Quiz Turismo
+
+Desde a última atualização, o site oferece **dois módulos separados**, escolhidos pelo jogador logo após clicar em "Começar Agora":
+
+- **Quiz Geral** — banco de 1000 perguntas de lógica, matemática, cultura geral e charadas (o quiz original).
+- **Quiz Turismo** — banco de 500 perguntas dedicado a monumentos e maravilhas do mundo: as Sete Maravilhas do Mundo Antigo, as Sete Novas Maravilhas do Mundo Moderno, e monumentos brasileiros, japoneses, chineses, indianos, russos, gregos, africanos, europeus, americanos e da Ásia/Oceania — incluindo perguntas sobre a história e a construção de cada um.
+
+Cada módulo tem seu **próprio banco de dados** (tabelas separadas no Supabase: `questions` para o geral, `tourism_questions` para o turismo) e sua **própria progressão de dificuldade** (ver seção abaixo) — a classificação é feita separadamente dentro de cada módulo.
+
+### Sobre a precisão das perguntas do módulo de turismo
+
+Diferente das perguntas de matemática/lógica (que têm resposta garantida por cálculo), as perguntas de turismo são baseadas em conhecimento histórico e geográfico. Foram cuidadosamente revisadas para evitar ambiguidade e respostas duplas, com pesquisa adicional para confirmar fatos específicos (datas, listas oficiais de maravilhas, etc.). Ainda assim, como em qualquer banco de conhecimento geral dessa escala, se você notar algum erro factual, me avise para eu corrigir — é praticamente impossível garantir 100% de precisão em 500 perguntas de fatos históricos sem revisão humana especializada em cada tema.
+
+### Como adicionar/editar perguntas do módulo de turismo
+
+- **Se o Supabase estiver configurado:** gerencie pela tabela `tourism_questions` no Table Editor, igual ao módulo geral.
+- **Banco de reserva local:** as 500 perguntas ficam em `js/tourism-questions.js`, em `window.TOURISM_QUESTIONS`. O formato de cada pergunta é idêntico ao do módulo geral.
+
+## 🎮 Sistema de dificuldade progressiva (contínua, sem escolha de nível)
+
+O quiz não usa mais um total fixo de 15 perguntas aleatórias, nem faz o jogador escolher um nível para começar. Agora funciona assim:
+
+1. As perguntas de cada módulo (1000 no Geral, 500 no Turismo) são automaticamente **classificadas por dificuldade** (mais fácil → mais difícil), usando um classificador heurístico em `js/quiz.js` (`difficultyScore`). Ele considera: o tipo de pergunta, a magnitude dos números envolvidos, o tamanho do enunciado, e se a pergunta exige raciocínio sobre causas/datas específicas.
+2. As perguntas classificadas são divididas em **blocos sequenciais de 10**, cobrindo o banco inteiro do módulo — `buildDifficultyBlocks` (100 blocos no Geral, 50 no Turismo).
+3. Depois de escolher o módulo, o jogador **já começa automaticamente no bloco mais fácil** — não há mais escolha de nível.
+4. A cada bloco de 10 perguntas respondido, aparece uma tela avisando que o próximo bloco será um pouco mais difícil, com duas opções: **continuar** ou **parar e ver o resultado**. O jogador pode ir continuando bloco a bloco até a última pergunta do banco inteiro, se quiser.
+5. O painel de perguntas, os círculos de alternativas, a barra de progresso e o badge do topo mudam de cor (🟢 verde → 🟠 laranja → 🔴 vermelho) automaticamente, de acordo com a posição do bloco atual dentro do banco: primeiro terço = fácil, terço do meio = médio, último terço = difícil (`getZoneForBlock`). Essa cor é só visual/informativa — não é mais uma escolha do jogador.
+
+### Por que sortear dentro de blocos, e não usar exatamente as mesmas perguntas sempre?
+
+Cada bloco de 10 é sorteado a partir de um pequeno grupo de perguntas com dificuldade parecida (não é sempre a mesma dezena de perguntas em cada posição), o que mantém variedade entre partidas.
 
 ### Ajustando o sistema
 
-- **Nomes, cores e descrições dos níveis:** edite o array `TIER_META` em `js/quiz.js`.
-- **Quantidade de níveis:** altere `NUM_TIERS` em `js/quiz.js` (hoje: 3). Se mudar esse número, ajuste também `TIER_META` para ter a mesma quantidade de itens.
+- **Cores e nomes das zonas de dificuldade:** edite o array `ZONE_META` em `js/quiz.js`.
 - **Tamanho de cada bloco:** altere `BLOCK_SIZE` em `js/quiz.js` (hoje: 10).
 - **Critério de dificuldade:** ajuste os pesos em `CATEGORY_BASE_SCORE` e a função `difficultyScore` em `js/quiz.js`.
-- **Cores do painel de perguntas:** as cores (verde/laranja/vermelho) vêm de `TIER_META[i].color` e `colorLight`, aplicadas via variáveis CSS `--level-color` / `--level-color-light` (ver `css/style.css`, seletores `.question-card`, `.option-letter`, `.progress-fill`, `.tier-badge`).
-- **Níveis de resultado (Iniciante, Aprendiz, etc.):** são calculados por **porcentagem de acertos**, não por número fixo — veja o array `LEVELS` em `js/quiz.js` (não confundir com os 3 níveis de dificuldade — são dois conceitos diferentes: nível de dificuldade das perguntas vs. nível de desempenho do jogador no resultado final).
+- **Pontos de corte das zonas de cor** (hoje: terços do banco): ajuste a função `getZoneForBlock` em `js/quiz.js`.
+- **Cores do painel de perguntas:** vêm de `ZONE_META[i].color` e `colorLight`, aplicadas via variáveis CSS `--level-color` / `--level-color-light` (ver `css/style.css`, seletores `.question-card`, `.option-letter`, `.progress-fill`, `.tier-badge`).
+- **Níveis de resultado (Iniciante, Aprendiz, etc.):** são calculados por **porcentagem de acertos**, não por número fixo — veja o array `LEVELS` em `js/quiz.js` (não confundir com as zonas de dificuldade das perguntas — são dois conceitos diferentes).
 
 ### Estatísticas da comunidade (Supabase)
 
-Como cada jogador agora pode responder uma quantidade diferente de perguntas, a comparação com outros jogadores é feita por **precisão (%)**, não por número bruto de acertos. Isso exigiu uma atualização na função `get_stats()` do banco — veja `supabase/patch_2026-07-27_progressive_difficulty_stats.sql`.
+Como cada jogador pode responder uma quantidade diferente de perguntas (dependendo de até onde decide ir), a comparação com outros jogadores é feita por **precisão (%)**, não por número bruto de acertos. Isso exigiu uma atualização na função `get_stats()` do banco — veja `supabase/patch_2026-07-27_progressive_difficulty_stats.sql`.
 
 ## 📁 Estrutura do projeto
 
@@ -49,6 +104,7 @@ Quiz-Forte-Cultural/
 │   ├── config.js           → credenciais do Supabase (preencher)
 │   ├── db.js                → integração com o banco de dados
 │   ├── quiz.js              → banco de perguntas local (fallback) e níveis
+│   ├── tourism-questions.js → banco de 500 perguntas do módulo Quiz Turismo
 │   ├── progress.js          → barra de progresso
 │   ├── timer.js             → cronômetro (total + por pergunta)
 │   ├── confetti.js          → efeito de confetes
@@ -314,6 +370,8 @@ Patches disponíveis até agora:
 - `patch_2026-07-19_expand_to_400_questions.sql` — atualiza o banco de perguntas de 120 para 400 (todas diferentes).
 - `patch_2026-07-26_expand_to_1000_questions.sql` — atualiza o banco de perguntas de 400 para 1000 (todas diferentes). **Você só precisa rodar este — ele já substitui os anteriores.**
 - `patch_2026-07-27_progressive_difficulty_stats.sql` — atualiza a função de estatísticas para comparar jogadores por precisão (%), necessário após a mudança para blocos progressivos de dificuldade.
+- `patch_2026-08-07_tourism_module.sql` — cria o módulo "Quiz Turismo" (500 perguntas sobre monumentos), em uma tabela nova e separada do quiz geral. **Não apaga nem altera nada do quiz geral já existente.**
+- `patch_2026-08-15_forca_module.sql` — cria as tabelas do jogo "Forca da Cela" (`forca_page_views`, `forca_results`), totalmente separadas das tabelas do quiz.
 
 > Se você está configurando o Supabase pela primeira vez agora, **não precisa rodar os patches** — basta rodar o `schema.sql` completo, que já vem com tudo atualizado.
 

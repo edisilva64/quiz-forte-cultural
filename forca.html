@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Forca da Cela | Forte Cultural</title>
+
+<meta name="description" content="Jogo da forca com tema de cela de cadeia: adivinhe a palavra antes que a cela se feche. 301 palavras, do fácil ao difícil, com dicas e cronômetro.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://edisilva64.github.io/quiz-forte-cultural/forca.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="🔒 Forca da Cela — Forte Cultural">
+<meta property="og:description" content="Adivinhe a palavra antes que a cela se feche! 301 palavras, do fácil ao difícil.">
+<meta property="og:image" content="img/logo.png">
+
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="img/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Bangers&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/dark.css">
+<link rel="stylesheet" href="css/forca.css">
+</head>
+<body class="forca-body">
+
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Voltar para o Desafio Lógico Forte Cultural">
+      <img src="img/logo.png" alt="Forte Cultural" width="36" height="36" loading="eager">
+      <span>Forte Cultural</span>
+    </a>
+    <a href="index.html" class="icon-btn" aria-label="Voltar ao Quiz" title="Voltar ao Quiz">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== INTRODUÇÃO / REGRAS ===================== -->
+  <section class="forca-hero" id="forcaIntro">
+    <div class="forca-halftone" aria-hidden="true"></div>
+    <div class="container forca-intro-inner">
+      <p class="eyebrow"><i class="fa-solid fa-lock" aria-hidden="true"></i> Jogo de palavras</p>
+      <h1 class="forca-title">🔒 FORCA DA CELA</h1>
+      <p class="forca-subtitle">Adivinhe a palavra antes que a cela se feche por completo!</p>
+
+      <div class="forca-rules-card">
+        <h2 class="forca-rules-title"><i class="fa-solid fa-scroll"></i> Como jogar</h2>
+        <ul class="forca-rules-list">
+          <li><i class="fa-solid fa-keyboard"></i> Escolha uma letra por vez. Se ela existir na palavra, aparece em todas as posições certas.</li>
+          <li><i class="fa-solid fa-building-shield"></i> Se errar, uma parte da <strong>cela</strong> é construída. São permitidos <strong>6 erros</strong> — no 6º, a cela se fecha e você perde.</li>
+          <li><i class="fa-solid fa-lightbulb"></i> Pode pedir uma <strong>dica</strong> sobre a palavra a qualquer momento — mas isso também constrói uma parte da cela, como se fosse um erro. <strong>Atenção:</strong> se você pedir dica quando já faltar só 1 parte para a cela se fechar, você perde na hora.</li>
+          <li><i class="fa-regular fa-clock"></i> Você tem <strong>60 segundos</strong> por palavra. Se o tempo acabar antes de você resolver, a cela se fecha e você perde. Nos <strong>10 segundos finais</strong>, um alarme visual e sonoro é ativado.</li>
+          <li><i class="fa-solid fa-arrow-trend-up"></i> As palavras começam fáceis e vão ficando mais difíceis a cada rodada vencida.</li>
+          <li><i class="fa-solid fa-face-smile"></i> Acentos e cedilhas (á, ç, ã...) não precisam ser digitados — considere só a letra base.</li>
+        </ul>
+        <button id="forcaStartBtn" class="btn btn-primary btn-xl ripple">
+          <i class="fa-solid fa-play"></i> COMEÇAR A JOGAR
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== JOGO ===================== -->
+  <section class="forca-game-section" id="forcaGameSection" hidden>
+    <div class="container forca-game-container">
+
+      <div class="forca-topbar">
+        <span class="forca-round-badge" id="forcaRoundBadge">Palavra 1</span>
+        <div class="forca-timer" id="forcaTimerDisplay"><i class="fa-regular fa-clock"></i> 01:00</div>
+      </div>
+
+      <div class="forca-board">
+        <div class="forca-cell-scene" id="forcaCellScene" aria-hidden="true">
+          <!-- Preenchido via JS: personagem + barras da cela -->
+        </div>
+
+        <div class="forca-word-area">
+          <div class="forca-word-display" id="forcaWordDisplay" aria-live="polite"></div>
+
+          <div class="forca-hint-area">
+            <button id="forcaHintBtn" class="btn btn-secondary btn-sm ripple">
+              <i class="fa-solid fa-lightbulb"></i> PEDIR DICA (custa 1 parte da cela)
+            </button>
+            <p class="forca-hint-text" id="forcaHintText" hidden></p>
+          </div>
+
+          <div class="forca-used-letters">
+            <span class="forca-used-label">Letras já tentadas:</span>
+            <div class="forca-used-list" id="forcaUsedList" aria-live="polite"></div>
+          </div>
+
+          <div class="forca-keyboard" id="forcaKeyboard" role="group" aria-label="Teclado de letras"></div>
+        </div>
+      </div>
+
+      <!-- Faixa lateral: alterna entre as camisetas do quiz a cada jogada -->
+      <aside class="promo-rail forca-rail" id="forcaRail" aria-label="Oferta relacionada à camiseta">
+        <div class="promo-rail-inner">
+          <div class="promo-rail-mockup">
+            <img id="forcaRailImg" src="img/camiseta-cafe.png" alt="Camiseta em destaque" loading="lazy" width="200" height="256">
+          </div>
+          <span class="promo-rail-emoji" id="forcaRailEmoji">☕</span>
+          <div class="promo-rail-title" id="forcaRailTitle">ESTILO CIÊNCIA</div>
+          <p class="promo-rail-text">Conheça nossa loja de camisetas:</p>
+          <a class="btn btn-primary btn-sm ripple" id="forcaRailLink" href="https://umapenca.com/fortecultural/" target="_blank" rel="noopener">umapenca.com/fortecultural</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== RESULTADO DA RODADA (vitória) ===================== -->
+  <section class="forca-round-result-section" id="forcaRoundResultSection" hidden>
+    <div class="container forca-round-result-container">
+      <div class="forca-round-result-card" id="forcaRoundResultCard"></div>
+    </div>
+  </section>
+
+  <!-- ===================== FIM DE JOGO (derrota) ===================== -->
+  <section class="forca-gameover-section" id="forcaGameoverSection" hidden>
+    <div class="container forca-gameover-container">
+      <div class="forca-gameover-card" id="forcaGameoverCard"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="forcaYear"></span> Forte Cultural — Forca da Cela. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="js/config.js" defer></script>
+<script src="js/db.js" defer></script>
+<script src="js/forca-db.js" defer></script>
+<script src="js/forca-words.js" defer></script>
+<script src="js/forca-app.js" defer></script>
+</body>
+</html>

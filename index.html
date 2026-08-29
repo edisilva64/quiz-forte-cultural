@@ -76,6 +76,9 @@
       <img src="img/logo.png" alt="Forte Cultural" width="36" height="36" loading="eager">
       <span>Forte Cultural</span>
     </a>
+    <a href="forca.html" class="icon-btn" aria-label="Jogar Forca da Cela" title="Jogar Forca da Cela">
+      <i class="fa-solid fa-lock" aria-hidden="true"></i>
+    </a>
     <button id="darkToggle" class="icon-btn" aria-label="Alternar modo escuro" title="Modo escuro">
       <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
     </button>
@@ -106,7 +109,7 @@
       <p class="hero-subtitle">Até onde você consegue chegar?</p>
       <p class="hero-text">Mais de <strong>95% das pessoas</strong> erram pelo menos 3 perguntas.<br>
       Será que você consegue ser um <strong>Mestre da Lógica</strong>?</p>
-      <p class="hero-note"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> Banco com 1000 perguntas em 3 níveis de dificuldade — você escolhe onde começar e até onde quer ir!</p>
+      <p class="hero-note"><i class="fa-solid fa-shuffle" aria-hidden="true"></i> Banco com 1000 perguntas gerais + 500 sobre pontos e monumentos turísticos — comece pelas mais fáceis e avance até onde quiser!</p>
       <button id="startBtn" class="btn btn-primary btn-xl ripple">
         <i class="fa-solid fa-play" aria-hidden="true"></i> COMEÇAR AGORA
       </button>
@@ -117,6 +120,14 @@
         <div class="rule-card" role="listitem"><i class="fa-solid fa-bolt"></i><span>Dificuldade progressiva</span></div>
         <div class="rule-card" role="listitem"><i class="fa-solid fa-share-nodes"></i><span>Compartilhe com amigos</span></div>
       </div>
+
+      <a href="forca.html" class="forca-cta-card">
+        <span class="forca-cta-icon"><i class="fa-solid fa-lock"></i></span>
+        <span class="forca-cta-text">
+          <strong>Novo:</strong> jogue também a <strong>Forca da Cela</strong> — adivinhe a palavra antes que a cela se feche!
+        </span>
+        <span class="forca-cta-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+      </a>
 
       <!-- Faixa lateral fixa da página de abertura (mesmo padrão visual da faixa do quiz) -->
       <aside class="promo-rail hero-rail" id="heroRail" aria-label="Oferta relacionada à camiseta">
@@ -133,12 +144,12 @@
     </div>
   </section>
 
-  <!-- ===================== ESCOLHA DE NÍVEL ===================== -->
-  <section class="level-select-section" id="levelSelectSection" hidden aria-label="Escolha do nível de dificuldade">
-    <div class="container level-select-container">
-      <h2 class="level-select-title">Escolha seu nível de dificuldade</h2>
-      <p class="level-select-subtitle">Você pode começar por onde quiser. Depois de cada bloco de 10 perguntas, é possível avançar para um nível mais difícil.</p>
-      <div class="level-cards" id="levelCards">
+  <!-- ===================== ESCOLHA DE MÓDULO ===================== -->
+  <section class="module-select-section" id="moduleSelectSection" hidden aria-label="Escolha do módulo do quiz">
+    <div class="container module-select-container">
+      <h2 class="level-select-title">Qual quiz você quer jogar?</h2>
+      <p class="level-select-subtitle">Escolha entre o desafio geral de lógica ou o módulo especial sobre monumentos e maravilhas do mundo. Em ambos, você começa pelas perguntas mais fáceis e vai avançando para as mais difíceis, no seu ritmo.</p>
+      <div class="module-cards" id="moduleCards">
         <!-- Preenchido via JS -->
       </div>
     </div>
@@ -149,7 +160,7 @@
     <div class="container quiz-container">
 
       <div class="quiz-topbar">
-        <span class="tier-badge" id="tierBadge">Nível Fácil</span>
+        <span class="tier-badge" id="tierBadge">Nível Fácil</span> <!-- Este texto é sobrescrito via JS assim que o quiz começa -->
         <div class="progress-info">
           <span id="progressLabel">Questão 1 de 10</span>
           <span id="timerDisplay" class="timer"><i class="fa-regular fa-clock"></i> 00:00</span>
@@ -262,6 +273,7 @@
 <!-- JS modular -->
 <script src="js/config.js" defer></script>
 <script src="js/db.js" defer></script>
+<script src="js/tourism-questions.js" defer></script>
 <script src="js/quiz.js" defer></script>
 <script src="js/progress.js" defer></script>
 <script src="js/timer.js" defer></script>

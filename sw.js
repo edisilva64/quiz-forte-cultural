@@ -3,17 +3,23 @@
    Estratégia: cache-first para assets estáticos (app shell)
    =================================================================== */
 
-const CACHE_NAME = "forte-cultural-v9";
+const CACHE_NAME = "forte-cultural-v13";
 
 const ASSETS_TO_CACHE = [
   "./index.html",
+  "./forca.html",
   "./manifest.json",
   "./css/style.css",
   "./css/animations.css",
   "./css/responsive.css",
   "./css/dark.css",
+  "./css/forca.css",
   "./js/db.js",
   "./js/quiz.js",
+  "./js/tourism-questions.js",
+  "./js/forca-words.js",
+  "./js/forca-db.js",
+  "./js/forca-app.js",
   "./js/progress.js",
   "./js/timer.js",
   "./js/confetti.js",
