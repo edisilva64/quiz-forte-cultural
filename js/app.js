@@ -1,22 +1,24 @@
 /* ===================================================================
    app.js — Orquestrador principal: liga todos os módulos entre si
 
-   FLUXO DE JOGO (níveis com dificuldade progressiva):
-   As perguntas são divididas em 3 níveis nomeados (Fácil, Médio,
-   Difícil). O jogador escolhe em qual nível quer começar. A cada
-   rodada, responde um bloco de 10 perguntas sorteadas dentro do nível
-   atual. Ao final do bloco, escolhe entre continuar (próximo nível,
-   mais difícil) ou parar e ver o resultado.
+   FLUXO DE JOGO:
+   1. Escolha do MÓDULO (Quiz Geral ou Quiz Turismo) — única escolha do jogador
+   2. O jogo já começa automaticamente no bloco mais fácil do banco
+   3. Blocos de 10 perguntas, sempre em ordem crescente de dificuldade,
+      com opção de continuar ou parar e ver o resultado ao final de
+      cada bloco — o jogador pode ir até a última pergunta do banco
+      inteiro, se quiser.
    =================================================================== */
 
 (function () {
   "use strict";
 
   const state = {
-    tiers: [],              // 3 arrays de perguntas: [Fácil, Médio, Difícil]
-    tierIndex: 0,            // nível atual (0-based)
-    blockQuestions: [],       // as 10 perguntas do bloco atual
-    indexInBlock: 0,           // posição dentro do bloco atual (0-9)
+    moduleKey: "geral",      // módulo atual: 'geral' ou 'turismo'
+    blocks: [],              // todos os blocos de 10 perguntas, do mais fácil ao mais difícil
+    blockIndex: 0,            // bloco atual (0-based)
+    blockQuestions: [],        // as perguntas do bloco atual
+    indexInBlock: 0,             // posição dentro do bloco atual
     allQuestions: [],           // TODAS as perguntas já respondidas nesta partida (cumulativo)
     allAnswers: [],               // respostas correspondentes a allQuestions
     allTimes: [],                  // tempo (ms) gasto em cada uma
@@ -35,8 +37,8 @@
   function cacheDom() {
     dom.startBtn = document.getElementById("startBtn");
     dom.heroSection = document.getElementById("hero");
-    dom.levelSelectSection = document.getElementById("levelSelectSection");
-    dom.levelCards = document.getElementById("levelCards");
+    dom.moduleSelectSection = document.getElementById("moduleSelectSection");
+    dom.moduleCards = document.getElementById("moduleCards");
     dom.quizSection = document.getElementById("quizSection");
     dom.blockCompleteSection = document.getElementById("blockCompleteSection");
     dom.blockCompleteContainer = document.getElementById("blockCompleteContainer");
@@ -77,42 +79,36 @@
 
   /* ---------------- FLUXO PRINCIPAL ---------------- */
 
-  /** Clique em "COMEÇAR AGORA" no hero: busca as perguntas e mostra a escolha de nível */
-  async function onStartClick() {
-    dom.startBtn.disabled = true;
-    const originalBtnHtml = dom.startBtn.innerHTML;
-    dom.startBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> PREPARANDO SEU DESAFIO...';
+  /** Clique em "COMEÇAR AGORA" no hero: mostra a escolha de módulo */
+  function onStartClick() {
+    QuizUI.renderModuleCards(dom.moduleCards, QuizData.QUIZ_MODULES, onModuleChosen);
+    dom.heroSection.hidden = true;
+    dom.moduleSelectSection.hidden = false;
+    dom.moduleSelectSection.scrollIntoView({ behavior: "smooth" });
+  }
 
-    let pool = await QuizDB.fetchQuestionPool();
+  /** Jogador escolheu o módulo (ex: 'geral' ou 'turismo'): busca as perguntas e já inicia o jogo */
+  async function onModuleChosen(moduleKey) {
+    state.moduleKey = moduleKey;
+
+    const cardsButtons = dom.moduleCards.querySelectorAll(".module-card");
+    cardsButtons.forEach(function (b) { b.disabled = true; b.style.opacity = "0.6"; });
+
+    let pool = await QuizDB.fetchQuestionPool(moduleKey);
     if (!pool || !pool.length) {
-      pool = QuizData.FALLBACK_QUESTIONS; // banco indisponível/não configurado: usa o pool local
+      const module = QuizData.getModule(moduleKey);
+      pool = module.getFallbackPool(); // banco indisponível/não configurado: usa o pool local do módulo
     }
 
-    state.tiers = QuizData.buildDifficultyTiers(pool);
-
-    dom.startBtn.disabled = false;
-    dom.startBtn.innerHTML = originalBtnHtml;
-
-    showLevelSelect();
-  }
-
-  function showLevelSelect() {
-    QuizUI.renderLevelCards(dom.levelCards, QuizData.TIER_META, onLevelChosen);
-    dom.heroSection.hidden = true;
-    dom.levelSelectSection.hidden = false;
-    dom.levelSelectSection.scrollIntoView({ behavior: "smooth" });
-  }
-
-  /** Jogador escolheu o nível inicial (0 = Fácil, 1 = Médio, 2 = Difícil) */
-  function onLevelChosen(tierIndex) {
-    state.tierIndex = tierIndex;
+    state.blocks = QuizData.buildDifficultyBlocks(pool, moduleKey);
+    state.blockIndex = 0;
     state.allQuestions = [];
     state.allAnswers = [];
     state.allTimes = [];
     state.answered = false;
-    loadBlockForCurrentTier();
+    loadCurrentBlock();
 
-    dom.levelSelectSection.hidden = true;
+    dom.moduleSelectSection.hidden = true;
     dom.blockCompleteSection.hidden = true;
     dom.resultSection.hidden = true;
     dom.quizSection.hidden = false;
@@ -124,19 +120,20 @@
     dom.quizSection.scrollIntoView({ behavior: "smooth" });
   }
 
-  /** Sorteia as 10 perguntas do bloco atual, dentro do tier ativo */
-  function loadBlockForCurrentTier() {
-    state.blockQuestions = QuizData.pickTierQuestions(state.tiers, state.tierIndex, QuizData.BLOCK_SIZE);
+  /** Sorteia as perguntas do bloco atual */
+  function loadCurrentBlock() {
+    state.blockQuestions = QuizData.pickBlockQuestions(state.blocks, state.blockIndex, QuizData.BLOCK_SIZE);
     state.indexInBlock = 0;
   }
 
-  /** Aplica a cor do nível atual (verde/laranja/vermelho) ao painel de perguntas */
-  function applyTierColors() {
-    const meta = QuizData.TIER_META[state.tierIndex];
-    if (!meta) return;
-    dom.quizSection.style.setProperty("--level-color", meta.color);
-    dom.quizSection.style.setProperty("--level-color-light", meta.colorLight);
-    dom.tierBadge.innerHTML = '<i class="fa-solid ' + meta.icon + '"></i> ' + meta.name;
+  /** Aplica a cor da zona de dificuldade atual (verde/laranja/vermelho) ao painel de perguntas */
+  function applyZoneColors() {
+    const zone = QuizData.getZoneForBlock(state.blockIndex, state.blocks.length);
+    if (!zone) return;
+    dom.quizSection.style.setProperty("--level-color", zone.color);
+    dom.quizSection.style.setProperty("--level-color-light", zone.colorLight);
+    dom.tierBadge.innerHTML = '<i class="fa-solid ' + zone.icon + '"></i> Nível ' + zone.name +
+      ' <span class="tier-badge-block">· bloco ' + (state.blockIndex + 1) + '/' + state.blocks.length + '</span>';
   }
 
   function renderCurrentQuestion() {
@@ -144,7 +141,7 @@
     const q = state.blockQuestions[state.indexInBlock];
     state.answered = false;
 
-    applyTierColors();
+    applyZoneColors();
 
     QuizProgress.update(state.indexInBlock + 1, total);
     QuizUI.renderQuestion(dom.questionStage, q, state.indexInBlock + 1, total, handleAnswer);
@@ -194,15 +191,18 @@
       return acc + (ans === state.allQuestions[i].correctIndex ? 1 : 0);
     }, 0);
 
+    const totalBlocks = state.blocks.length;
+    const nextBlockIndex = state.blockIndex + 1;
+    const nextZone = nextBlockIndex < totalBlocks ? QuizData.getZoneForBlock(nextBlockIndex, totalBlocks) : null;
+
     QuizUI.renderBlockComplete(dom.blockCompleteContainer, {
       blockScore: blockScore,
       blockTotal: state.blockQuestions.length,
-      tierNumber: state.tierIndex + 1,
-      numTiers: state.tiers.length,
+      blockNumber: state.blockIndex + 1,
+      totalBlocks: totalBlocks,
       overallScore: overallScore,
       overallTotal: state.allQuestions.length,
-      tierName: QuizData.TIER_META[state.tierIndex].name,
-      nextTierName: state.tierIndex + 1 < state.tiers.length ? QuizData.TIER_META[state.tierIndex + 1].name : null
+      nextZoneName: nextZone ? nextZone.name : null
     });
 
     dom.quizSection.hidden = true;
@@ -213,14 +213,14 @@
     const stopBtn = document.getElementById("blockStopBtn");
     const finishBtn = document.getElementById("blockFinishBtn");
 
-    if (continueBtn) continueBtn.addEventListener("click", onContinueToNextTier);
+    if (continueBtn) continueBtn.addEventListener("click", onContinueToNextBlock);
     if (stopBtn) stopBtn.addEventListener("click", finishQuiz);
     if (finishBtn) finishBtn.addEventListener("click", finishQuiz);
   }
 
-  function onContinueToNextTier() {
-    state.tierIndex++;
-    loadBlockForCurrentTier();
+  function onContinueToNextBlock() {
+    state.blockIndex++;
+    loadCurrentBlock();
 
     dom.blockCompleteSection.hidden = true;
     dom.quizSection.hidden = false;
@@ -240,14 +240,14 @@
     }, 0);
 
     const level = QuizData.getLevel(score, total);
-    const highestTier = state.tierIndex + 1;
-    const highestTierName = QuizData.TIER_META[state.tierIndex] ? QuizData.TIER_META[state.tierIndex].name : null;
+    const finalZone = QuizData.getZoneForBlock(state.blockIndex, state.blocks.length);
+    const highestZoneName = finalZone ? finalZone.name : null;
 
     dom.quizSection.hidden = true;
     dom.blockCompleteSection.hidden = true;
     dom.resultSection.hidden = false;
 
-    QuizUI.renderResultCard(dom.resultCard, level, score, total, timeFormatted, highestTierName);
+    QuizUI.renderResultCard(dom.resultCard, level, score, total, timeFormatted, highestZoneName);
     QuizUI.renderReview(dom.reviewList, state.allAnswers, state.allQuestions);
 
     dom.resultSection.scrollIntoView({ behavior: "smooth" });
@@ -263,9 +263,7 @@
       levelTitle: level.title,
       levelEmoji: level.emoji,
       time: timeFormatted,
-      accuracy: total > 0 ? Math.round((score / total) * 100) : 0,
-      highestTier: highestTier,
-      numTiers: state.tiers.length
+      accuracy: total > 0 ? Math.round((score / total) * 100) : 0
     };
 
     QuizShare.checkNativeSupport();
@@ -276,12 +274,12 @@
     const communityStatsBlock = document.getElementById("communityStatsBlock");
     const statsBefore = await QuizDB.getStats();
     QuizUI.renderCommunityStats(communityStatsBlock, statsBefore, score, total, totalTimeMs);
-    QuizDB.recordResult(score, total, totalTimeMs);
+    QuizDB.recordResult(score, total, totalTimeMs, state.moduleKey);
   }
 
   function restartQuiz() {
     clearInterval(questionTimerInterval);
-    dom.levelSelectSection.hidden = true;
+    dom.moduleSelectSection.hidden = true;
     dom.blockCompleteSection.hidden = true;
     dom.resultSection.hidden = true;
     dom.heroSection.hidden = false;

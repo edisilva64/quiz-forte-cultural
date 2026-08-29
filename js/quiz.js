@@ -7059,11 +7059,14 @@
 
   // Pontuação-base por categoria, da mais fácil para a mais difícil
   const CATEGORY_BASE_SCORE = {
-    cultura_geral: 8,
+    localizacao_simples: 10,
+    identificacao_simples: 16,
+    cultura_geral: 20,
     charada: 18,
     sequencia_letras: 26,
     conversao_unidades: 32,
     sequencia_aritmetica: 34,
+    numero_especifico: 36,
     sequencia_geometrica: 40,
     sequencia_fibonacci: 42,
     multiplicacao_divisao: 40,
@@ -7072,15 +7075,31 @@
     perimetro_area: 46,
     regra_de_tres: 48,
     porcentagem_numero: 50,
+    causa_motivo: 50,
     desconto_percentual: 52,
     dia_semana: 56,
     logica_geral: 66
   };
 
   /** Detecta a categoria de uma pergunta a partir do padrão do texto/explicação */
-  function detectCategory(q) {
+  function detectCategory(q, moduleKey) {
     const text = q.question;
     const exp = q.explanation || "";
+
+    // O módulo de turismo é majoritariamente conhecimento factual
+    // (localização, história, construção). Muitas perguntas usam uma
+    // oração explicativa antes da pergunta em si — ex: "A Ponte JK,
+    // conhecida por seu design moderno, está localizada em qual
+    // cidade?" — que NÃO começa com "Qual/Quem/Em que", mas ainda é
+    // uma pergunta simples de fato. Por isso, para este módulo,
+    // tratamos como cultura_geral (fácil) por padrão, reservando a
+    // categoria mais difícil apenas para perguntas de causa/efeito.
+    if (moduleKey === "turismo") {
+      if (/por que|o que causou|qual foi o motivo|o que motivou|por qual motivo/i.test(text)) {
+        return "logica_geral";
+      }
+      return "cultura_geral";
+    }
 
     if (/^Charada:/i.test(text)) return "charada";
     if (/sequência de letras/i.test(text)) return "sequencia_letras";
@@ -7096,7 +7115,10 @@
     if (/soma dos dois anteriores/i.test(text)) return "sequencia_fibonacci";
     if (/multiplicado por/i.test(exp)) return "sequencia_geometrica";
     if (/Complete a sequência/i.test(text)) return "sequencia_aritmetica";
-    if (/^(Qual|Quem|Em que|Quantos?|Quantas?)\b/i.test(text) && !/\d/.test(text)) return "cultura_geral";
+    // Reconhece perguntas factuais mesmo quando a palavra interrogativa não
+    // está no início da frase (ex: "O Templo X, famoso por Y, fica em qual
+    // cidade?"), contanto que a frase termine em uma pergunta desse tipo.
+    if (/\b(qual|quais|quem|quantos?|quantas?)\b[^?]*\?\s*$/i.test(text)) return "cultura_geral";
     if (/^(Qual|Quem|Em que|Quantos?|Quantas?)\b/i.test(text)) return "cultura_geral";
     return "logica_geral"; // catch-all: problemas de lógica, silogismos, combinatória etc.
   }
@@ -7109,77 +7131,101 @@
   }
 
   /** Calcula a pontuação de dificuldade (aproximada) de uma pergunta */
-  function difficultyScore(q) {
-    const category = detectCategory(q);
+  function difficultyScore(q, moduleKey) {
+    const category = detectCategory(q, moduleKey);
     const base = CATEGORY_BASE_SCORE[category] !== undefined ? CATEGORY_BASE_SCORE[category] : 55;
     const maxNum = maxNumberIn(q.question);
     const magnitudeBonus = Math.min(20, Math.log10(maxNum + 1) * 6);
-    const lengthBonus = Math.min(10, q.question.length / 40);
-    return base + magnitudeBonus + lengthBonus;
+    const lengthBonus = Math.min(16, q.question.length / 22);
+    // Bônus extra para perguntas de conhecimento factual (ex: módulo de turismo):
+    // perguntas sobre causas/motivos ou datas específicas tendem a exigir
+    // conhecimento mais detalhado do que perguntas de localização simples.
+    const reasoningBonus = /por que|o que causou|qual foi o motivo|o que motivou|por qual motivo|o que caracteriza/i.test(q.question) ? 8 : 0;
+    const yearBonus = /\b(1[0-9]{3}|20[0-2][0-9])\b/.test(q.question) ? 5 : 0;
+    // Perguntas com orações explicativas antes da pergunta em si (ex: "O
+    // Templo X, famoso por Y e Z, fica em qual cidade?") tendem a exigir
+    // reconhecer mais informação — cada vírgula extra soma um pouco.
+    const commaCount = (q.question.match(/,/g) || []).length;
+    const clauseBonus = Math.min(10, commaCount * 2.5);
+    return base + magnitudeBonus + lengthBonus + reasoningBonus + yearBonus + clauseBonus;
   }
 
-  const NUM_TIERS = 3;    // 3 níveis nomeados: Fácil, Médio, Difícil
-  const BLOCK_SIZE = 10;  // perguntas exibidas por bloco/rodada
+  const BLOCK_SIZE = 10;  // perguntas por bloco/rodada
 
   /**
-   * Metadados de cada nível: nome exibido, cores (harmonizadas com a
-   * paleta do site) e ícone. O índice aqui corresponde ao índice do tier
-   * gerado por buildDifficultyTiers (0 = mais fácil, 2 = mais difícil).
+   * Metadados visuais das 3 "zonas" de dificuldade (fácil/médio/difícil),
+   * usados apenas para colorir o painel de perguntas e o badge — não são
+   * mais uma escolha do jogador, e sim calculados automaticamente de
+   * acordo com o progresso dele dentro do banco de perguntas (ver
+   * getZoneForBlock).
    */
-  const TIER_META = [
+  const ZONE_META = [
     {
       key: "facil",
-      name: "Nível Fácil",
+      name: "Fácil",
       color: "#00A651",       // verde da marca
       colorLight: "#E7F8EF",
-      icon: "fa-seedling",
-      description: "Perguntas mais simples, ótimo para aquecer o raciocínio."
+      icon: "fa-seedling"
     },
     {
       key: "medio",
-      name: "Nível Médio",
+      name: "Médio",
       color: "#FF8A00",       // laranja da marca
       colorLight: "#FFF1E0",
-      icon: "fa-bolt",
-      description: "Um desafio equilibrado — nem tão fácil, nem tão difícil."
+      icon: "fa-bolt"
     },
     {
       key: "dificil",
-      name: "Nível Difícil",
+      name: "Difícil",
       color: "#FF3C3C",       // vermelho (mesmo tom já usado em erros/alertas do site)
       colorLight: "#FFEAEA",
-      icon: "fa-fire",
-      description: "Só para quem não tem medo de um desafio de verdade."
+      icon: "fa-fire"
     }
   ];
 
   /**
-   * Ordena todas as perguntas do pool da mais fácil para a mais difícil e
-   * as divide em NUM_TIERS grupos (tiers) de tamanho igual. O tier 0 é o
-   * mais fácil; o último tier é o mais difícil.
+   * Ordena TODAS as perguntas do pool da mais fácil para a mais difícil e
+   * as divide em blocos sequenciais de tamanho fixo (BLOCK_SIZE), cobrindo
+   * o banco inteiro. O bloco 0 é sempre o mais fácil; o último bloco é
+   * sempre o mais difícil. O jogador sempre começa no bloco 0 e pode ir
+   * avançando bloco a bloco até o final do banco, se quiser.
    */
-  function buildDifficultyTiers(pool) {
+  function buildDifficultyBlocks(pool, moduleKey) {
     const scored = (pool || []).map(function (q) {
-      return { q: q, score: difficultyScore(q) };
+      return { q: q, score: difficultyScore(q, moduleKey) };
     });
     scored.sort(function (a, b) { return a.score - b.score; });
     const sorted = scored.map(function (s) { return s.q; });
 
-    const tierSize = Math.ceil(sorted.length / NUM_TIERS);
-    const tiers = [];
-    for (let i = 0; i < NUM_TIERS; i++) {
-      tiers.push(sorted.slice(i * tierSize, (i + 1) * tierSize));
+    const blocks = [];
+    for (let i = 0; i < sorted.length; i += BLOCK_SIZE) {
+      blocks.push(sorted.slice(i, i + BLOCK_SIZE));
     }
-    return tiers.filter(function (t) { return t.length > 0; });
+    return blocks;
   }
 
   /**
-   * Sorteia `count` perguntas aleatórias dentro de um tier específico,
-   * com as alternativas de cada uma também embaralhadas.
+   * Retorna os metadados visuais (cor/nome/ícone) da zona de dificuldade
+   * correspondente à posição atual do jogador no banco de perguntas.
+   * Os blocos são divididos em 3 terços: primeiro terço = fácil, terço
+   * do meio = médio, último terço = difícil.
    */
-  function pickTierQuestions(tiers, tierIndex, count) {
-    const pool = (tiers && tiers[tierIndex]) || [];
-    return pickRandom(pool, count);
+  function getZoneForBlock(blockIndex, totalBlocks) {
+    if (totalBlocks <= 1) return ZONE_META[0];
+    const ratio = blockIndex / totalBlocks;
+    if (ratio < 1 / 3) return ZONE_META[0];
+    if (ratio < 2 / 3) return ZONE_META[1];
+    return ZONE_META[2];
+  }
+
+  /**
+   * Retorna as `count` perguntas de um bloco específico (já na ordem
+   * sorteada aleatoriamente, com as alternativas de cada uma também
+   * embaralhadas).
+   */
+  function pickBlockQuestions(blocks, blockIndex, count) {
+    const pool = (blocks && blocks[blockIndex]) || [];
+    return pickRandom(pool, count || pool.length);
   }
 
   /** Embaralha uma cópia do array (Fisher-Yates) sem alterar o original */
@@ -7247,17 +7293,47 @@
     return LEVELS.find(function (lvl) { return pct >= lvl.min && pct <= lvl.max; }) || LEVELS[LEVELS.length - 1];
   }
 
+  /**
+   * Módulos disponíveis no quiz. Cada módulo tem seu próprio banco de
+   * perguntas (local, de reserva) e pode ter sua própria fonte no banco
+   * de dados (ver js/db.js). O jogador escolhe o módulo antes do nível.
+   */
+  const QUIZ_MODULES = [
+    {
+      key: "geral",
+      name: "Quiz Geral",
+      description: "1000 perguntas de lógica, matemática, cultura geral e charadas.",
+      icon: "fa-brain",
+      color: "#FF6B00",
+      getFallbackPool: function () { return FALLBACK_QUESTIONS; }
+    },
+    {
+      key: "turismo",
+      name: "Quiz Turismo",
+      description: "500 perguntas sobre monumentos e maravilhas do mundo — sua história, construção e curiosidades.",
+      icon: "fa-landmark",
+      color: "#1877F2",
+      getFallbackPool: function () { return window.TOURISM_QUESTIONS || []; }
+    }
+  ];
+
+  function getModule(key) {
+    return QUIZ_MODULES.find(function (m) { return m.key === key; }) || QUIZ_MODULES[0];
+  }
+
   window.QuizData = {
     FALLBACK_QUESTIONS: FALLBACK_QUESTIONS,
     QUESTIONS_PER_GAME: BLOCK_SIZE, // mantido por compatibilidade (agora representa o tamanho do bloco)
     BLOCK_SIZE: BLOCK_SIZE,
-    NUM_TIERS: NUM_TIERS,
-    TIER_META: TIER_META,
+    ZONE_META: ZONE_META,
     LEVELS: LEVELS,
+    QUIZ_MODULES: QUIZ_MODULES,
+    getModule: getModule,
     getLevel: getLevel,
     pickRandom: pickRandom,
-    buildDifficultyTiers: buildDifficultyTiers,
-    pickTierQuestions: pickTierQuestions,
+    buildDifficultyBlocks: buildDifficultyBlocks,
+    pickBlockQuestions: pickBlockQuestions,
+    getZoneForBlock: getZoneForBlock,
     difficultyScore: difficultyScore,
     detectCategory: detectCategory
   };

@@ -42,12 +42,25 @@
   }
 
   /** Busca o banco de questões no Supabase. Retorna null se indisponível. */
-  async function fetchQuestionPool() {
+  // Cada módulo do quiz busca de uma tabela diferente no Supabase.
+  const MODULE_TABLES = {
+    geral: "questions",
+    turismo: "tourism_questions"
+  };
+
+  /**
+   * Busca o banco de questões do módulo indicado ('geral' ou 'turismo').
+   * Retorna null se indisponível (banco não configurado, tabela ainda não
+   * criada, ou erro de rede) — nesse caso o app.js usa o fallback local.
+   */
+  async function fetchQuestionPool(moduleKey) {
     const sb = getClient();
     if (!sb) return null;
 
+    const table = MODULE_TABLES[moduleKey] || MODULE_TABLES.geral;
+
     try {
-      const { data, error } = await sb.from("questions").select("*");
+      const { data, error } = await sb.from(table).select("*");
       if (error || !data || !data.length) return null;
 
       return data.map(function (row) {
@@ -65,13 +78,22 @@
   }
 
   /** Registra o resultado da partida (fire-and-forget, não bloqueia a UI). */
-  async function recordResult(score, total, timeMs) {
+  async function recordResult(score, total, timeMs, moduleKey) {
     const sb = getClient();
     if (!sb) return;
+    const payload = { score: score, total: total, time_ms: Math.round(timeMs) };
     try {
-      await sb.from("results").insert({ score: score, total: total, time_ms: Math.round(timeMs) });
+      // Tenta gravar já com o módulo (geral/turismo). Se a coluna "module"
+      // ainda não existir no banco (patch não aplicado), cai no fallback
+      // abaixo para não perder o registro do resultado.
+      const { error } = await sb.from("results").insert(Object.assign({}, payload, { module: moduleKey || "geral" }));
+      if (error) throw error;
     } catch (e) {
-      /* falha silenciosa: estatísticas são um extra, não podem travar o app */
+      try {
+        await sb.from("results").insert(payload);
+      } catch (e2) {
+        /* falha silenciosa: estatísticas são um extra, não podem travar o app */
+      }
     }
   }
 
