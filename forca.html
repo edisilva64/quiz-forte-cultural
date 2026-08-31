@@ -101,7 +101,7 @@
       </div>
 
       <!-- Faixa lateral: alterna entre as camisetas do quiz a cada jogada -->
-      <aside class="promo-rail forca-rail" id="forcaRail" aria-label="Oferta relacionada à camiseta">
+      <aside class="promo-rail" id="forcaRail" aria-label="Oferta relacionada à camiseta">
         <div class="promo-rail-inner">
           <div class="promo-rail-mockup">
             <img id="forcaRailImg" src="img/camiseta-cafe.png" alt="Camiseta em destaque" loading="lazy" width="200" height="256">
@@ -137,10 +137,14 @@
   </div>
 </footer>
 
+<canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+
 <script src="js/config.js" defer></script>
 <script src="js/db.js" defer></script>
 <script src="js/forca-db.js" defer></script>
 <script src="js/forca-words.js" defer></script>
+<script src="js/confetti.js" defer></script>
 <script src="js/forca-app.js" defer></script>
 </body>
 </html>
