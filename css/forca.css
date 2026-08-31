@@ -164,6 +164,11 @@
   transform-origin: bottom;
 }
 .forca-bar.visible { opacity: 1; transform: scaleY(1); }
+.forca-bar.escaping {
+  transition: transform .6s cubic-bezier(.34,1.56,.64,1), opacity .5s ease .15s;
+  transform: translateY(-260px) scaleY(1);
+  opacity: 0;
+}
 
 .forca-character { transition: transform .3s ease; }
 .forca-character.sad { animation: forcaShake .4s ease; }
@@ -236,12 +241,8 @@
 .forca-key.wrong { background: #FF3C3C; border-color: #FF3C3C; color: #fff; }
 
 /* ===== Faixa lateral (fica fixa dentro do grid do board, não sobrepõe) ===== */
-.forca-rail { grid-column: 1 / -1; margin-top: 10px; }
-.forca-rail .promo-rail-inner { max-width: 420px; margin: 0 auto; display: flex; align-items: center; gap: 18px; text-align: left; }
-.forca-rail .promo-rail-mockup { max-width: 90px; margin: 0; flex-shrink: 0; }
-.forca-rail .promo-rail-title,
-.forca-rail .promo-rail-text { margin: 0 0 4px; }
-.forca-rail .btn-sm { width: auto; white-space: nowrap; }
+/* A faixa lateral (.promo-rail) usa exatamente o mesmo estilo do quiz,
+   definido em css/style.css — sem overrides aqui, para ficar idêntica. */
 
 /* ===================== RESULTADO DA RODADA / FIM DE JOGO ===================== */
 .forca-round-result-section,
@@ -288,5 +289,4 @@
   .forca-keyboard { grid-template-columns: repeat(auto-fill, minmax(32px, 1fr)); gap: 6px; }
   .forca-key { padding: 8px 0; font-size: 0.85rem; }
   .forca-timer { font-size: 1.1rem; padding: 8px 16px; }
-  .forca-rail .promo-rail-inner { flex-direction: column; text-align: center; }
 }
