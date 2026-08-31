@@ -29,6 +29,7 @@
 @media (max-width: 900px) {
   .rules-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .game-options-grid { grid-template-columns: 1fr; }
 }
 
 /* ===== Celular ===== */
@@ -38,10 +39,9 @@
   .hero-title { font-size: clamp(1.6rem, 7.2vw, 2.08rem); }
   .rules-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .rule-card { padding: 14px 8px; font-size: 0.78rem; }
+  .game-options-grid { grid-template-columns: 1fr; gap: 14px; }
 
   .level-cards { grid-template-columns: 1fr; }
-  .module-cards { grid-template-columns: 1fr; }
-  .module-select-section { padding: 40px 0; }
   .level-select-section { padding: 40px 0; }
 
   .question-card { padding: 46px 20px 30px; }

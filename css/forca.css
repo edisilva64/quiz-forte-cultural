@@ -215,23 +215,6 @@
 }
 .btn-sm { padding: 10px 18px; font-size: 0.85rem; }
 
-.forca-used-letters { display: flex; flex-direction: column; gap: 8px; }
-.forca-used-label { font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); }
-.forca-used-list { display: flex; flex-wrap: wrap; gap: 6px; min-height: 30px; }
-.forca-used-chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  font-weight: 800;
-  font-size: 0.85rem;
-  color: #fff;
-}
-.forca-used-chip.correct { background: var(--color-green); }
-.forca-used-chip.wrong { background: #FF3C3C; }
-
 .forca-keyboard {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));

@@ -380,90 +380,57 @@ input:focus-visible,
 .rule-card:nth-child(4) i { color: #7B4FE0; }
 .rule-card i { font-size: 1.5rem; }
 
-/* ===================== CONVITE PARA A FORCA DA CELA ===================== */
-.forca-cta-card {
+/* ===================== OPÇÕES DE JOGO EM DESTAQUE (PRIMEIRA TELA) ===================== */
+.game-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 32px 0 8px;
+}
+.game-option-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  background: rgba(255,255,255,0.92);
+  text-align: center;
+  gap: 6px;
+  background: #fff;
   border: 3px solid var(--comic-ink);
   border-radius: var(--radius-lg);
-  padding: 16px 20px;
-  margin-top: 26px;
+  padding: 26px 18px 22px;
   text-decoration: none;
   color: var(--comic-ink);
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.18);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.forca-cta-card:hover { transform: translateY(-3px); box-shadow: 6px 8px 0 rgba(0,0,0,0.18); }
-.forca-cta-icon {
-  flex-shrink: 0;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--color-navy);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 1.2rem;
-}
-.forca-cta-text { flex: 1; font-size: 0.92rem; line-height: 1.4; text-align: left; }
-.forca-cta-arrow { flex-shrink: 0; color: var(--color-orange); font-size: 1.1rem; }
-
-/* ===================== ESCOLHA DE MÓDULO ===================== */
-.module-select-section {
-  padding: 64px 0;
-  background: var(--surface-alt);
-  scroll-margin-top: 110px;
-}
-.module-select-container { max-width: 760px; margin: 0 auto; text-align: center; }
-.module-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
-}
-.module-card {
-  background: var(--surface);
-  border: 3px solid var(--module-card-color, var(--color-orange));
-  border-radius: var(--radius-lg);
-  padding: 36px 24px;
-  text-align: center;
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
   cursor: pointer;
-  transition: transform .2s ease, box-shadow .2s ease;
-  box-shadow: var(--shadow-soft);
+  font-family: inherit;
 }
-.module-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(0,0,0,0.14); }
-.module-card-icon {
-  width: 72px;
-  height: 72px;
+.game-option-card:hover:not(:disabled) { transform: translateY(-5px) rotate(-0.5deg); box-shadow: 7px 9px 0 rgba(0,0,0,0.2); }
+.game-option-card:disabled { cursor: default; }
+.game-option-icon {
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  margin: 0 auto 18px;
+  background: var(--opt-color, var(--color-orange));
+  color: #fff;
   display: grid;
   place-items: center;
-  font-size: 1.9rem;
-  color: #fff;
-  background: var(--module-card-color, var(--color-orange));
+  font-size: 1.7rem;
+  margin-bottom: 6px;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.15);
 }
-.module-card-name {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--module-card-color, var(--color-orange));
-  margin-bottom: 10px;
-}
-.module-card-desc {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-.module-card-btn {
-  display: inline-block;
-  padding: 12px 26px;
+.game-option-name { font-size: 1.15rem; font-weight: 800; color: var(--opt-color, var(--color-orange)); }
+.game-option-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; min-height: 2.6em; }
+.game-option-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px 22px;
   border-radius: var(--radius-pill);
-  background: var(--module-card-color, var(--color-orange));
+  background: var(--opt-color, var(--color-orange));
   color: #fff;
-  font-weight: 700;
-  font-size: 0.88rem;
+  font-weight: 800;
+  font-size: 0.85rem;
 }
 
 /* ===================== ESCOLHA DE NÍVEL ===================== */
