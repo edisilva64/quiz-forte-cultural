@@ -35,10 +35,8 @@
   const PRESSURE_THRESHOLD_MS = 15000; // após 15s, o badge fica "vermelho"
 
   function cacheDom() {
-    dom.startBtn = document.getElementById("startBtn");
+    dom.gameOptionsGrid = document.getElementById("gameOptionsGrid");
     dom.heroSection = document.getElementById("hero");
-    dom.moduleSelectSection = document.getElementById("moduleSelectSection");
-    dom.moduleCards = document.getElementById("moduleCards");
     dom.quizSection = document.getElementById("quizSection");
     dom.blockCompleteSection = document.getElementById("blockCompleteSection");
     dom.blockCompleteContainer = document.getElementById("blockCompleteContainer");
@@ -79,20 +77,13 @@
 
   /* ---------------- FLUXO PRINCIPAL ---------------- */
 
-  /** Clique em "COMEÇAR AGORA" no hero: mostra a escolha de módulo */
-  function onStartClick() {
-    QuizUI.renderModuleCards(dom.moduleCards, QuizData.QUIZ_MODULES, onModuleChosen);
-    dom.heroSection.hidden = true;
-    dom.moduleSelectSection.hidden = false;
-    dom.moduleSelectSection.scrollIntoView({ behavior: "smooth" });
-  }
-
-  /** Jogador escolheu o módulo (ex: 'geral' ou 'turismo'): busca as perguntas e já inicia o jogo */
-  async function onModuleChosen(moduleKey) {
+  /** Clique em um dos cartões de módulo (Quiz Geral / Quiz Turismo) na primeira tela: já inicia o jogo direto */
+  async function onModuleChosen(moduleKey, cardEl) {
     state.moduleKey = moduleKey;
 
-    const cardsButtons = dom.moduleCards.querySelectorAll(".module-card");
+    const cardsButtons = dom.gameOptionsGrid.querySelectorAll(".game-option-card[data-module]");
     cardsButtons.forEach(function (b) { b.disabled = true; b.style.opacity = "0.6"; });
+    if (cardEl) cardEl.querySelector(".game-option-btn").innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> CARREGANDO...';
 
     let pool = await QuizDB.fetchQuestionPool(moduleKey);
     if (!pool || !pool.length) {
@@ -108,7 +99,7 @@
     state.answered = false;
     loadCurrentBlock();
 
-    dom.moduleSelectSection.hidden = true;
+    dom.heroSection.hidden = true;
     dom.blockCompleteSection.hidden = true;
     dom.resultSection.hidden = true;
     dom.quizSection.hidden = false;
@@ -279,10 +270,20 @@
 
   function restartQuiz() {
     clearInterval(questionTimerInterval);
-    dom.moduleSelectSection.hidden = true;
     dom.blockCompleteSection.hidden = true;
     dom.resultSection.hidden = true;
     dom.heroSection.hidden = false;
+
+    // Reabilita os cartões de módulo (Quiz Geral/Turismo), caso o jogador
+    // já tenha jogado antes e volte para a tela inicial
+    const cardsButtons = dom.gameOptionsGrid.querySelectorAll(".game-option-card[data-module]");
+    cardsButtons.forEach(function (b) {
+      b.disabled = false;
+      b.style.opacity = "";
+      const btnLabel = b.querySelector(".game-option-btn");
+      if (btnLabel) btnLabel.innerHTML = 'JOGAR <i class="fa-solid fa-arrow-right"></i>';
+    });
+
     dom.heroSection.scrollIntoView({ behavior: "smooth" });
   }
 
@@ -332,7 +333,11 @@
     QuizUI.attachRipple(document.body);
     initDarkMode();
 
-    dom.startBtn.addEventListener("click", onStartClick);
+    dom.gameOptionsGrid.addEventListener("click", function (e) {
+      const card = e.target.closest(".game-option-card[data-module]");
+      if (!card || card.disabled) return;
+      onModuleChosen(card.getAttribute("data-module"), card);
+    });
     dom.restartBtn.addEventListener("click", restartQuiz);
     dom.certBtn.addEventListener("click", onGenerateCertificate);
     document.querySelector(".share-buttons").addEventListener("click", onShareClick);

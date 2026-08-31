@@ -316,25 +316,6 @@
    * @param {Array} modules - QuizData.QUIZ_MODULES (nome, cor, ícone, descrição)
    * @param {Function} onSelect - callback(moduleKey) ao clicar em um cartão
    */
-  function renderModuleCards(el, modules, onSelect) {
-    el.innerHTML = "";
-    modules.forEach(function (mod) {
-      const card = document.createElement("button");
-      card.type = "button";
-      card.className = "module-card ripple";
-      card.style.setProperty("--module-card-color", mod.color);
-      card.setAttribute("aria-label", "Escolher " + mod.name);
-
-      card.innerHTML =
-        '<div class="module-card-icon"><i class="fa-solid ' + mod.icon + '"></i></div>' +
-        '<div class="module-card-name">' + mod.name + '</div>' +
-        '<p class="module-card-desc">' + mod.description + '</p>' +
-        '<span class="module-card-btn">JOGAR ESTE</span>';
-
-      card.addEventListener("click", function () { onSelect(mod.key); });
-      el.appendChild(card);
-    });
-  }
 
   window.QuizUI = {
     attachRipple: attachRipple,
@@ -344,7 +325,6 @@
     renderResultCard: renderResultCard,
     renderCommunityStats: renderCommunityStats,
     renderBlockComplete: renderBlockComplete,
-    renderModuleCards: renderModuleCards,
     renderReview: renderReview
   };
 })();

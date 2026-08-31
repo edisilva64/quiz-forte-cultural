@@ -53,7 +53,6 @@
     dom.wordDisplay = document.getElementById("forcaWordDisplay");
     dom.hintBtn = document.getElementById("forcaHintBtn");
     dom.hintText = document.getElementById("forcaHintText");
-    dom.usedList = document.getElementById("forcaUsedList");
     dom.keyboard = document.getElementById("forcaKeyboard");
     dom.railImg = document.getElementById("forcaRailImg");
     dom.railEmoji = document.getElementById("forcaRailEmoji");
@@ -253,7 +252,6 @@
     updateCellScene();
     resetKeyboard();
     renderWordDisplay();
-    renderUsedLetters();
     cyclePromoRail();
     startTimer();
   }
@@ -292,15 +290,6 @@
     }
   }
 
-  function renderUsedLetters() {
-    dom.usedList.innerHTML = "";
-    state.usedLetters.forEach(function (u) {
-      const chip = document.createElement("span");
-      chip.className = "forca-used-chip " + (u.correct ? "correct" : "wrong");
-      chip.textContent = u.letter;
-      dom.usedList.appendChild(chip);
-    });
-  }
 
   function isWordFullyRevealed() {
     for (let i = 0; i < state.normalizedWord.length; i++) {
@@ -325,7 +314,6 @@
     if (isCorrect) {
       state.guessedLetters.push(norm);
       renderWordDisplay();
-      renderUsedLetters();
       cyclePromoRail();
       if (isWordFullyRevealed()) {
         winRound();
@@ -336,7 +324,6 @@
     state.wrongCount++;
     updateCellScene();
     setCharacterState("wrong");
-    renderUsedLetters();
     cyclePromoRail();
 
     if (state.wrongCount >= MAX_WRONG) {
