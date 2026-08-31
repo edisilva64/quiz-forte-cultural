@@ -355,34 +355,53 @@
   }
 
   /* ---------------- FIM DE RODADA ---------------- */
+  /** Abre a cela: as barras deslizam para fora, deixando o personagem livre para dançar. */
+  function openCellDoors() {
+    const bars = dom.cellScene.querySelectorAll(".forca-bar");
+    bars.forEach(function (bar, i) {
+      setTimeout(function () {
+        bar.classList.add("escaping");
+      }, i * 55);
+    });
+  }
+
   function winRound() {
     stopTimer();
+    openCellDoors();
     setCharacterState("win");
     state.roundsWon++;
 
-    dom.gameSection.hidden = true;
-    dom.roundResultCard.innerHTML =
-      '<div class="forca-result-emoji">🎉</div>' +
-      '<h2 class="forca-result-title">Você acertou!</h2>' +
-      '<p class="forca-result-word">A palavra era: <strong>' + state.displayWord + '</strong></p>' +
-      '<p class="forca-result-sub">Palavras resolvidas até agora: ' + state.roundsWon + '</p>' +
-      '<div class="forca-result-actions">' +
-        '<button id="forcaNextRoundBtn" class="btn btn-primary btn-xl ripple"><i class="fa-solid fa-arrow-right"></i> PRÓXIMA PALAVRA (mais difícil)</button>' +
-        '<button id="forcaStopHereBtn" class="btn btn-ghost ripple">PARAR POR AQUI</button>' +
-      '</div>';
-    dom.roundResultSection.hidden = false;
-    dom.roundResultSection.scrollIntoView({ behavior: "smooth" });
+    if (window.QuizConfetti) {
+      QuizConfetti.fire(200);
+    }
 
-    document.getElementById("forcaNextRoundBtn").addEventListener("click", function () {
-      state.roundIndex++;
-      dom.roundResultSection.hidden = true;
-      dom.gameSection.hidden = false;
-      startRound();
-      dom.gameSection.scrollIntoView({ behavior: "smooth" });
-    });
-    document.getElementById("forcaStopHereBtn").addEventListener("click", function () {
-      showFinalScreen(true);
-    });
+    // Espera a comemoração (cela abrindo + boneco dançando + confetes)
+    // acontecer visivelmente antes de trocar para a tela de resultado.
+    setTimeout(function () {
+      dom.gameSection.hidden = true;
+      dom.roundResultCard.innerHTML =
+        '<div class="forca-result-emoji">🎉</div>' +
+        '<h2 class="forca-result-title">Você acertou!</h2>' +
+        '<p class="forca-result-word">A palavra era: <strong>' + state.displayWord + '</strong></p>' +
+        '<p class="forca-result-sub">Palavras resolvidas até agora: ' + state.roundsWon + '</p>' +
+        '<div class="forca-result-actions">' +
+          '<button id="forcaNextRoundBtn" class="btn btn-primary btn-xl ripple"><i class="fa-solid fa-arrow-right"></i> PRÓXIMA PALAVRA (mais difícil)</button>' +
+          '<button id="forcaStopHereBtn" class="btn btn-ghost ripple">PARAR POR AQUI</button>' +
+        '</div>';
+      dom.roundResultSection.hidden = false;
+      dom.roundResultSection.scrollIntoView({ behavior: "smooth" });
+
+      document.getElementById("forcaNextRoundBtn").addEventListener("click", function () {
+        state.roundIndex++;
+        dom.roundResultSection.hidden = true;
+        dom.gameSection.hidden = false;
+        startRound();
+        dom.gameSection.scrollIntoView({ behavior: "smooth" });
+      });
+      document.getElementById("forcaStopHereBtn").addEventListener("click", function () {
+        showFinalScreen(true);
+      });
+    }, 1600);
   }
 
   function loseRound(reason) {
